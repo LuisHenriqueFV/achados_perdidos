@@ -40,9 +40,9 @@ require("./includes/components/cabecalho.php");
                             $adm = verifica_administrador($email, $pdo);
                             if ($adm) {
                                 ?>
-                                 <li class="nav-item">
-                                <a class="nav-link" href="adm.php">Adm</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adm.php">Adm</a>
+                                </li>
                                 <?php
                             }
                             ?>

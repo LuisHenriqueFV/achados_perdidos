@@ -3,11 +3,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 
-function cadastra_objeto_perdido($nome, $descricao, $local, $data, $pdo)
+function cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $pdo)
 {
     try {
-        $stmt = $pdo->prepare("INSERT INTO objetos_perdidos (nome, descricao, local, data) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$nome, $descricao, $local, $data]);
+        $stmt = $pdo->prepare("INSERT INTO objetos_perdidos (nome, descricao, local, data, categoria, imagem) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$nome, $descricao, $local, $data, $categoria, $imagem]);
         return true;
     } catch (PDOException $e) {
         echo "Erro ao cadastrar objeto perdido: " . $e->getMessage();
@@ -17,28 +17,34 @@ function cadastra_objeto_perdido($nome, $descricao, $local, $data, $pdo)
 function cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $pdo)
 {
     try {
-        $sql = "INSERT INTO objetos_encontrados (nome, descricao, local, data, categoria) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO objetos_encontrados (nome, descricao, local, data, categoria, imagem) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nome, $descricao, $local, $data, $categoria]);
+        $stmt->execute([$nome, $descricao, $local, $data, $categoria, $imagem]);
     } catch (PDOException $e) {
-        // Trate os erros de inserção
         error_log("Erro ao cadastrar objeto encontrado: " . $e->getMessage());
-        // Você pode lançar uma exceção, retornar um código de erro, ou tomar outra ação apropriada aqui.
     }
 }
 
-function pesquisa_objeto_perdido($nome, $pdo)
+
+function pesquisa_objeto_perdido($nome, $categoria, $pdo)
 {
-    try {
-        $stmt = $pdo->prepare("SELECT * FROM objetos_perdidos WHERE nome LIKE ?");
-        $stmt->execute(["%$nome%"]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Erro na pesquisa: " . $e->getMessage();
-        return null;
-    }
-}
+    $query = "SELECT * FROM objetos_perdidos WHERE nome LIKE :nome";
 
+    if (!empty($categoria)) {
+        $query .= " AND categoria = :categoria";
+    }
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':nome', '%' . $nome . '%', PDO::PARAM_STR);
+
+    if (!empty($categoria)) {
+        $stmt->bindValue(':categoria', $categoria, PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 function pesquisa_objeto_encontrado($nome, $categoria, $pdo)
 {
     $query = "SELECT * FROM objetos_encontrados WHERE nome LIKE :nome";
@@ -66,6 +72,13 @@ function obter_objetos_encontrados_por_categoria($categoria, $pdo)
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function obter_objetos_perdidos_por_categoria($categoria, $pdo)
+{
+    $stmt = $pdo->prepare("SELECT * FROM objetos_encontrados WHERE categoria = :categoria");
+    $stmt->execute([':categoria' => $categoria]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function obter_categorias($pdo)
 {
     try {
@@ -84,10 +97,8 @@ function obter_categoria_por_id($categoria_id, $pdo)
         $stmt->bindParam(':id', $categoria_id, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Retorna a categoria encontrada
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        // Em caso de erro, você pode tratar ou registrar o erro conforme necessário
         error_log("Erro ao obter categoria por ID: " . $e->getMessage());
         return false;
     }
