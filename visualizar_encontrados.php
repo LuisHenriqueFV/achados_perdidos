@@ -3,16 +3,24 @@ require("./includes/components/cabecalho.php");
 require("./includes/components/funcao.php");
 require("./includes/components/conecta.php");
 
-if (isset($_GET['pesquisar'])) {
-    $nome = $_GET['pesquisar'];
-    $categoria = $_GET['categoria'];  // Certifique-se de ter a categoria se ela for obrigatória
-    $objetosEncontrados = pesquisa_objeto_encontrado($nome, $categoria, $pdo);
-} else {
-    $objetosEncontrados = obter_objetos_encontrados($pdo);
-}
-// Buscar todas as categorias
+$msg = "";
+$objetosEncontrados = null;
+
 $categorias = obter_categorias($pdo);
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : "";
+
+    $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
+
+    if ($categoria === "MostrarTodos") {
+        $objetosEncontrados = pesquisa_objeto_encontrado($nome, null, $pdo);
+    } else {
+        $objetosEncontrados = pesquisa_objeto_encontrado($nome, $categoria, $pdo);
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,23 +30,31 @@ $categorias = obter_categorias($pdo);
             <form action="visualizar_encontrados.php" method="GET">
                 <div class="mb-3 input-group">
                     <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto encontrado"
-                        autocomplete="off" required>
+                        autocomplete="off">
 
+                    <button class="btn btn-primary" type="submit" name="filtrarCategoria">
+                        Pesquisar
+                    </button>
+                </div>
+            </form>
+
+            <form action="visualizar_encontrados.php" method="GET">
+                <div class="mb-3 input-group">
                     <select name="categoria" class="form-select">
-                        <option value="">Todas as Categorias</option>
+                        <option value="MostrarTodos" <?php echo $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>
+                            Mostrar Todos os Objetos
+                        </option>
+
                         <?php
                         foreach ($categorias as $cat) {
-                            echo "<option value='" . $cat['nome'] . "'>" . $cat['nome'] . "</option>";
+                            $selected = ($categoria === $cat['nome']) ? 'selected' : '';
+                            echo "<option value='" . htmlspecialchars($cat['nome'], ENT_QUOTES) . "' $selected>" . htmlspecialchars($cat['nome'], ENT_QUOTES) . "</option>";
                         }
                         ?>
                     </select>
 
-                    <button id="search" class="btn btn-primary" type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
+                    <button class="btn btn-secondary" type="submit" name="filtrarCategoria">
+                        Filtrar por Categoria
                     </button>
                 </div>
             </form>
@@ -46,8 +62,8 @@ $categorias = obter_categorias($pdo);
 
         <div class="conteudo">
             <?php
-            if (isset($objetosEncontrados)) {
-                if ($objetosEncontrados === null) {
+            if ($objetosEncontrados) {
+                if (empty($objetosEncontrados)) {
                     echo "Nenhum resultado encontrado.";
                 } else {
                     ?>
@@ -66,33 +82,21 @@ $categorias = obter_categorias($pdo);
                             <?php foreach ($objetosEncontrados as $objeto) { ?>
                                 <tr class='linha'>
                                     <td>
-                                        <?php echo ($objeto['nome']) ?>
+                                        <?php echo htmlspecialchars($objeto['nome'], ENT_QUOTES) ?>
                                     </td>
                                     <td>
-                                        <?php echo ($objeto['descricao']) ?>
+                                        <?php echo htmlspecialchars($objeto['descricao'], ENT_QUOTES) ?>
                                     </td>
                                     <td>
-                                        <?php echo ($objeto['local']) ?>
+                                        <?php echo htmlspecialchars($objeto['local'], ENT_QUOTES) ?>
                                     </td>
                                     <td>
-                                        <?php echo ($objeto['data']) ?>
+                                        <?php echo htmlspecialchars($objeto['data'], ENT_QUOTES) ?>
                                     </td>
                                     <td>
-                                        <?php
-                                        // Verifica se a categoria está definida antes de acessar a chave 'id_categoria'
-                                        $categoriaId = isset($objeto['categoria']) ? $objeto['categoria'] : null;
-
-                                        echo $categoriaId !== null ? $objeto['categoria'] : '';
-
-
-                                        ?>
+                                        <?php echo htmlspecialchars($objeto['categoria'], ENT_QUOTES) ?>
                                     </td>
                                     <td>
-
-
-
-
-
                                         <a href="excluir_objeto_encontrado.php?id=<?php echo $objeto['id']; ?>"
                                             class="btn btn-danger">Excluir</a>
                                     </td>
@@ -102,13 +106,14 @@ $categorias = obter_categorias($pdo);
                     </table>
                     <?php
                 }
+            } else {
+                echo htmlspecialchars($msg, ENT_QUOTES);
             }
             ?>
         </div>
 
         <a href="index.php" class="btn btn-secondary">Voltar</a>
     </main>
-
 </body>
 
 </html>
