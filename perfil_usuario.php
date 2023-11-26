@@ -9,9 +9,9 @@ if (!isset($_SESSION["logged"]) || $_SESSION["logged"] !== true) {
 require("./includes/components/conecta.php");
 require("./includes/components/cabecalho.php");
 
-$userEmail = $_SESSION["email"];
+$userEmail = $_SESSION["codpessoa"];
 
-$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE email = ?');
+$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userEmail]);
 $usuario = $consulta->fetch();
 
@@ -26,8 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     $uploadFile = $uploadDir . basename($_FILES["imagem"]["name"]);
 
     if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
-        $atualizaImagem = $pdo->prepare('UPDATE pessoa SET imagem = ? WHERE email = ?');
-        $atualizaImagem->execute([$_FILES["imagem"]["name"], $userEmail]);
+        $atualizaImagem = $pdo->prepare('UPDATE pessoa SET imagem = ? WHERE codpessoa = ?');
+        $atualizaImagem->execute([$_FILES["imagem"]["name"], $_SESSION["codpessoa"]]);
+        
         echo "Imagem enviada com sucesso!";
     } else {
         echo "Erro ao enviar a imagem.";

@@ -4,12 +4,12 @@ require("./includes/components/conecta.php");
 require("./includes/components/funcao.php");
 require("./includes/components/cabecalho.php");
 
-$userEmail = $_SESSION["email"];
+// Use $_SESSION["codpessoa"] para obter o ID do usuário
+$userId = $_SESSION["codpessoa"];
 
-$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE email = ?');
-$consulta->execute([$userEmail]);
+$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
+$consulta->execute([$userId]);
 $usuario = $consulta->fetch();
-?>
 ?>
 
 <body>
@@ -43,8 +43,12 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="visualizar_perdidos.php">Perdidos</a>
                             </li>
                             <?php
-                            $email = $_SESSION["email"];
-                            $adm = verifica_administrador($email, $pdo);
+                            $userId = $_SESSION["codpessoa"];
+                            $adm = verifica_administrador($userId, $pdo);
+
+
+
+                            
                             if ($adm) {
                                 ?>
                                 <li class="nav-item">
@@ -55,7 +59,7 @@ $usuario = $consulta->fetch();
                             ?>
                         </ul>
                         <div class="dropdown text-end">
-                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php
                                 // Obtenha o caminho da imagem do perfil do usuário

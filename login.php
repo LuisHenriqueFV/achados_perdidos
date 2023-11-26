@@ -23,10 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($verificado) {
                 $senhaBanco = $usuario['senha'];
-
                 if (password_verify($senha, $senhaBanco)) {
                     $_SESSION["logged"] = true;
-                    $_SESSION["email"] = $email;
+                    
+                    // Correção aqui: você precisa armazenar o codpessoa na sessão
+                    $_SESSION["codpessoa"] = $usuario['codpessoa'];
+
+                            // Verifica se o usuário é um administrador
+                            $_SESSION["adm"] = ($usuario['adm'] == 1);
+                
                     envia_email($email);
                     header("Location: index.php");
                     exit();

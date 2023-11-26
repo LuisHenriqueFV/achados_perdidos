@@ -26,7 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="forms">
             <form action="visualizar_encontrados.php" method="GET">
                 <div class="mb-3 input-group">
-                    <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto encontrado" autocomplete="off">
+                    <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto encontrado"
+                        autocomplete="off">
                     <button class="btn btn-primary" type="submit" name="filtrarCategoria">Pesquisar</button>
                 </div>
             </form>
@@ -34,23 +35,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <form action="visualizar_encontrados.php" method="GET">
                 <div class="mb-3 input-group">
                     <select name="categoria" class="form-select">
-                        <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>Mostrar Todos os Objetos</option>
-                        <?php foreach ($categorias as $cat) : ?>
+                        <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>Mostrar Todos
+                            os Objetos</option>
+                        <?php foreach ($categorias as $cat): ?>
                             <option value="<?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>" <?= $categoria === $cat['nome'] ? 'selected' : ''; ?>>
                                 <?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <button class="btn btn-secondary" type="submit" name="filtrarCategoria">Filtrar por Categoria</button>
+                    <button class="btn btn-secondary" type="submit" name="filtrarCategoria">Filtrar por
+                        Categoria</button>
                 </div>
             </form>
         </div>
 
         <div class="conteudo">
-            <?php if ($objetosEncontrados) : ?>
-                <?php if (empty($objetosEncontrados)) : ?>
+            <?php if ($objetosEncontrados): ?>
+                <?php if (empty($objetosEncontrados)): ?>
                     <p>Nenhum resultado encontrado.</p>
-                <?php else : ?>
+                <?php else: ?>
                     <table class="table">
                         <thead>
                             <tr>
@@ -64,37 +67,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             </tr>
                         </thead>
                         <tbody>
-                             <?php foreach ($objetosEncontrados as $objeto) : ?>
+                            <?php foreach ($objetosEncontrados as $objeto): ?>
                                 <tr class='linha'>
-                                    <td><?= htmlspecialchars($objeto['nome'], ENT_QUOTES) ?></td>
-                                    <td><?= htmlspecialchars($objeto['descricao'], ENT_QUOTES) ?></td>
-                                    <td><?= htmlspecialchars($objeto['local'], ENT_QUOTES) ?></td>
-                                    <td><?= htmlspecialchars($objeto['data'], ENT_QUOTES) ?></td>
-                                    <td><?= htmlspecialchars($objeto['categoria'], ENT_QUOTES) ?></td>
                                     <td>
-                                        <?php if (!empty($objeto['imagem'])) : ?>
-                                            <img src="<?= htmlspecialchars($objeto['imagem'], ENT_QUOTES) ?>" alt="Imagem do Objeto" style="max-width: 100px;">
-                                        <?php else : ?>
+                                        <?= htmlspecialchars($objeto['nome'], ENT_QUOTES) ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($objeto['descricao'], ENT_QUOTES) ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($objeto['local'], ENT_QUOTES) ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($objeto['data'], ENT_QUOTES) ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($objeto['categoria'], ENT_QUOTES) ?>
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($objeto['imagem'])): ?>
+                                            <img src="<?= htmlspecialchars($objeto['imagem'], ENT_QUOTES) ?>" alt="Imagem do Objeto"
+                                                style="max-width: 100px;">
+                                        <?php else: ?>
                                             <img src="img/objetos_encontrados/sem_imagem.png" alt="Sem Imagem" style="max-width: 100px;">
                                         <?php endif; ?>
                                     </td>
-                                       <?php
-                // Verifica se o usuário logado é o criador da publicação
-               if (isset($_SESSION["codpessoa"])) {
-        if ($objeto['codpessoa'] == $_SESSION["codpessoa"]) {
-                    // Exibe botões apenas se o usuário for o criador
-                    echo '<a href="editar_objeto_encontrado.php?id=' . $objeto['id'] . '" class="btn btn-primary">Editar</a>';
-            echo ' <a href="excluir_objeto_encontrado.php?id=' . $objeto['id'] . '" class="btn btn-danger">Excluir</a>';
-                }
-               }
-                ?>
+                                    <td>
+                                        <?php if (isset($_SESSION["codpessoa"]) && $objeto['codpessoa'] == $_SESSION["codpessoa"]): ?>
+                                            <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                                class="btn btn-primary">Editar</a>
+                                            <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                                class="btn btn-danger">Excluir</a>
+
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($_SESSION["adm"]): ?>
+                                            <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                                class="btn btn-primary">Editar</a>
+                                            <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                                class="btn btn-danger">Excluir</a>
+                                        <?php endif; ?>
+                                    </td>
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php endif; ?>
-            <?php else : ?>
-                <p><?= htmlspecialchars($msg, ENT_QUOTES) ?></p>
+            <?php else: ?>
+                <p>
+                    <?= htmlspecialchars($msg, ENT_QUOTES) ?>
+                </p>
             <?php endif; ?>
         </div>
 

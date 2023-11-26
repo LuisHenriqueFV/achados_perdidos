@@ -1,7 +1,6 @@
 <?php
-session_start();
-
 $msg = "";
+
 require("./includes/components/autenticacao.php");
 require("./includes/components/cabecalho.php");
 require("./includes/components/funcao.php");
@@ -13,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $local = $_POST['local'];
     $data = $_POST['data'];
     $categoria = $_POST['categoria'];
-$codpessoa = $_SESSION['codpessoa'] ?? null;
-
 
     // Verifica se uma imagem foi enviada
     if (!empty($_FILES['imagem']['name'])) {
@@ -39,7 +36,6 @@ $codpessoa = $_SESSION['codpessoa'] ?? null;
             // Insere o caminho da imagem no banco de dados
             cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo);
 
-
             $msg = "Objeto cadastrado com sucesso!";
         } else {
             $msg = "Erro no upload da imagem. Verifique o log de erros para mais informações.";
@@ -52,6 +48,7 @@ $codpessoa = $_SESSION['codpessoa'] ?? null;
 
 $categorias = obter_categorias($pdo);
 ?>
+
 <body>
     <main class="container">
         <div class="forms">
