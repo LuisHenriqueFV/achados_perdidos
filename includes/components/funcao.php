@@ -3,28 +3,40 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 
-function cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $pdo)
-{
-    try {
-        $stmt = $pdo->prepare("INSERT INTO objetos_perdidos (nome, descricao, local, data, categoria, imagem) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$nome, $descricao, $local, $data, $categoria, $imagem]);
-        return true;
-    } catch (PDOException $e) {
-        echo "Erro ao cadastrar objeto perdido: " . $e->getMessage();
-        return false;
-    }
-}
-function cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $pdo)
-{
-    try {
-        $sql = "INSERT INTO objetos_encontrados (nome, descricao, local, data, categoria, imagem) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nome, $descricao, $local, $data, $categoria, $imagem]);
-    } catch (PDOException $e) {
-        error_log("Erro ao cadastrar objeto encontrado: " . $e->getMessage());
-    }
-}
 
+function cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo) {
+    $sql = "INSERT INTO objetos_encontrados (nome, descricao, local, data, categoria, imagem, codpessoa) 
+            VALUES (:nome, :descricao, :local, :data, :categoria, :imagem, :codpessoa)";
+    
+    $stmt = $pdo->prepare($sql);
+    
+    // Faça o bind dos parâmetros
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->bindParam(':local', $local);
+    $stmt->bindParam(':data', $data);
+    $stmt->bindParam(':categoria', $categoria);
+    $stmt->bindParam(':imagem', $imagem);
+    $stmt->bindParam(':codpessoa', $codpessoa);
+
+    // Execute a consulta preparada
+    $stmt->execute();
+}
+function  cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo) {
+    $sql = "INSERT INTO objetos_perdidos (nome, descricao, local, data, categoria, imagem, codpessoa) 
+            VALUES (:nome, :descricao, :local, :data, :categoria, :imagem, :codpessoa)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$nome, $descricao, $local, $data, $categoria, $imagem]);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->bindParam(':local', $local);
+    $stmt->bindParam(':data', $data);
+    $stmt->bindParam(':categoria', $categoria);
+    $stmt->bindParam(':imagem', $imagem);
+    $stmt->bindParam(':codpessoa', $codpessoa);
+    $stmt->execute();
+
+}
 
 function pesquisa_objeto_perdido($nome, $categoria, $pdo)
 {
@@ -114,6 +126,9 @@ function cadastra_categoria($nomeCategoria, $pdo)
         return false;
     }
 }
+
+
+
 function exclui_categoria($categoria_id, $pdo)
 {
     try {
@@ -140,7 +155,26 @@ function valida_login($email, $senha, $pdo)
         return false;
     }
 }
+function obterCodPessoa($email, $pdo) {
+    $sql = "SELECT codpessoa FROM pessoa WHERE email = :email";
 
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            return $result['codpessoa'];
+        } else {
+            return null; // Ou outro valor padrão, dependendo da sua lógica
+        }
+    } catch (PDOException $e) {
+        error_log("Erro ao obter codpessoa: " . $e->getMessage());
+        throw $e;
+    }
+}
 function cadastra_pessoa($nome, $email, $cpf, $senha, $pdo)
 {
     $pesquisaDuplicacaoPessoa = $pdo->prepare('select * from pessoa where cpf = :cpf or email = :email');

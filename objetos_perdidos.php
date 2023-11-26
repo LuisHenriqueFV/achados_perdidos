@@ -12,54 +12,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $_POST['data'];
     $categoria = $_POST['categoria'];
 
-    // Verificar se uma imagem foi enviada
+    // Verifica se uma imagem foi enviada
     if (!empty($_FILES['imagem']['name'])) {
-        // Configurar o diretório de upload
         $uploadDir = "img/objetos_perdidos/";
 
-        // Criar o caminho completo do arquivo de destino
-        $uploadFile = $uploadDir . basename($_FILES['imagem']['name']);
+        // Obtém a extensão do arquivo
+        $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
-        // Verificar se a pasta de destino existe, senão a cria
+        // Gera um nome único para o arquivo
+        $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
+
+        $uploadFile = $uploadDir . $nomeArquivo;
+
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
 
-        // Mover o arquivo enviado para o destino
+        // Move o arquivo para o diretório de upload
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $uploadFile)) {
-            // Se o upload for bem-sucedido, atribuir o caminho da imagem à variável $imagem
-            $imagem = $uploadFile;
+            $imagem = $uploadDir . $nomeArquivo;
+
+            // Insere o caminho da imagem no banco de dados
+            cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo);
+
+            $msg = "Objeto cadastrado com sucesso!";
         } else {
-            // Se houver um erro no upload, exibir uma mensagem de erro
             $msg = "Erro no upload da imagem. Verifique o log de erros para mais informações.";
             error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
         }
     } else {
-        // Se nenhum arquivo de imagem foi enviado, defina $imagem como NULL ou vazio, dependendo de como você a trata no banco de dados
-        $imagem = NULL; // ou $imagem = "";
+        $msg = "Por favor, selecione uma imagem.";
     }
-
-    // Chame a função para cadastrar o objeto com a imagem
-    cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $pdo);
-    $msg = "Objeto cadastrado com sucesso!";
 }
 
-// Obter categorias existentes
 $categorias = obter_categorias($pdo);
 ?>
 
 <body>
     <main class="container">
         <div class="forms">
-            <form action="objetos_perdidos.php" method="POST">
+            <form action="objetos_perdidos.php" method="POST" enctype="multipart/form-data">
                 <div class="inputs-forms">
-                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do objeto perdido"
-                        autocomplete="off" required>
+                    <input type="text" id="nome" name="nome" class="form-control"
+                        placeholder="Nome do objeto perdido" autocomplete="off" required>
                     <input type="text" id="descricao" name="descricao" class="form-control"
                         placeholder="Descrição do objeto perdido" autocomplete="off" required>
-                    <input type="text" id="local" name="local" class="form-control" placeholder="Local onde foi perdido"
-                        autocomplete="off" required>
+                    <input type="text" id="local" name="local" class="form-control"
+                        placeholder="Local onde foi perdido" autocomplete="off" required>
                     <input type="date" id="data" name="data" class="form-control" required>
+                    <label for="imagem">Imagem:</label>
+                    <input type="file" id="imagem" name="imagem" class="form-control">
 
                     <!-- Menu suspenso para selecionar a categoria -->
                     <label for="categoria">Categoria:</label>
@@ -83,7 +85,7 @@ $categorias = obter_categorias($pdo);
         <div class="conteudo">
             <p>
                 <?php
-                echo ($msg);
+                echo $msg;
                 ?>
             </p>
         </div>

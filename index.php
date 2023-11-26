@@ -3,6 +3,13 @@ require("./includes/components/autenticacao.php");
 require("./includes/components/conecta.php");
 require("./includes/components/funcao.php");
 require("./includes/components/cabecalho.php");
+
+$userEmail = $_SESSION["email"];
+
+$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE email = ?');
+$consulta->execute([$userEmail]);
+$usuario = $consulta->fetch();
+?>
 ?>
 
 <body>
@@ -48,9 +55,13 @@ require("./includes/components/cabecalho.php");
                             ?>
                         </ul>
                         <div class="dropdown text-end">
-                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="img/perfil-padrao.png" alt="mdo" width="32" height="32"
+                                <?php
+                                // Obtenha o caminho da imagem do perfil do usuário
+                                $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/" . $usuario["imagem"];
+                                ?>
+                                <img src="<?php echo $imagemPerfil; ?>" alt="Perfil do usuário" width="32" height="32"
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small">

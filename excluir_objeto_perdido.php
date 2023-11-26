@@ -8,7 +8,6 @@ if (isset($_GET['id'])) {
         $stmt = $pdo->prepare("DELETE FROM objetos_perdidos WHERE id = ?");
         $stmt->execute([$id]);
 
-        // Redirecionar de volta à página de visualização após excluir
         header("Location: visualizar_perdidos.php");
         exit();
     } catch (PDOException $e) {
@@ -16,7 +15,6 @@ if (isset($_GET['id'])) {
         exit();
     }
 } else {
-    // Se o ID não estiver presente na URL, redirecione para a página de visualização
     header("Location: visualizar_perdidos.php");
     exit();
 }

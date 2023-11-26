@@ -15,6 +15,12 @@ $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE email = ?');
 $consulta->execute([$userEmail]);
 $usuario = $consulta->fetch();
 
+// Verifica se o usuário tem uma imagem
+if (empty($usuario["imagem"])) {
+    // Se não tiver imagem, atribui o nome da imagem padrão
+    $usuario["imagem"] = "perfil-padrao.png";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     $uploadDir = "./uploads/";
     $uploadFile = $uploadDir . basename($_FILES["imagem"]["name"]);
@@ -44,11 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             <p>Nome de Usuário: <?php echo $usuario["nome"]; ?></p>
             <p>Email: <?php echo $usuario["email"]; ?></p>
 
-            <?php if (!empty($usuario["imagem"])): ?>
-                <div id="imagemPerfil" class="mb-3 text-center">
-                    <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil" class="img-thumbnail" style="max-width: 150px;">
-                </div>
-            <?php endif; ?>
+            <div id="imagemPerfil" class="mb-3 text-center">
+                <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil" class="img-thumbnail" style="max-width: 150px;">
+            </div>
 
             <form id="formImagem" method="POST" enctype="multipart/form-data">
                 <label for="imagem">Escolha uma imagem para perfil:</label>
