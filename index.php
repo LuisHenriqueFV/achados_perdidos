@@ -4,7 +4,6 @@ require("./includes/components/conecta.php");
 require("./includes/components/funcao.php");
 require("./includes/components/cabecalho.php");
 
-// Use $_SESSION["codpessoa"] para obter o ID do usuário
 $userId = $_SESSION["codpessoa"];
 
 $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
@@ -62,7 +61,6 @@ $usuario = $consulta->fetch();
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php
-                                // Obtenha o caminho da imagem do perfil do usuário
                                 $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/" . $usuario["imagem"];
                                 ?>
                                 <img src="<?php echo $imagemPerfil; ?>" alt="Perfil do usuário" width="32" height="32"

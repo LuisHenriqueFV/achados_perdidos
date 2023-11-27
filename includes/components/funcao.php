@@ -202,7 +202,7 @@ function cadastra_pessoa($nome, $email, $cpf, $senha, $pdo)
     }
 }
 
-function  obter_objetos_perdidos($objeto, $pdo)
+function obter_objetos_perdidos($objeto, $pdo)
 {
     try {
         $stmt = $pdo->query('SELECT * FROM objetos_perdidos');
@@ -213,7 +213,7 @@ function  obter_objetos_perdidos($objeto, $pdo)
     }
 }
 
-function  obter_objetos_encontrados($objeto, $pdo)
+function obter_objetos_encontrados($objeto, $pdo)
 {
     try {
         $stmt = $pdo->query('SELECT * FROM objetos_encontrados');
@@ -223,7 +223,8 @@ function  obter_objetos_encontrados($objeto, $pdo)
         die('Erro ao obter objetos encontrados: ' . $e->getMessage());
     }
 }
-function obter_objeto_perdido_por_id($objetoId, $pdo) {
+function obter_objeto_perdido_por_id($objetoId, $pdo)
+{
     try {
         $stmt = $pdo->prepare('SELECT * FROM objetos_perdidos WHERE id = :id');
         $stmt->bindParam(':id', $objetoId, PDO::PARAM_INT);
@@ -233,7 +234,8 @@ function obter_objeto_perdido_por_id($objetoId, $pdo) {
         die('Erro ao obter objeto perdido por ID: ' . $e->getMessage());
     }
 }
-function atualizar_objeto_perdido($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo) {
+function atualizar_objeto_perdido($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo)
+{
     try {
         $stmt = $pdo->prepare('UPDATE objetos_perdidos SET nome = :nome, descricao = :descricao, local = :local, data = :data, imagem = :imagem, categoria = :categoria WHERE id = :id');
 
@@ -250,7 +252,8 @@ function atualizar_objeto_perdido($objetoId, $novoNome, $novaDescricao, $novoLoc
         die('Erro ao atualizar objeto perdido: ' . $e->getMessage());
     }
 }
-function obter_objeto_encontrado_por_id($objetoId, $pdo) {
+function obter_objeto_encontrado_por_id($objetoId, $pdo)
+{
     try {
         $stmt = $pdo->prepare('SELECT * FROM objetos_encontrados WHERE id = :id');
         $stmt->bindParam(':id', $objetoId, PDO::PARAM_INT);
@@ -260,7 +263,8 @@ function obter_objeto_encontrado_por_id($objetoId, $pdo) {
         die('Erro ao obter objeto encontrado por ID: ' . $e->getMessage());
     }
 }
-function atualizar_objeto_encontrado($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo) {
+function atualizar_objeto_encontrado($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo)
+{
     try {
         $stmt = $pdo->prepare('UPDATE objetos_encontrados SET nome = :nome, descricao = :descricao, local = :local, data = :data, imagem = :imagem, categoria = :categoria WHERE id = :id');
 
@@ -309,14 +313,17 @@ function seleciona_pessoa($codpessoa, $pdo)
     return $pessoa->fetch();
 }
 
-function verifica_administrador($email, $pdo)
+
+function verifica_administrador($userId, $pdo)
 {
-    $stmt = $pdo->prepare('SELECT * FROM pessoa WHERE email = :email AND adm = 1');
-    $stmt->bindValue(':email', $email);
+    $stmt = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = :userId AND adm = 1');
+    $stmt->bindValue(':userId', $userId);
     $stmt->execute();
 
     return $stmt->rowCount() === 1;
 }
+
+
 
 function verificaCodigo($email, $codigo, $pdo)
 {

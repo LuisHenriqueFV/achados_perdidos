@@ -1,7 +1,10 @@
-link para meu site: https://henriquefonseca.000webhostapp.com/achados_perdidos/
+link para meu site: https://henriquefonseca.000webhostapp.com/achados_perdidos/login.php
 
 email para entrar no 000webhost: luishenriquefonsecaphp@gmail.com
 senha: 12345Qwertyuiop!
+
+adm: 
+luishenriquefonsecaphp@gmail.com senha: 12345
 
 senha de app gerada pelo gmail para enviar emails: hdtm huzb bjsy haif
 
@@ -31,3 +34,22 @@ catch (PDOException $e) {
     print $e->getMessage();
 }
 ?>
+
+
+--------------------
+
+git init 
+git status
+git add .
+git commit m "qualquer nome do commit"
+
+
+git status
+
+git add .
+
+git commit -m "Mensagem descritiva das alterações feitas"
+
+git pull origin main
+
+git push origin main
