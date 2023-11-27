@@ -13,7 +13,7 @@
         crossorigin="anonymous"></script>
 
     <!-- JavaScript adicionais -->
-    <!-- <script>
+     <!-- <script>
     document.addEventListener("DOMContentLoaded", function () {
         exibirMensagem("mensagem", 1000);
         exibirMensagem("mensagem-exclusao", 1000);
@@ -27,16 +27,24 @@
                 mensagemDiv.style.display = "none";
             }, timeout);
         }
-    }
-</script> -->
+    } -->
+</script> 
 
-    <script>
-        // JavaScript para manipular a visibilidade da lista de categorias
-        document.getElementById('mostrarCategorias').addEventListener('click', function () {
-            var listaCategorias = document.getElementById('listaCategorias');
-            listaCategorias.style.display = listaCategorias.style.display === 'none' ? 'block' : 'none';
-        });
+  
+
+<script>
+        function toggleCategorias() {
+            var listaCategorias = document.getElementById("listaCategorias");
+            var buttonMostrarCategorias = document.getElementById("btnMostrarCategorias");
+
+            if (listaCategorias.style.display === "none") {
+                listaCategorias.style.display = "block";
+                buttonMostrarCategorias.textContent = "Ocultar Categorias Cadastradas";
+            } else {
+                listaCategorias.style.display = "none";
+                buttonMostrarCategorias.textContent = "Mostrar Categorias Cadastradas";
+            }
+        }
     </script>
-
 
 </body>

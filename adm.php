@@ -6,13 +6,15 @@ require("./includes/components/js.php");
 
 $msg = "";
 
-// Cadastrar nova categoria
+// Verificar se o formulário de cadastro de categoria foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nomeCategoria = $_POST['nome_categoria'];
+    if (isset($_POST['nome_categoria']) && $_POST['nome_categoria'] !== '') {
+        $nomeCategoria = $_POST['nome_categoria'];
 
-    $cadastra_categoria = cadastra_categoria($nomeCategoria, $pdo);
+        $cadastra_categoria = cadastra_categoria($nomeCategoria, $pdo);
 
   
+    }
 }
 
 // Excluir categoria
@@ -21,7 +23,6 @@ if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
 
     if (exclui_categoria($categoria_id, $pdo)) {
         $msg = "Categoria excluída!";
-        // Redireciona para a página adm.php após a exclusão
         header("Location: adm.php?excluir=true&msg=" . urlencode($msg));
         exit();
     } else {
@@ -39,6 +40,13 @@ $categorias = obter_categorias($pdo);
     <main class="container">
         <div class="forms">
             <h3>Cadastrar Categoria</h3>
+            <!-- Exibir mensagem de sucesso ou erro -->
+            <?php if (!empty($msg)): ?>
+                <div class="alert <?php echo $cadastra_categoria ? 'alert-success' : 'alert-danger'; ?>" role="alert">
+                    <?php echo $msg; ?>
+                </div>
+            <?php endif; ?>
+
             <!-- Formulário para adicionar categoria -->
             <form action="adm.php" method="POST">
                 <div class="mb-3 input-group">
@@ -47,25 +55,38 @@ $categorias = obter_categorias($pdo);
                         placeholder="Digite o nome da categoria" autocomplete="off" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Adicionar Categoria</button>
+                <button type="button" id="btnMostrarCategorias" class="btn btn-primary" onclick="toggleCategorias()">Mostrar Categorias Cadastradas</button>
             </form>
         </div>
 
-        <div class="forms">
+        <div id="listaCategorias" class="forms" style="display: none;">
             <h3>Lista de Categorias</h3>
             <ul class="list-group">
                 <?php foreach ($categorias as $categoria): ?>
                     <li class='list-group-item d-flex justify-content-between align-items-center'>
                         <?= $categoria['nome'] ?>
-                        <a href="excluir_categoria.php?id=<?= $categoria['id']; ?>"
-                            class="btn btn-danger">Excluir</a>
+                        <a href="excluir_categoria.php?id=<?= $categoria['id']; ?>" class="btn btn-danger">Excluir</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
         </div>
+
         <a href="index.php" class="btn btn-secondary">Voltar</a>
-
-       
     </main>
-</body>
 
+    <script>
+        function toggleCategorias() {
+            var listaCategorias = document.getElementById("listaCategorias");
+            var buttonMostrarCategorias = document.getElementById("btnMostrarCategorias");
+
+            if (listaCategorias.style.display === "none") {
+                listaCategorias.style.display = "block";
+                buttonMostrarCategorias.textContent = "Ocultar Categorias Cadastradas";
+            } else {
+                listaCategorias.style.display = "none";
+                buttonMostrarCategorias.textContent = "Mostrar Categorias Cadastradas";
+            }
+        }
+    </script>
+</body>
 </html>
