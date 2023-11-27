@@ -93,21 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <?php if (isset($_SESSION["codpessoa"]) && $objeto['codpessoa'] == $_SESSION["codpessoa"]): ?>
-                                            <a href="editar_objeto_perdido.php?id=<?= $objeto['id'] ?>"
+                                        <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $objeto['codpessoa'] == $_SESSION["codpessoa"])): ?>
+                                            <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-primary">Editar</a>
-                                            <a href="excluir_objeto_perdido.php?id=<?= $objeto['id'] ?>"
+                                            <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-danger">Excluir</a>
+                                        <?php endif; ?>
 
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-                                        <?php if ($_SESSION["adm"]): ?>
-                                            <a href="editar_objeto_perdido.php?id=<?= $objeto['id'] ?>"
-                                                class="btn btn-primary">Editar</a>
-                                            <a href="excluir_objeto_perdido.php?id=<?= $objeto['id'] ?>"
-                                                class="btn btn-danger">Excluir</a>
-                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -89,25 +89,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                             <img src="<?= htmlspecialchars($objeto['imagem'], ENT_QUOTES) ?>" alt="Imagem do Objeto"
                                                 style="max-width: 100px;">
                                         <?php else: ?>
-                                            <img src="img/objetos_encontrados/sem_imagem.png" alt="Sem Imagem" style="max-width: 100px;">
+                                            <img src="img/objetos_encontrados/sem_imagem.png" alt="Sem Imagem"
+                                                style="max-width: 100px;">
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <?php if (isset($_SESSION["codpessoa"]) && $objeto['codpessoa'] == $_SESSION["codpessoa"]): ?>
+                                        <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $objeto['codpessoa'] == $_SESSION["codpessoa"])): ?>
                                             <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-primary">Editar</a>
                                             <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-danger">Excluir</a>
+                                        <?php endif; ?>
 
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-                                        <?php if ($_SESSION["adm"]): ?>
-                                            <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
-                                                class="btn btn-primary">Editar</a>
-                                            <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
-                                                class="btn btn-danger">Excluir</a>
-                                        <?php endif; ?>
                                     </td>
 
                                 </tr>
