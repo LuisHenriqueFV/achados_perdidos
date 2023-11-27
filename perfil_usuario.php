@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                 <input type="file" name="imagem" accept="image/*" class="form-control-file">
                 <button type="submit" id="btnEnviarImagem" class="btn btn-primary">Enviar Imagem</button>
             </form>
-            <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar Senha</a>
+            <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar S</a>
 
             <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
         </div>
