@@ -11,12 +11,12 @@ require("./includes/components/conecta.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $novaSenha = $_POST["novaSenha"];
-    $userEmail = $_SESSION["email"];
+    $userId = $_SESSION["codpessoa"];
 
     $senhaCriptografada = password_hash($novaSenha, PASSWORD_DEFAULT);
 
-    $atualizarSenha = $pdo->prepare('UPDATE pessoa SET senha = ? WHERE email = ?');
-    $atualizarSenha->execute([$senhaCriptografada, $userEmail]);
+    $atualizarSenha = $pdo->prepare('UPDATE pessoa SET senha = ? WHERE codpessoa = ?');
+    $atualizarSenha->execute([$senhaCriptografada, $userId]);
 
     echo "Senha alterada com sucesso!";
 }
@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
         <a href="perfil_usuario.php" class="btn btn-secondary">Voltar</a>
+        
     </div>
 </main>
 
