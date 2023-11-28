@@ -4,7 +4,6 @@ require("./includes/components/autenticacao.php");
 require("./includes/components/conecta.php");
 require("./includes/components/funcao.php");
 require("./includes/components/cabecalho.php");
-require("./includes/components/js.php");
 
 
 $userId = $_SESSION["codpessoa"];

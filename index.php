@@ -32,16 +32,10 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="objetos_encontrados.php">Achei</a>
+                                <a class="nav-link" href="visualizar_encontrados.php">Sobre Nós</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="objetos_perdidos.php">Perdi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="visualizar_encontrados.php">Achados</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="visualizar_perdidos.php">Perdidos</a>
+                                <a class="nav-link" href="visualizar_perdidos.php">Contato</a>
                             </li>
                             <?php
                             $userId = $_SESSION["codpessoa"];
@@ -87,7 +81,7 @@ $usuario = $consulta->fetch();
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner custom-carousel">
                 <div class="carousel-item active">
-                    <img class="d-block custom-img" src="./img/banner8.png" alt="First slide">
+                    <img class="d-block custom-img" src="./img/banner11.png" alt="First slide">
                 </div>
             </div>
         </div>
@@ -96,8 +90,8 @@ $usuario = $consulta->fetch();
         <section class="features mt-5">
             <div class="container">
                 <div class="row justify-content-lg-center">
-                    <div class="col-lg-3 col-md-12">
-                        
+                    <div class="col-lg-2 col-md-12">
+
                         <div class="features-post">
                             <div class="features-content d-flex align-items-center justify-content-center">
                                 <div class="content-show">
@@ -106,40 +100,39 @@ $usuario = $consulta->fetch();
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-12">
-                            <div class="features-post second-features">
-                                <div class="features-content d-flex align-items-center justify-content-center">
-                                    <div class="content-show">
-                                        <a class="nav-link" href="objetos_encontrados.php">Achei</a>
-                                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <div class="features-post second-features">
+                            <div class="features-content d-flex align-items-center justify-content-center">
+                                <div class="content-show">
+                                    <a class="nav-link" href="objetos_encontrados.php">Achei</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-12">
-                            <div class="features-post third-features">
-                                <div class="features-content d-flex align-items-center justify-content-center">
-                                    <div class="content-show">
-                                        <a class="nav-link" href="visualizar_encontrados.php">Publicações</a>
-                                    </div>
+                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <div class="features-post third-features">
+                            <div class="features-content d-flex align-items-center justify-content-center">
+                                <div class="content-show">
+                                    <a class="nav-link" href="visualizar_encontrados.php">Achados</a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <div class="features-post third-features">
+                            <div class="features-content d-flex align-items-center justify-content-center">
+                                <div class="content-show">
+                                    <a class="nav-link" href="visualizar_perdidos.php">Perdidos</a>
+                                </div>
+                            </div>
+                        </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
+            </div>
         </section>
-
-
-
-        <br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-
-        <br><br><br><br><br><br><br><br>
-
-        <br><br><br><br><br><br><br><br>
-
-        <br><br><br><br><br><br><br><br>
+        <!-- FIM DOS FEATURES    -->
 
 
 
