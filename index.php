@@ -95,8 +95,9 @@ $usuario = $consulta->fetch();
         <!-- INICIO DOS FEATURES    -->
         <section class="features mt-5">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-2 col-12 col-md-12">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-3 col-md-12">
+                        
                         <div class="features-post">
                             <div class="features-content d-flex align-items-center justify-content-center">
                                 <div class="content-show">
@@ -105,22 +106,24 @@ $usuario = $consulta->fetch();
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-12 col-md-12">
-                        <div class="features-post second-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="objetos_encontrados.php">Achei</a>
+                    <div class="col-lg-3 col-md-12">
+                            <div class="features-post second-features">
+                                <div class="features-content d-flex align-items-center justify-content-center">
+                                    <div class="content-show">
+                                        <a class="nav-link" href="objetos_encontrados.php">Achei</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-12 col-md-12">
-                        <div class="features-post third-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="visualizar_encontrados.php">Publicações</a>
+                        <div class="col-lg-3 col-md-12">
+                            <div class="features-post third-features">
+                                <div class="features-content d-flex align-items-center justify-content-center">
+                                    <div class="content-show">
+                                        <a class="nav-link" href="visualizar_encontrados.php">Publicações</a>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -129,6 +132,14 @@ $usuario = $consulta->fetch();
 
 
 
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+
+        <br><br><br><br><br><br><br><br>
+
+        <br><br><br><br><br><br><br><br>
+
+        <br><br><br><br><br><br><br><br>
 
 
 
