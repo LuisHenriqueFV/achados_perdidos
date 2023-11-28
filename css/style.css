@@ -185,10 +185,11 @@ section.features .col-4 {
   background-color: #0c1228;
   color: #fff;
   padding: 40px;
+  border-radius: 30px;
 }
 
 .features-content:hover {
-  background-color: #D7064B;
+  background-color: #e287a5;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
 

@@ -86,7 +86,7 @@ $usuario = $consulta->fetch();
         <!-- BANNER -->
         <div class="carousel-inner custom-carousel">
     <div class="carousel-item active">
-        <img class="d-block w-100 h-100" src="./img/banner.png" alt="First slide">
+        <img class="d-block w-100 h-100" src="./img/banner2.png" alt="First slide">
         <!-- <a id="customButton" href="objetos_perdidos.php" class="btn-custom-color w-20 py-2 px-5 rounded-4">Perdi</a>
         <a id="customButton" href="objetos_encontrads.php" class="btn-custom-color w-20 py-2 px-5 rounded-4">Achei</a>
         <a id="customButton" href="publicacao.php" class="btn-custom-color w-20 py-2 px-5 rounded-4">Publicações</a> -->
@@ -112,7 +112,7 @@ $usuario = $consulta->fetch();
                 <div class="features-post second-features">
                     <div class="features-content">
                         <div class="content-show">
-                            <a href="objetos_encontrados.php">Achei</a>
+                            <a class="nav-link" href="objetos_encontrados.php">Achei</a>
                            
                         </div>
                     </div>
