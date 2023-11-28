@@ -6,6 +6,7 @@ require("./includes/components/cabecalho.php");
 require("./includes/components/funcao.php");
 require("./includes/components/conecta.php");
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -17,10 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_FILES['imagem']['name'])) {
         $uploadDir = "img/objetos_perdidos/";
 
-        // Obtém a extensão do arquivo
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
-        // Gera um nome único para o arquivo
         $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
 
         $uploadFile = $uploadDir . $nomeArquivo;
@@ -29,11 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($uploadDir, 0777, true);
         }
 
-        // Move o arquivo para o diretório de upload
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $uploadFile)) {
             $imagem = $uploadDir . $nomeArquivo;
 
-            // Insere o caminho da imagem no banco de dados
             cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo);
 
             $msg = "Objeto cadastrado com sucesso!";
@@ -64,7 +61,6 @@ $categorias = obter_categorias($pdo);
                     <label for="imagem">Imagem:</label>
                     <input type="file" id="imagem" name="imagem" class="form-control">
 
-                    <!-- Menu suspenso para selecionar a categoria -->
                     <label for="categoria">Categoria:</label>
                     <select id="categoria" name="categoria" class="form-select" required>
                         <option value="" disabled selected>Selecione uma categoria</option>
@@ -91,9 +87,7 @@ $categorias = obter_categorias($pdo);
             </p>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-eEJrOIVZdXl1rIb1TPOOwpv6+X1/QAqLwdDD1lp56Pv0B/Dm5fAKUKtk8WYquENe"
-        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
