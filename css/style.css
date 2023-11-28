@@ -227,23 +227,23 @@ section.features .col-4 {
   font-size: 14px;
 }
 
-.features-content p.hidden-sm {
+/* .features-content p.hidden-sm {
   display: none;
-}
+} */
 
-.second-features,
+/* .second-features,
 .third-features {
   border-left: 1px solid rgba(250, 250, 250, 0.1);
-}
+} */
 
-.content-hide {
+/* .content-hide {
   margin-top: 15px;
   display: none;
 }
 
 .content-hide p {
   color: #fff;
-}
+} */
 
 /* @media screen and (max-width: 767px) {
 
