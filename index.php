@@ -185,5 +185,5 @@ $usuario = $consulta->fetch();
     </div>
 
   </footer>
-
+  <!-- FINAL DO RODAPÉ -->
 </body>
