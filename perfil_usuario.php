@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                 </div>
             </div>
             <div class="mt-3">
-                <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar Senha</a>
                 <a class="btn btn-primary" href="endereco.php" role="button">Cadastrar Endereço</a>
                 <a class="btn btn-primary" href="minhas_informacoes.php" role="button">Minhas Informações</a>
 
