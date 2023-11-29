@@ -1,9 +1,9 @@
 html,
 body {
   height: 100vh;
-  /* margin: 0;
+  margin: 0;
   align-items: center;
-  justify-content: center; */
+  justify-content: center;
 }
 
 * {
@@ -13,11 +13,18 @@ body {
 
 
 body {
-
-
+  
   background: linear-gradient(#b4a3c0, #c1b4cf, #c4bcda, #bdb2d4, #a37dc9);
 }
 
+footer {
+  position:relative;
+  margin-top: 15%;
+  left:0;
+}
+footer p{
+  text-align: center;
+}
 .custom-bg-color {
   background-color: #fff;
 
