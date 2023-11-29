@@ -34,12 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 <body>
     <main class="container mt-5">
         <div class="forms">
-            <h1 class="text-center">Perfil do Usuário</h1>
+            <h1 class="text-center">Olá, <?php echo $usuario["nome"]; ?></h1>
             <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <p>Nome de Usuário: <?php echo $usuario["nome"]; ?></p>
-                    <p>Email: <?php echo $usuario["email"]; ?></p>
-                </div>
+              
                 <div class="col-md-12">
                     <div id="imagemPerfil" class="mb-3">
                         <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil" class="img-thumbnail" style="max-width: 150px;">
@@ -53,6 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
             </div>
             <div class="mt-3">
                 <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar Senha</a>
+                <a class="btn btn-primary" href="endereco.php" role="button">Cadastrar Endereço</a>
+                <a class="btn btn-primary" href="minhas_informacoes.php" role="button">Minhas Informações</a>
+
                 <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
             </div>
         </div>

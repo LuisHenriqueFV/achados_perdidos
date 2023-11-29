@@ -6,7 +6,6 @@ require("./includes/components/js.php");
 
 $msg = "";
 
-// Verificar se o formulário de cadastro de categoria foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nome_categoria']) && $_POST['nome_categoria'] !== '') {
         $nomeCategoria = $_POST['nome_categoria'];
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Excluir categoria
 if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
     $categoria_id = $_GET['id'];
 
@@ -31,7 +29,6 @@ if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
     }
 }
 
-// Obter categorias
 $categorias = obter_categorias($pdo);
 
 ?>
@@ -40,14 +37,12 @@ $categorias = obter_categorias($pdo);
     <main class="container">
         <div class="forms">
             <h3>Cadastrar Categoria</h3>
-            <!-- Exibir mensagem de sucesso ou erro -->
             <?php if (!empty($msg)): ?>
                 <div class="alert <?php echo $cadastra_categoria ? 'alert-success' : 'alert-danger'; ?>" role="alert">
                     <?php echo $msg; ?>
                 </div>
             <?php endif; ?>
 
-            <!-- Formulário para adicionar categoria -->
             <form action="adm.php" method="POST">
                 <div class="mb-3 input-group">
                     <label for="nome_categoria" class="form-label">Nome da Categoria:</label>
@@ -74,19 +69,6 @@ $categorias = obter_categorias($pdo);
         <a href="index.php" class="btn btn-secondary">Voltar</a>
     </main>
 
-    <script>
-        function toggleCategorias() {
-            var listaCategorias = document.getElementById("listaCategorias");
-            var buttonMostrarCategorias = document.getElementById("btnMostrarCategorias");
 
-            if (listaCategorias.style.display === "none") {
-                listaCategorias.style.display = "block";
-                buttonMostrarCategorias.textContent = "Ocultar Categorias Cadastradas";
-            } else {
-                listaCategorias.style.display = "none";
-                buttonMostrarCategorias.textContent = "Mostrar Categorias Cadastradas";
-            }
-        }
-    </script>
 </body>
 </html>

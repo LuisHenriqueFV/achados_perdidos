@@ -3,7 +3,7 @@ require("./includes/components/autenticacao.php");
 require("./includes/components/conecta.php");
 require("./includes/components/funcao.php");
 require("./includes/components/cabecalho.php");
-// require("./includes/components/js.php");
+require("./includes/components/js.php");
 
 $userId = $_SESSION["codpessoa"];
 
@@ -17,7 +17,7 @@ $usuario = $consulta->fetch();
         <!-- INICIO DO HEADER -->
         <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
-                <div class="container-fluid py-3">
+                <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
                         <img id="navbar-logo" src="img/achados&perdidos-logo4.png" alt="achados&perdidos" />
                     </a>
