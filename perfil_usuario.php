@@ -32,26 +32,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 ?>
 
 <body>
-    <main class="container">
+    <main class="container mt-5">
         <div class="forms">
-            <h1>Perfil do Usuário</h1>
-            <p>Nome de Usuário: <?php echo $usuario["nome"]; ?></p>
-            <p>Email: <?php echo $usuario["email"]; ?></p>
-
-            <div id="imagemPerfil" class="mb-3 text-center">
-                <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil" class="img-thumbnail" style="max-width: 150px;">
+            <h1 class="text-center">Perfil do Usuário</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <p>Nome de Usuário: <?php echo $usuario["nome"]; ?></p>
+                    <p>Email: <?php echo $usuario["email"]; ?></p>
+                </div>
+                <div class="col-md-12">
+                    <div id="imagemPerfil" class="mb-3">
+                        <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil" class="img-thumbnail" style="max-width: 150px;">
+                    </div>
+                    <form id="formImagem" method="POST" enctype="multipart/form-data">
+                        <label for="imagem">Trocar Foto:</label>
+                        <input type="file" name="imagem" accept="image/*" class="form-control-file">
+                        <button type="submit" id="btnEnviarImagem" class="btn btn-primary mt-2">Enviar Imagem</button>
+                    </form>
+                </div>
             </div>
-
-            <form id="formImagem" method="POST" enctype="multipart/form-data">
-                <label for="imagem">Escolha uma imagem para perfil:</label>
-                <input type="file" name="imagem" accept="image/*" class="form-control-file">
-                <button type="submit" id="btnEnviarImagem" class="btn btn-primary">Enviar Imagem</button>
-            </form>
-            <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar Senha</a>
-
-            <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+            <div class="mt-3">
+                <a class="btn btn-primary" href="alterar_Senha.php" role="button">Alterar Senha</a>
+                <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+            </div>
         </div>
     </main>
-
+  
 </body>
 </html>

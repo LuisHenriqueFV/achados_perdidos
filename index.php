@@ -35,6 +35,9 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="visualizar_encontrados.php">Sobre Nós</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="visualizar_perdidos.php">Comunidade</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="visualizar_perdidos.php">Contato</a>
                             </li>
                             <?php
@@ -74,11 +77,10 @@ $usuario = $consulta->fetch();
                 </div>
             </nav>
         </header>
-        </header>
         <!-- FIM DO HEADER -->
 
         <!-- INICIO DO CARROSEL -->
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div id="carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner custom-carousel">
                 <div class="carousel-item active">
                     <img class="d-block custom-img" src="./img/banner11.png" alt="First slide">
@@ -130,13 +132,34 @@ $usuario = $consulta->fetch();
                     </div>
                 </div>
             </div>
-            </div>
         </section>
         <!-- FIM DOS FEATURES    -->
-
-
-
-
-
+   
     </main>
+     <!-- RODAPE -->
+        <footer>
+            <div id="contact-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="main-title">Entre em contato conosco</h3>
+                        </div>
+                        <div class="col-lg-4 contact-box">
+                            <i class="fas fa-phone"></i>
+                            <p><span class="contact-tile">Ligue para:</span>(53)98405-5364</p>
+                            <p><span class="contact-tile">Horario:</span>(53)98405-5364</p>
+                            <p><span class="contact-tile">Ligue para:</span>(53)98405-5364</p>
+
+
+                        </div>
+                        <div class="col-lg-4 contact-box"></div>
+
+                        <div class="col-lg-4 contact-box"></div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
 </body>

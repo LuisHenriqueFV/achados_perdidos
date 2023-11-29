@@ -47,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo '<p>Um e-mail foi enviado para o seu endereço com um link único para alterar sua senha.</p>';
                 
+
+                
             } catch (Exception $e) {
                 echo '<p>Ocorreu um erro ao enviar o e-mail: ' . $mail->ErrorInfo . '</p>';
             }
@@ -58,14 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     ?>
-   <div class="container">
+   <div id="customContainer" class="container">
+       
         <form method="post" class="mt-3">
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail:</label>
                 <input type="text" name="email" id="email" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Recuperar</button>
-            <a class="btn btn-primary" href="login.php" role="button">Voltar</a>
+            <a class="btn btn-secondary" href="login.php" role="button">Voltar</a>
         </form
     <?php
 }

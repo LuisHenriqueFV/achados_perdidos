@@ -1,7 +1,9 @@
 html,
 body {
-  height: 100%;
-  margin: 0;
+  height: 100vh;
+  /* margin: 0;
+  align-items: center;
+  justify-content: center; */
 }
 
 * {
@@ -10,19 +12,14 @@ body {
 }
 
 
-body, main {
-  /* background-image: url('../img/bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  margin: 0; */
+body {
+
 
   background: linear-gradient(#b4a3c0, #c1b4cf, #c4bcda, #bdb2d4, #a37dc9);
 }
 
 .custom-bg-color {
   background-color: #fff;
-  /* Substitua YourColorCode pela cor desejada */
 
 }
 
@@ -47,9 +44,9 @@ body, main {
 }
 
 .form-container {
-  max-width: 400px;
   padding: 1rem;
   margin: auto;
+  background: white;
 }
 
 .btn-custom-color {
@@ -101,12 +98,31 @@ body, main {
   background-color: #D7064B;
 }
 
+#loginContainer {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+
+}
+
 #navbar-logo {
   width: 60px;
   height: 60px;
 }
 
-
+#customContainer {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 70vh; */
+  height: 100vh;
+  /* Isso garante que o contêiner ocupe 100% da altura da tela */
+}
 
 #navbar-items .navbar-nav {
   display: flex;
@@ -142,18 +158,15 @@ body, main {
   background-color: #f1f1f1;
 }
 
-/* Tamanhos padrão */
-.profile-section {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-left: 990px;
-}
+
 
 .custom-img {
-  width: 70%; /* Ajuste a porcentagem conforme necessário */
-  height: auto; /* Mantém a proporção original da imagem */
-  margin: 150px auto 0 auto; /* Centraliza horizontalmente */
+  width: 60%;
+  /* Ajuste a porcentagem conforme necessário */
+  height: auto;
+  /* Mantém a proporção original da imagem */
+  margin: 150px auto 0 auto;
+  /* Centraliza horizontalmente */
 }
 
 /* Features */
@@ -181,13 +194,12 @@ section.features .col-4 {
 .features-content {
   bottom: 0;
   margin-top: 3%;
-  left: 0;
   width: 100%;
   height: auto;
   background-color: #d7064b;
   color: #fff;
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .features-content {
@@ -196,7 +208,7 @@ section.features .col-4 {
 
 @media (min-width: 992px) {
   .features-content {
-      position: absolute;
+    position: absolute;
   }
 }
 
@@ -218,3 +230,12 @@ section.features .col-4 {
 }
 
 
+footer {
+  width: 100%;
+  background-color: #333;
+  /* Cor de fundo do rodapé */
+  color: #fff;
+  /* Cor do texto do rodapé */
+  padding: 20px;
+  /* Espaçamento interno do rodapé */
+}
