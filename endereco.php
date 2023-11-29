@@ -5,6 +5,11 @@ require("./includes/components/cabecalho.php");
 require("./includes/components/funcao.php");
 require("./includes/components/js.php");
 
+$userId = $_SESSION["codpessoa"];
+$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
+$consulta->execute([$userId]);
+$usuario = $consulta->fetch();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recebendo os dados do formulário
     $cep = $_POST["cep"];
@@ -27,22 +32,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <body>
-<main>
-    <section>
-    <form action="#" method="post" class="form-container">
-      <div class="fields">
-      <fieldset>
-      <p><label for="cep">CEP: </label> <input class="input" type="text" name="cep" id="cep"></p>
-      <p><label for="logradouro">Logradouro: </label> <input class="input" type="text" name="logradouro" id="logradouro"></p>
-      <p><label for="bairro">Bairro: </label> <input class="input" type="text" name="bairro" id="bairro"></p>
-       <p><label for="cidade">Cidade: </label> <input class="input" type="text" name="cidade" id="cidade"></p>
-      <p><button type="submit" id='cadastrar' name='cadastrar' value="Cadastrar"> Cadastrar </button>  </p> 
-      <a class="btn btn-secondary" href="perfil_usuario.php" role="button">Voltar</a>
+    <main class="container mt-5">
+        <div class="forms">
+            <h1 class="text-center">Cadastrar Meu Endereço</h1>
+            <form method="POST">
+                <div class="row justify-content-center">
+                  
+                    <div class="col-md-12">
+                        <label for="cep">CEP:</label>
+                        <input class="form-control" type="text" name="cep" id="cep"
+                            placeholder="Digite seu cep para obter informações sobre seu endereço"
+                            value="<?php echo $usuario["cep"]; ?>">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="bairro">Bairro:</label>
+                        <input class="form-control" type="text" name="bairro" id="bairro"
+                            value="<?php echo $usuario["bairro"]; ?>">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="logradouro">Rua:</label>
+                        <input class="form-control" type="text" id="logradouro" name="logradouro"
+                            value="<?php echo $usuario["logradouro"]; ?>">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="cidade">Cidade:</label>
 
-      </fieldset>
-      </div>     
-    </form>
-    </section>
-</main>
+                        <input class="form-control" type="text" name="cidade" id="cidade"
+                            value="<?php echo $usuario["cidade"]; ?>">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary">Atualizar Informações</button>
+                    <a class="btn btn-secondary" href="perfil_usuario.php" role="button">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>

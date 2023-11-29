@@ -32,7 +32,7 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="visualizar_encontrados.php">Sobre Nós</a>
+                                <a class="nav-link" href="sobre_nos.php">Sobre Nós</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="visualizar_perdidos.php">Comunidade</a>
@@ -138,9 +138,9 @@ $usuario = $consulta->fetch();
     </main>
     <!-- RODAPE -->
     <footer class="py-5 bg-primary-color">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Categorias</h5>
+                <h5>Comunidade</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
@@ -172,16 +172,7 @@ $usuario = $consulta->fetch();
                 </ul>
             </div>
 
-            <div class="col-md-5 offset-md-1 mb-2">
-                <form>
-                    <h5>Cadastre seu Email para receber notícias</h5>
-                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                        <label for="newsletter1" class="visually-hidden">Email</label>
-                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                        <button class="btn btn-primary" type="button">Registro</button>
-                    </div>
-                </form>
-            </div>
+           
         </div>
 
     </footer>

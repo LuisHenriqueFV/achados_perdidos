@@ -28,46 +28,58 @@
         }
     </script>
 
-  <!-- FUNÇÕES -->
-  <script>
+    <!-- FUNÇÕES -->
+    <script>
 
-    window.onload = function(){
-let cep=document.getElementById("cep")
+        window.onload = function () {
+            let cep = document.getElementById("cep")
 
-cep.addEventListener("blur",buscaDados)
-}
+            cep.addEventListener("blur", buscaDados)
+        }
 
-function buscaDados(event)
-{
+        function buscaDados(event) {
 
-	const options = { method:'GET',
-			 		  mode:'cors',
-		      	      cache:'default'}
+            const options = {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'default'
+            }
 
-	fetch('https://viacep.com.br/ws/'+this.value+'/json',options)
+            fetch('https://viacep.com.br/ws/' + this.value + '/json', options)
 
-	.then(function(response){
-		if(response.ok)
-			return response.json()
-		else
-			console.log("erro");
+                .then(function (response) {
+                    if (response.ok)
+                        return response.json()
+                    else
+                        console.log("erro");
 
-	})
-	.then(function(dados){
+                })
+                .then(function (dados) {
 
-		document.getElementById("logradouro").value=dados.logradouro
-		document.getElementById("bairro").value=dados.bairro
-		document.getElementById("cidade").value=dados.localidade
-
-
-	 })
-	.catch(function(e) {
-		console.log("Erro: "+e)
-	})
+                    document.getElementById("logradouro").value = dados.logradouro
+                    document.getElementById("bairro").value = dados.bairro
+                    document.getElementById("cidade").value = dados.localidade
 
 
-}
+                })
+                .catch(function (e) {
+                    console.log("Erro: " + e)
+                })
+        }
+    </script>
+<script>
+  // Quando a página é carregada, inicia o temporizador para ocultar alertas
+  document.addEventListener("DOMContentLoaded", function () {
+    // Seleciona todos os alertas na página
+    var alertas = document.querySelectorAll('.alert');
 
-  </script>
-  
+    // Para cada alerta encontrado
+    alertas.forEach(function (alerta) {
+      // Oculta o alerta após 1 segundo
+      setTimeout(function () {
+        alerta.style.display = 'none';
+      }, 1000);
+    });
+  });
+</script>
 </body>

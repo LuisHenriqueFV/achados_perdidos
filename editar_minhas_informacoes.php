@@ -55,25 +55,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-md-12">
                         <label for="nova_senha">Nova Senha:</label>
                         <input type="password" name="nova_senha" class="form-control"
-                            placeholder="Deixar em branco se não quiser alterar">
+                            placeholder="Deixar em branco para não alterar sua senha atual">
                     </div>
                     <div class="col-md-12">
-                        <label for="cep">CEP:</label> 
-                        <input class="form-control" type="text" name="cep"  id="cep" value="<?php echo $usuario["cep"]; ?>">
+                        <label for="cep">CEP:</label>
+                        <input class="form-control" type="text" name="cep" id="cep"
+                            placeholder="Digite seu cep para obter informações sobre seu endereço"
+                            value="<?php echo $usuario["cep"]; ?>">
                     </div>
                     <div class="col-md-12">
                         <label for="bairro">Bairro:</label>
-                        <input  class="form-control" type="text" name="bairro"  id="bairro"     value="<?php echo $usuario["bairro"]; ?>">
+                        <input class="form-control" type="text" name="bairro" id="bairro"
+                            value="<?php echo $usuario["bairro"]; ?>">
                     </div>
                     <div class="col-md-12">
-                        <label for="logradouro">Logradouro:</label>
-                        <input class="form-control" type="text" id="logradouro" name="logradouro" 
+                        <label for="logradouro">Rua:</label>
+                        <input class="form-control" type="text" id="logradouro" name="logradouro"
                             value="<?php echo $usuario["logradouro"]; ?>">
                     </div>
                     <div class="col-md-12">
                         <label for="cidade">Cidade:</label>
 
-                        <input class="form-control" type="text" name="cidade"  id="cidade" value="<?php echo $usuario["cidade"]; ?>">
+                        <input class="form-control" type="text" name="cidade" id="cidade"
+                            value="<?php echo $usuario["cidade"]; ?>">
                     </div>
                 </div>
                 <div class="mt-3">

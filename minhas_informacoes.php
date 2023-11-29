@@ -20,7 +20,7 @@ $usuario = $consulta->fetch();
                     <p><strong>Email:</strong> <?php echo $usuario["email"]; ?></p>
                     <p><strong>CEP:</strong> <?php echo $usuario["cep"]; ?></p>
                     <p><strong>Bairro:</strong> <?php echo $usuario["bairro"]; ?></p>
-                    <p><strong>Logradouro:</strong> <?php echo $usuario["logradouro"]; ?></p>
+                    <p><strong>Rua:</strong> <?php echo $usuario["logradouro"]; ?></p>
                     <p><strong>Cidade:</strong> <?php echo $usuario["cidade"]; ?></p>
                 </div>
                 <div class="col-md-12">
