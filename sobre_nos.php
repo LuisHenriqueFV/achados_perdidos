@@ -17,6 +17,8 @@ require("./includes/components/cabecalho.php");
             <h2>Contato</h2>
             <p>Se você tiver alguma dúvida, sugestão ou precisar de suporte, sinta-se à vontade para entrar em contato conosco através do nosso formulário de <a href="contato.php">Contato</a>. Estamos aqui para ajudar!</p>
         </div>
+        <a href="index.php" class="btn btn-secondary">Voltar</a>
+
     </main>
 </body>
 </html>

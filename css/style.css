@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100vh;
+  height: auto;
   margin: 0;
   align-items: center;
   justify-content: center;
@@ -19,6 +19,12 @@ body {
   
   background: linear-gradient(#b4a3c0, #c1b4cf, #c4bcda, #bdb2d4, #a37dc9);
 }
+
+#information {
+  margin-top: 15%;
+  height: 100vh;
+}
+
 
 footer {
   position:relative;
@@ -116,6 +122,8 @@ footer p{
   justify-content: center;
 
 }
+
+
 
 #navbar-logo {
   width: 60px;

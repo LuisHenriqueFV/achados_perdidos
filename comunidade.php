@@ -12,6 +12,7 @@ $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
 ?>
 
+
 <body>
     <main>
         <!-- INICIO DO HEADER -->
@@ -79,63 +80,44 @@ $usuario = $consulta->fetch();
         </header>
         <!-- FIM DO HEADER -->
 
-        <!-- INICIO DO CARROSEL -->
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner custom-carousel">
-                <div class="carousel-item active">
-                    <img class="d-block custom-img" src="./img/banner11.png" alt="First slide">
-                </div>
+        <!-- CONTEÚDO INFORMAÇÃO -->
+        <div class="container">
+            <div id="information" class="content">
+                <h1 class="text-center">Achado Não É Roubado, Mas a História É Mais Complexa...</h1>
+
+                <p>Bem-vindo à nossa comunidade no Achados & Perdidos, onde exploramos a fascinante dinâmica dos achados
+                    e
+                    perdidos. A expressão "Achado não é roubado" é comumente ouvida, mas há mais para descobrir nessa
+                    história...</p>
+
+                <p>É inspirador ver histórias de honestidade, especialmente quando pessoas encontram objetos perdidos e
+                    se
+                    dedicam a devolvê-los aos seus donos. Taxistas e catadores de reciclados frequentemente são heróis
+                    nesses momentos. Mas, poucos sabem que procurar o dono de itens perdidos é um dever legal, conforme
+                    o
+                    Código Civil.</p>
+
+                <p>O artigo 1.233 do Código Civil estabelece que quem encontrar algo perdido deve devolvê-lo ao
+                    proprietário. Se não conhecer o dono, deve empenhar-se em encontrá-lo. Caso não tenha sucesso, deve
+                    entregá-lo à autoridade competente, que divulgará a descoberta. Após sessenta dias, se o dono não
+                    for
+                    encontrado, o objeto será leiloado, e o valor será revertido para o Município. Em casos de objetos
+                    de
+                    pequeno valor, o Município pode abrir mão em favor de quem encontrou.</p>
+
+                <p>Se o dono for localizado, quem devolve o item tem direito a uma recompensa, não inferior a 5% do
+                    valor do
+                    objeto, além do ressarcimento de despesas com conservação e transporte. O descobridor responderá por
+                    danos causados intencionalmente.</p>
+
+                <p>Na nossa comunidade, celebramos essas histórias e discutimos como podemos contribuir para um mundo
+                    mais
+                    honesto e conectado. Participe, compartilhe suas experiências e inspire-se conosco!</p>
             </div>
         </div>
-
-        <!-- INICIO DOS FEATURES    -->
-        <section class="features mt-5">
-            <div class="container-fluid">
-                <div class="row justify-content-lg-center">
-                    <div class="col-lg-2 col-md-12">
-
-                        <div class="features-post">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="objetos_perdidos.php">Perdi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-12">
-                        <div class="features-post second-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="objetos_encontrados.php">Achei</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-12">
-                        <div class="features-post third-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="visualizar_encontrados.php">Achados</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-12">
-                        <div class="features-post third-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="visualizar_perdidos.php">Perdidos</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- FIM DOS FEATURES    -->
-
+        <!-- FIM DO CONTEUDO INFORMAÇÃO -->
     </main>
+
     <!-- RODAPE -->
     <footer class="py-5 bg-primary-color">
         <div class="row justify-content-center">
@@ -172,9 +154,11 @@ $usuario = $consulta->fetch();
                 </ul>
             </div>
 
-           
+
         </div>
 
     </footer>
     <!-- FINAL DO RODAPÉ -->
 </body>
+
+</html>
