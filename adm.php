@@ -44,8 +44,8 @@ $categorias = obter_categorias($pdo);
 
 <body>
     <main>
-        <!-- INICIO DO HEADER -->
-        <header class="bg-primary-color">
+            <!-- INICIO DO HEADER -->
+            <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
@@ -117,7 +117,7 @@ $categorias = obter_categorias($pdo);
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
                 ?>
-
+               
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">
@@ -146,10 +146,9 @@ $categorias = obter_categorias($pdo);
             <a href="index.php" class="btn btn-secondary">Voltar</a>
 
         </div>
-
     </main>
-    <!-- RODAPE -->
-    <footer class="py-5 bg-primary-color">
+       <!-- RODAPE -->
+       <footer class="py-5 bg-primary-color">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
                 <h5>Comunidade</h5>
