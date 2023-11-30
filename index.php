@@ -1,14 +1,11 @@
 <?php
-require_once("./includes/components/autenticacao.php");
-require_once("./includes/components/conecta.php");
-require_once("./includes/components/funcao.php");
-<<<<<<< HEAD
+
 require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 require_once("./includes/components/cabecalho.php");
-=======
+require_once("./includes/components/funcao.php");
 
->>>>>>> c015125519ffc3e02a3d2e8a7f0ae0287d5828b5
+
 
 
 ?>
