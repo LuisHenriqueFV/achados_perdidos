@@ -2,7 +2,11 @@
 session_start();
 
 $_SESSION["msg"] = "";
-require("./includes/components/funcao.php");
+require_once("./includes/components/conecta.php");
+require_once("./includes/components/funcao.php");
+require_once("./includes/components/cabecalho.php");
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

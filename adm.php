@@ -12,9 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nome_categoria']) && $_POST['nome_categoria'] !== '') {
         $nomeCategoria = $_POST['nome_categoria'];
 
+        // Tenta cadastrar a categoria
         $cadastra_categoria = cadastra_categoria($nomeCategoria, $pdo);
 
-
+        // Verifica se a categoria foi cadastrada com sucesso
+        if ($cadastra_categoria) {
+            $msg = "Categoria cadastrada com sucesso!";
+        } else {
+            $msg = "Erro ao cadastrar a categoria. Verifique o log de erros para mais informações.";
+            error_log("Erro ao cadastrar categoria no banco de dados.");
+        }
     }
 }
 
@@ -40,11 +47,13 @@ $categorias = obter_categorias($pdo);
         <div id="conteudo" class="container">
             <div class="forms">
                 <h3>Cadastrar Categoria</h3>
-                <?php if (!empty($msg)): ?>
-                    <div class="alert <?php echo $cadastra_categoria ? 'alert-success' : 'alert-danger'; ?>" role="alert">
-                        <?php echo $msg; ?>
-                    </div>
-                <?php endif; ?>
+                <?php
+                // Exibe a mensagem de sucesso se houver
+                if (!empty($msg)) {
+                    echo '<div class="alert alert-success">' . $msg . '</div>';
+                }
+                ?>
+               
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">

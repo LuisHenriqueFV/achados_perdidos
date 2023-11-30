@@ -1,9 +1,10 @@
 <?php
-require("./includes/components/autenticacao.php");
-require("./includes/components/conecta.php"); // Certifique-se de incluir o arquivo que faz a conexão com o banco de dados
-require("./includes/components/cabecalho.php");
-require("./includes/components/funcao.php");
-require("./includes/components/js.php");
+require_once("./includes/components/autenticacao.php");
+require_once("./includes/components/conecta.php");
+require_once("./includes/components/funcao.php");
+require_once("./includes/components/cabecalho.php");
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 
 $userId = $_SESSION["codpessoa"];
 $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');

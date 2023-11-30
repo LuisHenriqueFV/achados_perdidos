@@ -1,9 +1,11 @@
 <?php
 
-require("./includes/components/autenticacao.php");
-require("./includes/components/conecta.php");
-require("./includes/components/funcao.php");
-require("./includes/components/cabecalho.php");
+require_once("./includes/components/autenticacao.php");
+require_once("./includes/components/conecta.php");
+require_once("./includes/components/funcao.php");
+require_once("./includes/components/cabecalho.php");
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 
 
 $userId = $_SESSION["codpessoa"];
