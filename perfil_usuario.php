@@ -5,14 +5,10 @@ require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
 require_once("./includes/components/cabecalho.php");
 require_once("./includes/components/header.php");
+require_once("./includes/components/footer.php");
 require_once("./includes/components/js.php");
 
 
-$userId = $_SESSION["codpessoa"];
-
-$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
-$consulta->execute([$userId]);
-$usuario = $consulta->fetch();
 
 if (empty($usuario["imagem"])) {
     $usuario["imagem"] = "perfil-padrao.png";

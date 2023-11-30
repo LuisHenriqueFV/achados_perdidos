@@ -69,6 +69,7 @@ require_once("./includes/components/js.php");
         <!-- FIM DOS FEATURES    -->
 
     </main>
+    
     <!-- RODAPE -->
     <footer class="py-5 bg-primary-color">
         <div class="row justify-content-center">

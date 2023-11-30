@@ -2,21 +2,15 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require("./includes/components/autenticacao.php");
-require("./includes/components/conecta.php");
-require_once("./includes/components/PHPMailer/src/PHPMailer.php");
-require_once ("./includes/components/PHPMailer/src/Exception.php");
-require_once ("./includes/components/PHPMailer/src/SMTP.php");
+
+require_once("./includes/components/autenticacao.php");
+require_once("./includes/components/conecta.php");
+require_once("./includes/components/funcao.php");
 require_once("./includes/components/cabecalho.php");
-// require("./includes/components/header.php");
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 
-require("./includes/components/js.php");
 
-$userId = $_SESSION["codpessoa"];
-
-$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
-$consulta->execute([$userId]);
-$usuario = $consulta->fetch();
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -48,17 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->send();
 
         echo '<p class="alert alert-success">Mensagem enviada com sucesso!</p>';
-    } catch (Exception $e) {
-        echo '<p class="alert alert-danger">Erro ao enviar a mensagem: ' . $mail->ErrorInfo . '</p>';
-    }
+   } catch (Exception $e) {
+    echo '<p class="alert alert-danger">Erro ao enviar a mensagem: ' . $mail->ErrorInfo . '</p>';
+    echo 'Código de erro: ' . $e->getCode() . '<br>';
+    echo 'Mensagem de erro: ' . $e->getMessage();
+}
+
 }
 ?>
 
 <body>
     <main>
-
+        
         <div id="conteudo" class="container">
-            <div class="content">
                 <h1 class="text-center">Entre em Contato</h1>
                 <p>Se você tiver alguma dúvida, sugestão ou precisar de suporte, fique à vontade para entrar em contato
                     conosco preenchendo o formulário abaixo.</p>
@@ -80,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
 
                 </form>
-            </div>
+            
         </div>
     </main>
 

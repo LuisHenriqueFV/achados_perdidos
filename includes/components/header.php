@@ -5,8 +5,9 @@ $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
 ?>
-    
-    <!-- INICIO DO HEADER -->
+    <body>
+        
+        <!-- INICIO DO HEADER -->
         <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
@@ -70,3 +71,6 @@ $usuario = $consulta->fetch();
             </nav>
         </header>
         <!-- FIM DO HEADER -->
+    
+    </body>
+   
