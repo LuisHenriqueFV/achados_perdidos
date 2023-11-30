@@ -82,7 +82,7 @@ $usuario = $consulta->fetch();
 
         <!-- CONTEÚDO INFORMAÇÃO -->
         <div class="container">
-            <div id="information" class="content">
+            <div id="conteudo" class="content">
                 <h1 class="text-center">Achado Não É Roubado, Mas a História É Mais Complexa...</h1>
 
                 <p>Bem-vindo à nossa comunidade no Achados & Perdidos, onde exploramos a fascinante dinâmica dos achados

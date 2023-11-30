@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <main class="container">
-        <h1>Editar Objeto Perdido</h1>
+        <h1>Editar Objeto perdido</h1>
         <form action="editar_objeto_perdido.php?id=<?= $objetoId ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="mb-3">
                 <label for="local" class="form-label">Local:</label>
-                <input type="text" class="form-control" id="local" name="local" value="<?= $objetoPerdido['local'] ?>"
-                    required>
+                <input type="text" class="form-control" id="local" name="local"
+                    value="<?= $objetoPerdido['local'] ?>" required>
             </div>
             <div class="mb-3">
                 <label for="data" class="form-label">Data:</label>

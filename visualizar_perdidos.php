@@ -5,7 +5,7 @@ require("./includes/components/funcao.php");
 require("./includes/components/conecta.php");
 
 $msg = "";
-$objetosPerdidos = null;
+$objetosPerdidos= null;
 
 $categorias = obter_categorias($pdo);
 
@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
 
     if ($categoria === "MostrarTodos") {
-        $objetosPerdidos = pesquisa_objeto_perdido($nome, null, $pdo);
+        $objetosPerdidos= pesquisa_objeto_perdido($nome, null, $pdo);
     } else {
-        $objetosPerdidos = pesquisa_objeto_perdido($nome, $categoria, $pdo);
+        $objetosPerdidos= pesquisa_objeto_perdido($nome, $categoria, $pdo);
     }
 }
 ?>
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="forms">
             <form action="visualizar_perdidos.php" method="GET">
                 <div class="mb-3 input-group">
-                    <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto Perdido"
+                    <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto perdido"
                         autocomplete="off">
                     <button class="btn btn-primary" type="submit" name="filtrarCategoria">Pesquisar</button>
                 </div>
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="conteudo">
             <?php if ($objetosPerdidos): ?>
                 <?php if (empty($objetosPerdidos)): ?>
-                    <p>Nenhum resultado Perdido.</p>
+                    <p>Nenhum resultado encontrado.</p>
                 <?php else: ?>
                     <table class="table">
                         <thead>
@@ -89,18 +89,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                             <img src="<?= htmlspecialchars($objeto['imagem'], ENT_QUOTES) ?>" alt="Imagem do Objeto"
                                                 style="max-width: 100px;">
                                         <?php else: ?>
-                                            <img src="img/objetos_perdidos/sem_imagem.png" alt="Sem Imagem" style="max-width: 100px;">
+                                            <img src="img/objetos_perdidos/sem_imagem.png" alt="Sem Imagem"
+                                                style="max-width: 100px;">
                                         <?php endif; ?>
                                     </td>
                                     <td>
                                         <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $objeto['codpessoa'] == $_SESSION["codpessoa"])): ?>
-                                            <a href="editar_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                            <a href="editar_objeto_perdido.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-primary">Editar</a>
-                                            <a href="excluir_objeto_encontrado.php?id=<?= $objeto['id'] ?>"
+                                            <a href="excluir_objeto_perdido.php?id=<?= $objeto['id'] ?>"
                                                 class="btn btn-danger">Excluir</a>
                                         <?php endif; ?>
 
                                     </td>
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
