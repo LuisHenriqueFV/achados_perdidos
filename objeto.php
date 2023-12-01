@@ -15,6 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $_POST['data'];
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
+    
+    // Defina a imagem padrão
+    $imagem_padrao = "img/objeto/imagem_padrao.png";
 
     if (!empty($_FILES['imagem']['name'])) {
         $uploadDir = "img/objeto/";
@@ -40,12 +43,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
         }
     } else {
-        $msg = "Por favor, selecione uma imagem.";
+        // Caso não seja fornecida uma imagem, utiliza a imagem padrão
+        $imagem = $imagem_padrao;
+
+        // Adicione uma mensagem de teste
+        echo "Nenhuma imagem fornecida, utilizando imagem padrão: $imagem_padrao";
+
+        // Remova ou ajuste esta linha conforme necessário para o seu caso
+        cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
+
+        $msg = "Objeto cadastrado com sucesso!";
     }
 }
 $categorias = obter_categorias($pdo);
 $tipos = array("Encontrado", "Perdido");
 ?>
+
 
 <body>
     <main>
@@ -153,8 +166,11 @@ $tipos = array("Encontrado", "Perdido");
                             <input type="text" id="local" name="local" class="form-control" placeholder="Local"
                                 autocomplete="off" required>
                             <input type="date" id="data" name="data" class="form-control" required>
+                            
                             <label for="imagem">Imagem:</label>
-                            <input type="file" id="imagem" name="imagem" class="form-control ">
+                            <input type="file" id="imagem" name="imagem" class="form-control">
+                            
+
 
 
                         </div>
