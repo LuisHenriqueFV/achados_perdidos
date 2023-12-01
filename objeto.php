@@ -4,27 +4,25 @@ $msg = "";
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/cabecalho.php");
 require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
+require_once("./includes/components/cabecalho.php");
 
-
-
+// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $local = $_POST['local'];
     $data = $_POST['data'];
     $categoria = $_POST['categoria'];
+    $tipo = $_POST['tipo'];
 
     // Verifica se uma imagem foi enviada
     if (!empty($_FILES['imagem']['name'])) {
-        $uploadDir = "img/objetos_encontrados/";
+        $uploadDir = "img/objeto/";
 
-        // Obtém a extensão do arquivo
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
-        // Gera um nome único para o arquivo
         $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
 
         $uploadFile = $uploadDir . $nomeArquivo;
@@ -33,12 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mkdir($uploadDir, 0777, true);
         }
 
-        // Move o arquivo para o diretório de upload
         if (move_uploaded_file($_FILES['imagem']['tmp_name'], $uploadFile)) {
             $imagem = $uploadDir . $nomeArquivo;
 
-            // Insere o caminho da imagem no banco de dados
-            cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo);
+            cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
 
             $msg = "Objeto cadastrado com sucesso!";
         } else {
@@ -49,14 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $msg = "Por favor, selecione uma imagem.";
     }
 }
-
 $categorias = obter_categorias($pdo);
+$tipos = array("Encontrado", "Perdido");
 ?>
 
 <body>
     <main>
-                <!-- INICIO DO HEADER -->
-                <header class="bg-primary-color">
+        <!-- INICIO DO HEADER -->
+        <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
@@ -119,50 +115,70 @@ $categorias = obter_categorias($pdo);
             </nav>
         </header>
         <!-- FIM DO HEADER -->
-        <div id="conteudo" class="container">
-            <div class="forms">
-                <?php
-                // Exibe a mensagem de sucesso se houver
-                if (!empty($msg)) {
-                    echo '<div class="alert alert-success">' . $msg . '</div>';
-                }
-                ?>
-                <form action="objetos_encontrados.php" method="POST" enctype="multipart/form-data">
-                    <div class="inputs-forms">
-                        <input type="text" id="nome" name="nome" class="form-control"
-                            placeholder="Nome do objeto encontrado" autocomplete="off" required>
-                        <input type="text" id="descricao" name="descricao" class="form-control"
-                            placeholder="Descrição do objeto encontrado" autocomplete="off" required>
-                        <input type="text" id="local" name="local" class="form-control"
-                            placeholder="Local onde foi encontrado" autocomplete="off" required>
-                        <input type="date" id="data" name="data" class="form-control" required>
-                        <label for="imagem">Imagem:</label>
-                        <input type="file" id="imagem" name="imagem" class="form-control">
 
-                        <!-- Menu suspenso para selecionar a categoria -->
-                        <label for="categoria">Categoria:</label>
-                        <select id="categoria" name="categoria" class="form-select" required>
-                            <option value="" disabled selected>Selecione uma categoria</option>
-                            <?php
-                            foreach ($categorias as $cat) {
-                                echo '<option value="' . $cat['nome'] . '">' . $cat['nome'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
 
-                    <div class="nav">
-                        <button type="submit" class="btn btn-primary">Cadastrar Objeto Encontrado</button>
+        <!-- FORMULARIO DE objeto -->
+        <div id="conteudoCadastro" class="container">
+            <div class="col-lg-6 col-md-3">
+                <div class="forms">
+                    <?php
+                    // Exibe a mensagem de sucesso se houver
+                    if (!empty($msg)) {
+                        echo '<div class="alert alert-success">' . $msg . '</div>';
+                    }
+                    ?>
+                    <form action="objeto.php" method="POST" enctype="multipart/form-data">
+                        <div class="inputs-forms">
+
+                            <select id="categoria" name="categoria" class="form-select" required>
+                                <option value="" disabled selected>Categoria</option>
+                                <?php
+                                foreach ($categorias as $cat) {
+                                    echo '<option value="' . $cat['nome'] . '">' . $cat['nome'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                            <select id="tipo" name="tipo" class="form-select" required>
+                                <option value="" disabled selected>Situação</option>
+                                <?php
+                                foreach ($tipos as $tipo_option) {
+                                    echo '<option value="' . $tipo_option . '">' . $tipo_option . '</option>';
+                                }
+                                ?>
+                            </select>
+
+                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do objeto"
+                                autocomplete="off" required>
+                            <input type="text" id="descricao" name="descricao" class="form-control"
+                                placeholder="Descrição do objeto" autocomplete="off" required>
+                            <input type="text" id="local" name="local" class="form-control" placeholder="Local"
+                                autocomplete="off" required>
+                            <input type="date" id="data" name="data" class="form-control" required>
+                            <label for="imagem">Imagem:</label>
+                            <input type="file" id="imagem" name="imagem" class="form-control ">
+
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Cadastrar Objeto</button>
                         <a href="index.php" class="btn btn-secondary">Voltar</a>
-                    </div>
-                </form>
+
+                    </form>
+                </div>
             </div>
 
+
         </div>
+
+
+
+
+
+
+
     </main>
 
-
-        
     <!-- RODAPE -->
     <footer class="py-5 bg-primary-color">
         <div class="row justify-content-center">
@@ -199,11 +215,13 @@ $categorias = obter_categorias($pdo);
                 </ul>
             </div>
 
-           
+
         </div>
 
     </footer>
     <!-- FINAL DO RODAPÉ -->
+
+
 </body>
 
 </html>

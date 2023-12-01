@@ -8,7 +8,7 @@ body {
 
 main {
   height: auto;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
 }
 * {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -21,14 +21,28 @@ body {
   background: linear-gradient(#b4a3c0, #c1b4cf, #c4bcda, #bdb2d4, #a37dc9);
 }
 
-#conteudo {
-  margin-top: 15%;
-<<<<<<< HEAD
+#conteudoIndex {
+  margin-top: 6%;
   height: auto;
-=======
->>>>>>> c015125519ffc3e02a3d2e8a7f0ae0287d5828b5
+
+}
+#conteudoPerfil {
+  margin-top: 14%;
+  height: auto;
+
 }
 
+
+#conteudo {
+  margin-top: 5%;
+  height: auto;
+
+}
+
+#conteudoCadastro{
+   margin-top: 10%;
+  height: auto;
+}
 
 footer {
   position:relative;
@@ -44,7 +58,9 @@ footer p{
 
 .bg-primary-color {
   background-color: #20213B;
+  
 }
+
 
 .bg-secondary-color {
   background-color: #ece8e2;
@@ -71,12 +87,15 @@ footer p{
 .btn-custom-color {
   background-color: #D7064B;
   color: #ffffff;
+  text-align: center;
 }
 
 #customButton {
-  background-color: #D7064B;
+  background-color: #20213B;
   color: #ffffff;
-  margin-left: 200px;
+}
+#customButton:hover{
+  background-color: #28293b;
 }
 
 .text-center h1 {
