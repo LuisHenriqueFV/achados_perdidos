@@ -10,7 +10,7 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
             VALUES (:nome, :descricao, :local, :data, :categoria, :tipo, :imagem, :codpessoa)";
     $stmt = $pdo->prepare($sql);
 
-    // Faz o bind dos parâmetros
+
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':descricao', $descricao);
     $stmt->bindParam(':local', $local);
@@ -20,7 +20,6 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
     $stmt->bindParam(':imagem', $imagem);
     $stmt->bindParam(':codpessoa', $codpessoa);
 
-    // Executa a query
     $stmt->execute();
 }
 
@@ -145,7 +144,8 @@ function obterCodPessoa($email, $pdo)
         if ($result) {
             return $result['codpessoa'];
         } else {
-            return null; // Ou outro valor padrão, dependendo da sua lógica
+            return null; 
+            
         }
     } catch (PDOException $e) {
         error_log("Erro ao obter codpessoa: " . $e->getMessage());

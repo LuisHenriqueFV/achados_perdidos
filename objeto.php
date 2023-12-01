@@ -119,6 +119,7 @@ $tipos = array("Encontrado", "Perdido");
         <div id="conteudoCadastro" class="container">
             <h1 class="h2">Deixe aqui as informações do objeto que você perdeu ou encontrou.</h1>
             <div class="col-lg-12 col-md-3">
+
                 <div class="forms">
                     <?php
                     if (!empty($msg)) {

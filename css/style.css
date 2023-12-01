@@ -159,9 +159,7 @@ footer p{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 70vh; */
   height: 100vh;
-  /* Isso garante que o contêiner ocupe 100% da altura da tela */
 }
 
 #navbar-items .navbar-nav {
@@ -202,14 +200,11 @@ footer p{
 
 .custom-img {
   width: 60%;
-  /* Ajuste a porcentagem conforme necessário */
   height: auto;
-  /* Mantém a proporção original da imagem */
   margin: 150px auto 0 auto;
-  /* Centraliza horizontalmente */
+ 
 }
 
-/* Features */
 
 section.features .col-4 {
   padding-left: 0px;
@@ -260,7 +255,6 @@ section.features .col-4 {
 
 
 .features-content a {
-  /* margin-top: 15px; */
   display: inline-block;
   text-transform: uppercase;
   color: #fff;
@@ -273,9 +267,6 @@ section.features .col-4 {
 footer {
   width: 100%;
   background-color: #333;
-  /* Cor de fundo do rodapé */
   color: #fff;
-  /* Cor do texto do rodapé */
   padding: 20px;
-  /* Espaçamento interno do rodapé */
 }
