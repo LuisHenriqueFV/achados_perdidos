@@ -75,14 +75,10 @@
         }
     </script>
     <script>
-        // Quando a página é carregada, inicia o temporizador para ocultar alertas
         document.addEventListener("DOMContentLoaded", function () {
-            // Seleciona todos os alertas na página
             var alertas = document.querySelectorAll('.alert');
 
-            // Para cada alerta encontrado
             alertas.forEach(function (alerta) {
-                // Oculta o alerta após 1 segundo
                 setTimeout(function () {
                     alerta.style.display = 'none';
                 }, 1000);

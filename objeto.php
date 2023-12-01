@@ -8,7 +8,6 @@ require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 require_once("./includes/components/cabecalho.php");
 
-// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
 
-    // Verifica se uma imagem foi enviada
     if (!empty($_FILES['imagem']['name'])) {
         $uploadDir = "img/objeto/";
 
@@ -122,7 +120,6 @@ $tipos = array("Encontrado", "Perdido");
             <div class="col-lg-6 col-md-3">
                 <div class="forms">
                     <?php
-                    // Exibe a mensagem de sucesso se houver
                     if (!empty($msg)) {
                         echo '<div class="alert alert-success">' . $msg . '</div>';
                     }

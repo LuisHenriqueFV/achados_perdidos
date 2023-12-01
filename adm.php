@@ -12,10 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nome_categoria']) && $_POST['nome_categoria'] !== '') {
         $nomeCategoria = $_POST['nome_categoria'];
 
-        // Tenta cadastrar a categoria
         $cadastra_categoria = cadastra_categoria($nomeCategoria, $pdo);
 
-        // Verifica se a categoria foi cadastrada com sucesso
         if ($cadastra_categoria) {
             $msg = "Categoria cadastrada com sucesso!";
         } else {

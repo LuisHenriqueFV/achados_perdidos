@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
     $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
 
-    // Pesquisa objeto
     if ($categoria === "MostrarTodos") {
         $objeto = pesquisa_objeto($nome, null, $tipo, $pdo);
     } else {
