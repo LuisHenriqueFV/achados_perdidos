@@ -10,7 +10,7 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
             VALUES (:nome, :descricao, :local, :data, :categoria, :tipo, :imagem, :codpessoa)";
     $stmt = $pdo->prepare($sql);
 
-
+    // Faz o bind dos parâmetros
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':descricao', $descricao);
     $stmt->bindParam(':local', $local);
@@ -20,6 +20,7 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
     $stmt->bindParam(':imagem', $imagem);
     $stmt->bindParam(':codpessoa', $codpessoa);
 
+    // Executa a query
     $stmt->execute();
 }
 
@@ -144,8 +145,7 @@ function obterCodPessoa($email, $pdo)
         if ($result) {
             return $result['codpessoa'];
         } else {
-            return null; 
-            
+            return null; // Ou outro valor padrão, dependendo da sua lógica
         }
     } catch (PDOException $e) {
         error_log("Erro ao obter codpessoa: " . $e->getMessage());
@@ -234,6 +234,16 @@ function pesquisa_pessoa($nome, $pdo)
     } else {
         return $pessoa->fetchAll();
     }
+}
+
+function pesquisa_pessoa_por_id($codpessoa, $pdo)
+{
+    $pessoa = $pdo->prepare('select * from pessoa where codpessoa = :codpessoa');
+    $pessoa->bindValue(':codpessoa', $codpessoa);
+    $pessoa->execute();
+    
+    return $pessoa->fetch();
+  
 }
 
 function exclui_usuario($codpessoa, $pdo)

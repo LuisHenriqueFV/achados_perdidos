@@ -13,11 +13,11 @@ $categorias = obter_categorias($pdo);
 $cards = obter_cards_do_banco($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    
     $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : "";
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
     $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
 
-    // Pesquisa objeto
     if ($categoria === "MostrarTodos") {
         $objeto = pesquisa_objeto($nome, null, $tipo, $pdo);
     } else {
@@ -119,15 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         </div>
                     </div>
 
-                    <div class="col-lg-2 col-md-12">
-                        <div class="features-post third-features">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="index.php">#</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -198,13 +189,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                         ($tipo === '')
                                     ): ?>
                                         <div class="col mb-4">
-                                            <div class="card" style="max-width: 600px; height: 300px;">
+                                            <div class="card" style="max-width: 600px; height: 350px;">
                                                 <div class="row g-0">
                                                     <div class="col-lg-4">
                                                         <img src="<?= $obj['imagem']; ?>" class="img-fluid rounded-start"
-                                                            alt="Imagem do Card" style="width: 100%; height: ;">
-
-
+                                                            alt="Imagem do Card" style="width: 100%; height:150px ;">
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="card-body">
@@ -223,6 +212,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                                             <p class="card-text">
                                                                 <?= $obj['local']; ?>
                                                             </p>
+                                                            
+                                                            <?php $pessoa = pesquisa_pessoa_por_id($obj['codpessoa'], $pdo) ?>
+                                                            <p class="card-text"><small class="text-body-secondary">
+                                                                    <?php echo $pessoa['email']; ?>
+                                                                </small></p>
+                                                            
                                                             <p class="card-text"><small class="text-body-secondary">
                                                                     <?= date(' d / m / Y ', strtotime($obj['data'])); ?>
                                                                 </small></p>

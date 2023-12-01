@@ -83,10 +83,6 @@
             // Para cada alerta encontrado
             alertas.forEach(function (alerta) {
                 // Oculta o alerta após 1 segundo
-        document.addEventListener("DOMContentLoaded", function () {
-            var alertas = document.querySelectorAll('.alert');
-
-            alertas.forEach(function (alerta) {
                 setTimeout(function () {
                     alerta.style.display = 'none';
                 }, 1000);

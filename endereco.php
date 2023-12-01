@@ -9,14 +9,17 @@ require_once("./includes/components/js.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Recebendo os dados do formulário
   $cep = $_POST["cep"];
   $logradouro = $_POST["logradouro"];
   $bairro = $_POST["bairro"];
   $cidade = $_POST["cidade"];
 
+  // Usando prepared statements para evitar SQL injection
   $stmt = $pdo->prepare("UPDATE pessoa SET cep = ?, logradouro = ?, bairro = ?, cidade = ? WHERE codpessoa = ?");
   $stmt->execute([$cep, $logradouro, $bairro, $cidade, $_SESSION["codpessoa"]]);
 
+  // Verificando se a atualização foi bem-sucedida
   if ($stmt->rowCount() > 0) {
     echo '<p>Dados cadastrados com sucesso!</p>';
   } else {
