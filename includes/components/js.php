@@ -14,19 +14,26 @@
 
 
     <script>
-        function toggleCategorias() {
-            var listaCategorias = document.getElementById("listaCategorias");
-            var buttonMostrarCategorias = document.getElementById("btnMostrarCategorias");
+    function toggleCategorias() {
+        var listaCategorias = document.getElementById('listaCategorias');
+        var btnMostrarCategorias = document.getElementById('btnMostrarCategorias');
+        var btnOcultarCategorias = document.getElementById('btnOcultarCategorias');
 
-            if (listaCategorias.style.display === "none") {
-                listaCategorias.style.display = "block";
-                buttonMostrarCategorias.textContent = "Ocultar Categorias Cadastradas";
-            } else {
-                listaCategorias.style.display = "none";
-                buttonMostrarCategorias.textContent = "Mostrar Categorias Cadastradas";
-            }
+        if (listaCategorias.style.display === 'none' || listaCategorias.style.display === '') {
+            listaCategorias.style.display = 'block';
+            btnMostrarCategorias.style.display = 'none';
+            btnOcultarCategorias.style.display = 'block';
+        } else {
+            listaCategorias.style.display = 'none';
+            btnMostrarCategorias.style.display = 'block';
+            btnOcultarCategorias.style.display = 'none';
         }
-    </script>
+    }
+</script>
+
+
+
+
 
     <!-- FUNÇÕES -->
     <script>
@@ -67,19 +74,19 @@
                 })
         }
     </script>
-<script>
-  // Quando a página é carregada, inicia o temporizador para ocultar alertas
-  document.addEventListener("DOMContentLoaded", function () {
-    // Seleciona todos os alertas na página
-    var alertas = document.querySelectorAll('.alert');
+    <script>
+        // Quando a página é carregada, inicia o temporizador para ocultar alertas
+        document.addEventListener("DOMContentLoaded", function () {
+            // Seleciona todos os alertas na página
+            var alertas = document.querySelectorAll('.alert');
 
-    // Para cada alerta encontrado
-    alertas.forEach(function (alerta) {
-      // Oculta o alerta após 1 segundo
-      setTimeout(function () {
-        alerta.style.display = 'none';
-      }, 1000);
-    });
-  });
-</script>
+            // Para cada alerta encontrado
+            alertas.forEach(function (alerta) {
+                // Oculta o alerta após 1 segundo
+                setTimeout(function () {
+                    alerta.style.display = 'none';
+                }, 1000);
+            });
+        });
+    </script>
 </body>

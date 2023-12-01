@@ -44,8 +44,8 @@ $categorias = obter_categorias($pdo);
 
 <body>
     <main>
-            <!-- INICIO DO HEADER -->
-            <header class="bg-primary-color">
+        <!-- INICIO DO HEADER -->
+        <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
@@ -117,7 +117,7 @@ $categorias = obter_categorias($pdo);
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
                 ?>
-               
+
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">
@@ -127,7 +127,9 @@ $categorias = obter_categorias($pdo);
                     </div>
                     <button type="submit" class="btn btn-primary">Adicionar Categoria</button>
                     <button type="button" id="btnMostrarCategorias" class="btn btn-primary"
-                        onclick="toggleCategorias()">Mostrar Categorias Cadastradas</button>
+                        onclick="toggleCategorias()">Mostrar Todas as Categorias</button>
+                    <button type="button" id="btnOcultarCategorias" class="btn btn-primary" style="display: none;"
+                        onclick="toggleCategorias()">Ocultar Todas as Categorias</button>
                 </form>
             </div>
 
@@ -137,7 +139,7 @@ $categorias = obter_categorias($pdo);
                     <?php foreach ($categorias as $categoria): ?>
                         <li class='list-group-item d-flex justify-content-between align-items-center'>
                             <?= $categoria['nome'] ?>
-                            <a href="excluir_categoria.php?id=<?= $categoria['id']; ?>" class="btn btn-danger">Excluir</a>
+                            <a href="excluir_categoria.php?id=<?= $categoria['id']; ?>&excluir=true" class="btn btn-danger">Excluir</a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -147,8 +149,8 @@ $categorias = obter_categorias($pdo);
 
         </div>
     </main>
-       <!-- RODAPE -->
-       <footer class="py-5 bg-primary-color">
+    <!-- RODAPE -->
+    <footer class="py-5 bg-primary-color">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
                 <h5>Comunidade</h5>

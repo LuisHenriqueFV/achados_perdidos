@@ -4,10 +4,10 @@ use PHPMailer\PHPMailer\SMTP;
 
 
 
-function cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo)
+function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo)
 {
-    $sql = "INSERT INTO objetos_encontrados (nome, descricao, local, data, categoria, imagem, codpessoa) 
-            VALUES (:nome, :descricao, :local, :data, :categoria, :imagem, :codpessoa)";
+    $sql = "INSERT INTO objeto (nome, descricao, local, data, categoria, tipo, imagem, codpessoa) 
+            VALUES (:nome, :descricao, :local, :data, :categoria, :tipo, :imagem, :codpessoa)";
     $stmt = $pdo->prepare($sql);
 
     // Faz o bind dos parâmetros
@@ -16,24 +16,7 @@ function cadastra_objeto_encontrado($nome, $descricao, $local, $data, $categoria
     $stmt->bindParam(':local', $local);
     $stmt->bindParam(':data', $data);
     $stmt->bindParam(':categoria', $categoria);
-    $stmt->bindParam(':imagem', $imagem);
-    $stmt->bindParam(':codpessoa', $codpessoa);
-
-    // Executa a query
-    $stmt->execute();
-}
-function cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $imagem, $codpessoa, $pdo)
-{
-    $sql = "INSERT INTO objetos_perdidos (nome, descricao, local, data, categoria, imagem, codpessoa) 
-            VALUES (:nome, :descricao, :local, :data, :categoria, :imagem, :codpessoa)";
-    $stmt = $pdo->prepare($sql);
-
-    // Faz o bind dos parâmetros
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':descricao', $descricao);
-    $stmt->bindParam(':local', $local);
-    $stmt->bindParam(':data', $data);
-    $stmt->bindParam(':categoria', $categoria);
+    $stmt->bindParam(':tipo', $tipo);
     $stmt->bindParam(':imagem', $imagem);
     $stmt->bindParam(':codpessoa', $codpessoa);
 
@@ -41,9 +24,9 @@ function cadastra_objeto_perdido($nome, $descricao, $local, $data, $categoria, $
     $stmt->execute();
 }
 
-function pesquisa_objeto_perdido($nome, $categoria, $pdo)
+function pesquisa_objeto($nome, $categoria, $tipo, $pdo)
 {
-    $query = "SELECT * FROM objetos_perdidos WHERE nome LIKE :nome";
+    $query = "SELECT * FROM objeto WHERE nome LIKE :nome";
 
     if (!empty($categoria)) {
         $query .= " AND categoria = :categoria";
@@ -60,36 +43,26 @@ function pesquisa_objeto_perdido($nome, $categoria, $pdo)
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-function pesquisa_objeto_encontrado($nome, $categoria, $pdo)
+function obter_objeto_por_tipo($tipo, $pdo)
 {
-    $query = "SELECT * FROM objetos_encontrados WHERE nome LIKE :nome";
-
-    if (!empty($categoria)) {
-        $query .= " AND categoria = :categoria";
-    }
-
-    $stmt = $pdo->prepare($query);
-    $stmt->bindValue(':nome', '%' . $nome . '%', PDO::PARAM_STR);
-
-    if (!empty($categoria)) {
-        $stmt->bindValue(':categoria', $categoria, PDO::PARAM_STR);
-    }
-
-    $stmt->execute();
-
+    $stmt = $pdo->prepare("SELECT * FROM objeto WHERE tipo = :tipo");
+    $stmt->execute([':tipo' => $tipo]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-function obter_objetos_encontrados_por_categoria($categoria, $pdo)
+function obter_tipos($pdo)
 {
-    $stmt = $pdo->prepare("SELECT * FROM objetos_encontrados WHERE categoria = :categoria");
-    $stmt->execute([':categoria' => $categoria]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $stmt = $pdo->query("SELECT DISTINCT tipo FROM objeto WHERE tipo = 'encontrado' OR tipo = 'perdido'");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Erro ao obter tipos: " . $e->getMessage();
+        return null;
+    }
 }
 
-function obter_objetos_perdidos_por_categoria($categoria, $pdo)
+function obter_objeto_por_categoria($categoria, $pdo)
 {
-    $stmt = $pdo->prepare("SELECT * FROM objetos_encontrados WHERE categoria = :categoria");
+    $stmt = $pdo->prepare("SELECT * FROM objeto WHERE categoria = :categoria");
     $stmt->execute([':categoria' => $categoria]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -202,42 +175,22 @@ function cadastra_pessoa($nome, $email, $cpf, $senha, $pdo)
     }
 }
 
-function obter_objetos_perdidos($objeto, $pdo)
+
+function obter_objeto($objeto, $pdo)
 {
     try {
-        $stmt = $pdo->query('SELECT * FROM objetos_perdidos');
+        $stmt = $pdo->query('SELECT * FROM objeto');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
 
-        die('Erro ao obter objetos perdidos: ' . $e->getMessage());
+        die('Erro ao obter objeto : ' . $e->getMessage());
     }
 }
 
-function obter_objetos_encontrados($objeto, $pdo)
+function atualizar_objeto($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo)
 {
     try {
-        $stmt = $pdo->query('SELECT * FROM objetos_encontrados');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-
-        die('Erro ao obter objetos encontrados: ' . $e->getMessage());
-    }
-}
-function obter_objeto_perdido_por_id($objetoId, $pdo)
-{
-    try {
-        $stmt = $pdo->prepare('SELECT * FROM objetos_perdidos WHERE id = :id');
-        $stmt->bindParam(':id', $objetoId, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        die('Erro ao obter objeto perdido por ID: ' . $e->getMessage());
-    }
-}
-function atualizar_objeto_perdido($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo)
-{
-    try {
-        $stmt = $pdo->prepare('UPDATE objetos_perdidos SET nome = :nome, descricao = :descricao, local = :local, data = :data, imagem = :imagem, categoria = :categoria WHERE id = :id');
+        $stmt = $pdo->prepare('UPDATE objeto SET nome = :nome, descricao = :descricao, local = :local, data = :data, imagem = :imagem, categoria = :categoria WHERE id = :id');
 
         $stmt->bindParam(':nome', $novoNome, PDO::PARAM_STR);
         $stmt->bindParam(':descricao', $novaDescricao, PDO::PARAM_STR);
@@ -249,37 +202,25 @@ function atualizar_objeto_perdido($objetoId, $novoNome, $novaDescricao, $novoLoc
 
         $stmt->execute();
     } catch (PDOException $e) {
-        die('Erro ao atualizar objeto perdido: ' . $e->getMessage());
+        die('Erro ao atualizar objeto: ' . $e->getMessage());
     }
 }
-function obter_objeto_encontrado_por_id($objetoId, $pdo)
+function obter_objeto_por_id($objetoId, $pdo)
 {
     try {
-        $stmt = $pdo->prepare('SELECT * FROM objetos_encontrados WHERE id = :id');
+        $stmt = $pdo->prepare('SELECT * FROM objeto WHERE id = :id');
         $stmt->bindParam(':id', $objetoId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        die('Erro ao obter objeto encontrado por ID: ' . $e->getMessage());
+        die('Erro ao obter objeto por ID: ' . $e->getMessage());
     }
 }
-function atualizar_objeto_encontrado($objetoId, $novoNome, $novaDescricao, $novoLocal, $novaData, $caminhoArquivo, $novaCategoria, $pdo)
-{
-    try {
-        $stmt = $pdo->prepare('UPDATE objetos_encontrados SET nome = :nome, descricao = :descricao, local = :local, data = :data, imagem = :imagem, categoria = :categoria WHERE id = :id');
 
-        $stmt->bindParam(':nome', $novoNome, PDO::PARAM_STR);
-        $stmt->bindParam(':descricao', $novaDescricao, PDO::PARAM_STR);
-        $stmt->bindParam(':local', $novoLocal, PDO::PARAM_STR);
-        $stmt->bindParam(':data', $novaData, PDO::PARAM_STR);
-        $stmt->bindParam(':imagem', $caminhoArquivo, PDO::PARAM_STR);
-        $stmt->bindParam(':categoria', $novaCategoria, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $objetoId, PDO::PARAM_INT);
-
-        $stmt->execute();
-    } catch (PDOException $e) {
-        die('Erro ao atualizar objeto encontrado: ' . $e->getMessage());
-    }
+function obter_cards_do_banco($pdo) {
+    $stmt = $pdo->prepare("SELECT * FROM objeto");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function pesquisa_pessoa($nome, $pdo)

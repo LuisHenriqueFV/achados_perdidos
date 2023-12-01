@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
         </header>
         <!-- FIM DO HEADER -->
 
-        <div id="conteudo" class="container">
+        <div id="conteudoPerfil" class="container">
             <div class="forms">
                 <h1 class="text-center">Olá,
                     <?php echo $usuario["nome"]; ?>
