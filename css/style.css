@@ -13,7 +13,7 @@ body {
 
 main {
   height: auto;
-  margin-bottom: 15%;
+  margin-bottom: 8%;
 }
 
 * {
@@ -24,28 +24,28 @@ main {
 /* Cores e variáveis globais */
 
 :root {
-  --cor-background: #7a9fc7, #6daace, #63819c;
-  --cor-background-navbar: #6885a4;
-  --cor-footer: #496079;
-  --cor-botao-fundo: #45abd3;
-  --cor-botao-texto: #ffffff;
-  --cor-botao-hover-fundo: #3096d1;
-  --cor-botao-hover-texto: #ffffff;
-  --cor-custom-button-fundo: #4b75a1;
+  --cor-background: #616FF2, #D6A6F2;
+  --cor-background-navbar: #06138550;
+  --cor-footer: #1F2133;
+  --cor-botao-fundo: #F2D261;
+  --cor-botao-hover-fundo: #f2f261;
+  --cor-botao-texto: #000000;
+  --cor-botao-hover-texto: #000000;
+  --cor-custom-button-fundo: #6170f200;
+  --cor-custom-button-hover-fundo: #b161f200;
   --cor-custom-button-texto: #ffffff;
-  --cor-custom-button-hover-fundo: #4b77a1;
   --cor-texto-titulo: #2B2D42;
   --cor-border: #000000;
   --cor-texto-link: #ffffff;
   --cor-texto-link-hover: #dadfe9;
   --cor-border-active: #3096d1;
   --cor-hover-underline: #3096d1;
+  --cor-background-container: #fff;
+
+
   --dark-background: #1a1a1a;
-  --cor-background-navbar: #38373777;
-  --cor-footer: #38373777;
   --dark-text: #000000;
   --dark-text-white: #fff;
-  /* --dark-text-white: #fff; */
 
   --dark-link: #90caf9;
 }
@@ -54,7 +54,7 @@ main {
 
 #navbar {
   border-bottom: 3px solid var(--cor-border);
-  position:absolute ;
+  position: absolute;
   width: 100%;
   /* z-index: 1000; */
   background-color: var(--cor-background-navbar);
@@ -111,7 +111,7 @@ main {
   background-color: var(--cor-footer);
   width: 100%;
   border-top: 3px solid var(--cor-border);
-  padding: 20px; 
+  padding: 20px;
 }
 
 /* Estilos para textos no centro */
@@ -131,9 +131,11 @@ body.dark-theme {
   background-color: var(--dark-background-navbar);
 }
 
+
 #footer.dark-theme {
   background-color: var(--dark-footer);
-  color: var(--dark-text-white); /* Adicionado para garantir que o texto seja branco */
+  color: var(--dark-text-white);
+  /* Adicionado para garantir que o texto seja branco */
 }
 
 #navbar a.dark-theme {
@@ -156,7 +158,7 @@ body.dark-theme {
 
 
 
- /* Seção: Conteúdo da Página */
+/* Seção: Conteúdo da Página */
 
 #conteudoIndex {
   margin-top: 6%;
@@ -164,13 +166,19 @@ body.dark-theme {
 }
 
 #filtro {
-  margin-top: 10%;
+  padding: 0;
+  margin-top: 8%;
   height: auto;
 }
 
 #conteudoPerfil {
   margin-top: 14%;
   height: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+
 }
 
 #conteudo {
@@ -197,9 +205,10 @@ footer p {
 
 /* Seção: Formulários e Container */
 
+
 .form-container {
   padding: 1rem;
-  margin: auto;
+  /* margin: auto; */
   background: white;
 }
 
@@ -223,6 +232,7 @@ footer p {
   width: 60px;
   height: 60px;
 }
+
 
 /* Seção: Contêiner Personalizado */
 #customContainer {
@@ -271,10 +281,10 @@ footer p {
 
 /* Seção: Imagem Personalizada */
 .custom-img {
-  width: 60%; /* Ajuste a porcentagem conforme necessário */
-  height: auto; /* Mantém a proporção original da imagem */
-  margin: 150px auto 0 auto; /* Centraliza horizontalmente */
+  width: 60%;
+  /* Ajuste a porcentagem conforme necessário */
+  height: auto;
+  /* Mantém a proporção original da imagem */
+  margin: 150px auto 0 auto;
+  /* Centraliza horizontalmente */
 }
-
-
-

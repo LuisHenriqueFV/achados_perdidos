@@ -58,9 +58,10 @@ require("./includes/components/cabecalho.php");
 
     <main>
         <!-- INICIO DO HEADER -->
-        <header class="bg-primary-color">
+        <header class="bg-primary-color ">
+            
             <nav class="navbar navbar-expand-lg bg-primary-color" id="navbar">
-                <div class="container py-3">
+                <div id="container" class="container">
                     <a class="navbar-logo" href="index.php">
                         <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>

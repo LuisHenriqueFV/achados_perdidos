@@ -47,7 +47,7 @@ $usuario = $consulta->fetch();
                 }
                 ?>
             </ul>
-    <button id="themeToggle" class="btn btn-text-light"><img width="25" height="25" src="https://img.icons8.com/ios/50/day-and-night.png"  alt="day-and-night"/></button>
+    <button id="themeToggle" class="btn btn-text-light"><img width="25" height="25" src="img/icons8-day-and-night-50.png"  alt="day-and-night"/></button>
 
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"

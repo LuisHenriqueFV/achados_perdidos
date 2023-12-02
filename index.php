@@ -185,10 +185,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <!-- ---------------------------------------------------------------------- -->
 
     <!-- RODAPE -->
-    <footer class="py-5" id="footer">
+    <footer id="footer">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Sobre Nós</h5>
+                <h5 >Sobre Nós</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
                             Nós</a></li>
