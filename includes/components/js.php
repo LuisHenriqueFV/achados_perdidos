@@ -14,22 +14,22 @@
 
 
     <script>
-    function toggleCategorias() {
-        var listaCategorias = document.getElementById('listaCategorias');
-        var btnMostrarCategorias = document.getElementById('btnMostrarCategorias');
-        var btnOcultarCategorias = document.getElementById('btnOcultarCategorias');
+        function toggleCategorias() {
+            var listaCategorias = document.getElementById('listaCategorias');
+            var btnMostrarCategorias = document.getElementById('btnMostrarCategorias');
+            var btnOcultarCategorias = document.getElementById('btnOcultarCategorias');
 
-        if (listaCategorias.style.display === 'none' || listaCategorias.style.display === '') {
-            listaCategorias.style.display = 'block';
-            btnMostrarCategorias.style.display = 'none';
-            btnOcultarCategorias.style.display = 'block';
-        } else {
-            listaCategorias.style.display = 'none';
-            btnMostrarCategorias.style.display = 'block';
-            btnOcultarCategorias.style.display = 'none';
+            if (listaCategorias.style.display === 'none' || listaCategorias.style.display === '') {
+                listaCategorias.style.display = 'block';
+                btnMostrarCategorias.style.display = 'none';
+                btnOcultarCategorias.style.display = 'block';
+            } else {
+                listaCategorias.style.display = 'none';
+                btnMostrarCategorias.style.display = 'block';
+                btnOcultarCategorias.style.display = 'none';
+            }
         }
-    }
-</script>
+    </script>
 
 
 
@@ -90,13 +90,42 @@
         });
     </script>
 
-            <!-- DARK MODE -->
+    <!-- DARK MODE -->
 
-            <script>
-                function saveThemeToLocalStorage(theme){
-                    
-                }
-            </script>
+    <script>
+        function saveThemeToLocalStorage(theme) {
+
+        }
+    </script>
+
+
+    <!-- dark and ligh  -->
+  <!-- Adicione este script no final do seu corpo HTML -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    // Verifique o localStorage para o tema preferido do usuário
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.classList.add(savedTheme);
+    }
+
+    // Adicione um ouvinte de evento para o botão de alternância
+    themeToggle.addEventListener('click', function () {
+      // Alternar entre os temas
+      body.classList.toggle('dark-theme');
+
+      // Salvar a escolha do usuário no localStorage
+      const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : '';
+      localStorage.setItem('theme', currentTheme);
+    });
+  });
+</script>
+
+
+
 
 
 

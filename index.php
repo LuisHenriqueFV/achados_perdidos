@@ -34,9 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
         <!-- INICIO DO HEADER -->
-        <header class="bg-primary-color">
-            <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
-                <div class="container py-3">
+        <header>
+
+            <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+
+                <div class="container">
                     <a class="navbar-logo" href="index.php">
                         <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
@@ -71,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             }
                             ?>
                         </ul>
+                <button id="themeToggle" class="btn btn-text-light"><img width="25" height="25" src="https://img.icons8.com/ios/50/day-and-night.png"  alt="day-and-night"/></button>
+
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         </div>
                     </div>
                 </div>
+
             </nav>
         </header>
         <!-- FIM DO HEADER -->
@@ -242,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <!-- ---------------------------------------------------------------------- -->
 
     <!-- RODAPE -->
-    <footer class="py-5 bg-footer-custom">
+    <footer class="py-5" id="footer">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
                 <h5>Sobre Nós</h5>
@@ -263,14 +268,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     </li>
                 </ul>
             </div>
-
-
-
-
         </div>
-
-
     </footer>
+
+
     <!-- FIM DO RODAPÉ -->
 
     <!-- ---------------------------------------------------------------------- -->
