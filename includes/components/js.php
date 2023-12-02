@@ -89,4 +89,15 @@
             });
         });
     </script>
+
+            <!-- DARK MODE -->
+
+            <script>
+                function saveThemeToLocalStorage(theme){
+                    
+                }
+            </script>
+
+
+
 </body>

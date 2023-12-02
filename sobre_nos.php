@@ -11,12 +11,13 @@ require("./includes/components/header.php");
 
 <body>
     <main>
+   
         <!-- INICIO DO HEADER -->
         <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/achados&perdidos-logo4.png" alt="achados&perdidos" />
+                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
@@ -29,11 +30,9 @@ require("./includes/components/header.php");
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="sobre_nos.php">Sobre Nós</a>
+                                <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comunidade.php">Comunidade</a>
-                            </li>
+        
                             <li class="nav-item">
                                 <a class="nav-link" href="contato.php">Contato</a>
                             </li>
@@ -76,9 +75,8 @@ require("./includes/components/header.php");
         </header>
         <!-- FIM DO HEADER -->
 
-
         <!-- INFORMAÇÃO -->
-        <div id="conteudo" class="container">
+        <div id="conteudoCadastro" class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Sobre Nós</h2>
@@ -118,47 +116,33 @@ require("./includes/components/header.php");
 
 
     </main>
-    <!-- RODAPE -->
-    <footer class="py-5 bg-primary-color">
+   <!-- RODAPE -->
+   <footer class="py-5 bg-footer-custom">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Comunidade</h5>
+                <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php" class="nav-link p-0 text-body-secondary">Comunidade</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-2 mb-2">
-                <h5>Serviços</h5>
+                <h5>Contato</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Informações</a></li>
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-2">
-                <h5>Informação</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
+        
 
 
         </div>
 
     </footer>
-    <!-- FINAL DO RODAPÉ -->
+    <!-- FIM DO RODAPÉ -->
+
 </body>
 
 </html>

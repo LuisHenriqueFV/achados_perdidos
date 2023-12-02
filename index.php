@@ -13,7 +13,7 @@ $categorias = obter_categorias($pdo);
 $cards = obter_cards_do_banco($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    
+
     $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : "";
     $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
     $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/achados&perdidos-logo4.png" alt="achados&perdidos" />
+                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
@@ -51,17 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="como_funciona.php">Como Funciona?</a>
+                                <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="sobre_nos.php">Sobre Nós</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comunidade.php">Comunidade</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contato.php">Contato</a>
-                            </li>
+
+
                             <?php
                             $userId = $_SESSION["codpessoa"];
                             $adm = verifica_administrador($userId, $pdo);
@@ -104,153 +97,141 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <!-- ---------------------------------------------------------------------- -->
 
 
-        <!-- INICIO DOS FEATURES    -->
-        <section class="features mt-5">
-            <div class="container-fluid">
-                <div class="row justify-content-lg-center">
-                    <div class="col-lg-2 col-md-12">
-
-                        <div class="features-post">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="objeto.php">Achei / Perdi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </section>
-        <!-- FIM DOS FEATURES    -->
-
-        <!-- ---------------------------------------------------------------------- -->
 
         <!-- INICIO DO CONTEUDO -->
-        <div id="conteudo" class="container">
+        <div id="filtro" class="container">
 
-            <div class="row col-lg-12 mb-2">
+            <div class="row mb-2 justify-content-center">
+                <div class="row col-lg-3  mb-2 col-md-12 col-ms-12">
+                    <a class="btn btn-custom-color" href="objeto.php"><img width="30" height="30"
+                            src="img/icons8-add-40.png " alt="filled-trash" /></a>
+                </div>
 
-                <a class="btn btn-custom-color" href="objeto.php">Achei / Perdi</a>
-            </div>
 
 
 
-            <div class="forms">
-                <form action="index.php" method="GET">
+                <div class="forms">
+                    <form action="index.php" method="GET">
 
-                    <div class="row col-lg-12">
+                        <div class="row col-lg-12">
 
-                        <div class="mb-1 input-group">
+                            <div class="mb-1 input-group">
                                 <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto"
-                                autocomplete="off">
-                            
+                                    autocomplete="off">
 
-                            <select name="categoria" class="form-select">
-                                <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>Todas
-                                    Categorias</option>
-                                <?php foreach ($categorias as $cat): ?>
-                                    <option value="<?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>"
-                                        <?= $categoria === $cat['nome'] ? 'selected' : ''; ?>>
-                                        <?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>
+
+                                <select name="categoria" class="form-select">
+                                    <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>
+                                        Todas
+                                        Categorias</option>
+                                    <?php foreach ($categorias as $cat): ?>
+                                        <option value="<?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>"
+                                            <?= $categoria === $cat['nome'] ? 'selected' : ''; ?>>
+                                            <?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+
+                                <select name="tipo" class="form-select">
+                                    <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Situação</option>
+                                    <option value="Encontrado" <?= $tipo === 'Encontrado' ? 'selected' : ''; ?>>Encontrado
                                     </option>
-                                <?php endforeach; ?>
-                            </select>
-
-                            <select name="tipo" class="form-select">
-                                <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Situação</option>
-                                <option value="Encontrado" <?= $tipo === 'Encontrado' ? 'selected' : ''; ?>>Encontrado
-                                </option>
-                                <option value="Perdido" <?= $tipo === 'Perdido' ? 'selected' : ''; ?>>Perdido</option>
-                            </select>
+                                    <option value="Perdido" <?= $tipo === 'Perdido' ? 'selected' : ''; ?>>Perdido</option>
+                                </select>
 
 
-                            <button id="customButton"   class="btn" type="submit" name="filtrarCategoria">Pesquisar</button>
+                                <button id="customButton" class="btn" type="submit"
+                                    name="filtrarCategoria"><img width="25" height="25" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1"/>
+
+</button>
+                            </div>
+
+
+
                         </div>
+                    </form>
+                </div>
 
+                <div class="conteudo">
+                    <?php if ($objeto): ?>
+                        <?php if (empty($objeto)): ?>
+                            <p>Nenhum resultado encontrado.</p>
+                        <?php else: ?>
+                            <div id="conteudo" class="container">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                                    <?php foreach ($objeto as $obj): ?>
+                                        <?php if (
+                                            ($tipo === 'Encontrado' && $obj['tipo'] === 'Encontrado') ||
+                                            ($tipo === 'Perdido' && $obj['tipo'] === 'Perdido') ||
+                                            ($tipo === '')
+                                        ): ?>
+                                            <div class="col mb-4">
+                                                <div class="card" style="max-width: 600px; height: 350px   ;">
+                                                    <div class="row g-0">
+                                                        <div class="col-lg-4">
+                                                            <img src="<?= $obj['imagem']; ?>" class="img-fluid rounded-start"
+                                                                alt="Imagem do Card" style="width: 100%; height: 150px ;">
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">
+                                                                    <?= $obj['tipo']; ?>
+                                                                </h5>
+                                                                <p class="card-text">
+                                                                    <?= $obj['categoria']; ?>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                    <?= $obj['nome']; ?>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                    <?= $obj['descricao']; ?>
+                                                                </p>
+                                                                <p class="card-text">
+                                                                    <?= $obj['local']; ?>
+                                                                </p>
 
+                                                                <?php $pessoa = pesquisa_pessoa_por_id($obj['codpessoa'], $pdo) ?>
+                                                                <p class="card-text"><small class="text-body-secondary">
+                                                                        <?php echo $pessoa['email']; ?>
+                                                                    </small></p>
 
-                    </div>
-                </form>
-            </div>
+                                                                <p class="card-text"><small class="text-body-secondary">
+                                                                        <?= date(' d / m / Y ', strtotime($obj['data'])); ?>
+                                                                    </small></p>
 
-            <div class="conteudo">
-                <?php if ($objeto): ?>
-                    <?php if (empty($objeto)): ?>
-                        <p>Nenhum resultado encontrado.</p>
-                    <?php else: ?>
-                        <div id="conteudo" class="container">
-                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                                <?php foreach ($objeto as $obj): ?>
-                                    <?php if (
-                                        ($tipo === 'Encontrado' && $obj['tipo'] === 'Encontrado') ||
-                                        ($tipo === 'Perdido' && $obj['tipo'] === 'Perdido') ||
-                                        ($tipo === '')
-                                    ): ?>
-                                        <div class="col mb-4">
-                                            <div class="card" style="max-width: 600px; height: 350px;">
-                                                <div class="row g-0">
-                                                    <div class="col-lg-4">
-                                                        <img src="<?= $obj['imagem']; ?>" class="img-fluid rounded-start"
-                                                            alt="Imagem do Card" style="width: 100%; height:150px ;">
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">
-                                                                <?= $obj['tipo']; ?>
-                                                            </h5>
-                                                            <p class="card-text">
-                                                                <?= $obj['categoria']; ?>
-                                                            </p>
-                                                            <p class="card-text">
-                                                                <?= $obj['nome']; ?>
-                                                            </p>
-                                                            <p class="card-text">
-                                                                <?= $obj['descricao']; ?>
-                                                            </p>
-                                                            <p class="card-text">
-                                                                <?= $obj['local']; ?>
-                                                            </p>
-                                                            
-                                                            <?php $pessoa = pesquisa_pessoa_por_id($obj['codpessoa'], $pdo) ?>
-                                                            <p class="card-text"><small class="text-body-secondary">
-                                                                    <?php echo $pessoa['email']; ?>
-                                                                </small></p>
-                                                            
-                                                            <p class="card-text"><small class="text-body-secondary">
-                                                                    <?= date(' d / m / Y ', strtotime($obj['data'])); ?>
-                                                                </small></p>
+                                                                <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $obj['codpessoa'] == $_SESSION["codpessoa"])): ?>
+                                                                    <div class="justfy-content-between ">
+                                                                        <a href="editar_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img
+                                                                                width="24" height="24"
+                                                                                src="https://img.icons8.com/dusk/64/000000/edit--v1.png"
+                                                                                alt="edit--v1" /></a>
+                                                                        <a href="excluir_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img
+                                                                                width="30" height="30"
+                                                                                src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
+                                                                                alt="filled-trash" /></a>
+                                                                    </div>
+                                                                <?php endif; ?>
 
-                                                            <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $obj['codpessoa'] == $_SESSION["codpessoa"])): ?>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <a href="editar_objeto.php?id=<?= $obj['id']; ?>"
-                                                                        class="btn btn-primary">Editar</a>
-                                                                    <a href="excluir_objeto.php?id=<?= $obj['id']; ?>"
-                                                                        class="btn btn-danger">Excluir</a>
-                                                                </div>
-                                                            <?php endif; ?>
-
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <p>
+                            <?= htmlspecialchars($msg, ENT_QUOTES) ?>
+                        </p>
                     <?php endif; ?>
-                <?php else: ?>
-                    <p>
-                        <?= htmlspecialchars($msg, ENT_QUOTES) ?>
-                    </p>
-                <?php endif; ?>
-            </div>
+                </div>
 
 
-        </div>
-        <!-- FIM DO CONTEUDO -->
+
+                <!-- FIM DO CONTEUDO -->
 
 
 
@@ -259,43 +240,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <!-- ---------------------------------------------------------------------- -->
 
     <!-- RODAPE -->
-    <footer class="py-5 bg-primary-color">
+    <footer class="py-5 bg-footer-custom">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Comunidade</h5>
+                <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
+                            Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como
+                            Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php"
+                            class="nav-link p-0 text-body-secondary">Comunidade</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-2 mb-2">
-                <h5>Serviços</h5>
+                <h5>Informações</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Contato</a>
+                    </li>
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-2">
-                <h5>Informação</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
+
 
 
         </div>
+
 
     </footer>
     <!-- FIM DO RODAPÉ -->

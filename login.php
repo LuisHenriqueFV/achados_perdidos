@@ -57,55 +57,108 @@ require("./includes/components/cabecalho.php");
 <body>
 
     <main>
-        <div id="loginContainer" >
-                <div class=" m-auto form-container rounded-4 p-5">
-                    <form action="login.php" method="POST" class="needs-validation">
+        <!-- INICIO DO HEADER -->
+        <header class="bg-primary-color">
+            <nav class="navbar navbar-expand-lg bg-primary-color" id="navbar">
+                <div class="container py-3">
+                    <a class="navbar-logo" href="index.php">
+                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar-items">
+                        <div class="dropdown text-end">
 
-                        <div class="text-center mb-4">
-                            <h1 class="mb-2 fw-regular">Login</h1>
-                            <hr class="w-100 mx-auto my-2">
+
                         </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="exemplo@gmail.com" required>
-                            <label for="email">E-mail</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Digite sua senha" required>
-                            <label for="password">Senha</label>
-                        </div>
-
-                        <button type="submit" class="btn-custom-color w-100 py-2 rounded-2">Entrar</button>
-                        <hr class="w-100 mx-auto my-2">
-                        <div class="row">
-                            <div class="col-md-6 text-center">
-                                <p><a href="registro.php"
-                                        class="link-secondary link-offset-2 link-opacity-25 link-opacity-100-hover">Registre-se</a>
-                                </p>
-                            </div>
-                            <div class="col-md-6 text-center">
-                                <p><a href="recuperar_senha.php"
-                                        class="link-secondary link-offset-2 link-opacity-25 link-opacity-100-hover">Esqueci
-                                        a Senha</a></p>
-                            </div>
-                        </div>
-
-                        <?php echo $_SESSION["msg"]; ?>
-                    </form>
-
-                    <?php
-                    if (isset($_SESSION['senha_alterada'])) {
-                        echo '<p style="color: green;">Senha alterada com sucesso!</p>';
-                        unset($_SESSION['senha_alterada']);
-                    }
-                    ?>
+                    </div>
                 </div>
+            </nav>
+        </header>
+        <!-- FIM DO HEADER -->
+        <!-- CONTEUDO -->
+        <div id="loginContainer">
+            <div class=" m-auto form-container rounded-4 p-5">
+                <form action="login.php" method="POST" class="needs-validation">
+
+                    <div class="text-center mb-4">
+                        <h1 class="mb-2 fw-regular">Login</h1>
+                        <hr class="w-100 mx-auto my-2">
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@gmail.com"
+                            required>
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Digite sua senha" required>
+                        <label for="password">Senha</label>
+                    </div>
+
+                    <button type="submit" class="btn-custom-color w-100 py-2 rounded-2">Entrar</button>
+                    <hr class="w-100 mx-auto my-2">
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <p><a href="registro.php"
+                                    class="link-secondary link-offset-2 link-opacity-25 link-opacity-100-hover">Registre-se</a>
+                            </p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <p><a href="recuperar_senha.php"
+                                    class="link-secondary link-offset-2 link-opacity-25 link-opacity-100-hover">Esqueci
+                                    a Senha</a></p>
+                        </div>
+                    </div>
+
+                    <?php echo $_SESSION["msg"]; ?>
+                </form>
+
+                <?php
+                if (isset($_SESSION['senha_alterada'])) {
+                    echo '<p style="color: green;">Senha alterada com sucesso!</p>';
+                    unset($_SESSION['senha_alterada']);
+                }
+                ?>
             </div>
         </div>
-
+        </div>
+        <!-- FIM DO CONTEUDO -->
     </main>
+    <!-- RODAPE -->
+    <footer class="py-5 bg-footer-custom">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-2 mb-2">
+                <h5>Sobre Nós</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
+                            Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como
+                            Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php"
+                            class="nav-link p-0 text-body-secondary">Comunidade</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-2 mb-2">
+                <h5>Contato</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="contato.php"
+                            class="nav-link p-0 text-body-secondary">Informações</a></li>
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+    </footer>
+    <!-- FIM DO RODAPÉ -->
 
 </body>
 

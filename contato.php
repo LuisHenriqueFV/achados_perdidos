@@ -42,23 +42,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->send();
 
         echo '<p class="alert alert-success">Mensagem enviada com sucesso!</p>';
-   } catch (Exception $e) {
-    echo '<p class="alert alert-danger">Erro ao enviar a mensagem: ' . $mail->ErrorInfo . '</p>';
-    echo 'Código de erro: ' . $e->getCode() . '<br>';
-    echo 'Mensagem de erro: ' . $e->getMessage();
-}
+    } catch (Exception $e) {
+        echo '<p class="alert alert-danger">Erro ao enviar a mensagem: ' . $mail->ErrorInfo . '</p>';
+        echo 'Código de erro: ' . $e->getCode() . '<br>';
+        echo 'Mensagem de erro: ' . $e->getMessage();
+    }
 
 }
 ?>
 
 <body>
     <main>
-                <!-- INICIO DO HEADER -->
-                <header class="bg-primary-color">
+
+        <!-- INICIO DO HEADER -->
+
+        <header id="conteudoCadastro" class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/achados&perdidos-logo4.png" alt="achados&perdidos" />
+                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
@@ -71,11 +73,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="sobre_nos.php">Sobre Nós</a>
+                                <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comunidade.php">Comunidade</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="contato.php">Contato</a>
                             </li>
@@ -119,72 +119,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- FIM DO HEADER -->
 
         <div id="conteudo" class="container">
-                <h1 class="text-center">Entre em Contato</h1>
-                <p>Se você tiver alguma dúvida, sugestão ou precisar de suporte, fique à vontade para entrar em contato
-                    conosco preenchendo o formulário abaixo.</p>
+            <h1 class="text-center">Entre em Contato</h1>
+            <p>Se você tiver alguma dúvida, sugestão ou precisar de suporte, fique à vontade para entrar em contato
+                conosco preenchendo o formulário abaixo.</p>
 
-                <form action="#" method="post" class="form-container">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="mensagem" class="form-label">Mensagem:</label>
-                        <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+            <form action="#" method="post" class="form-container">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mensagem" class="form-label">Mensagem:</label>
+                    <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
 
-                </form>
-            
+            </form>
+
         </div>
     </main>
 
     <!-- RODAPE -->
-    <footer class="py-5 bg-primary-color">
+    <footer class="py-5 bg-footer-custom">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Comunidade</h5>
+                <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php" class="nav-link p-0 text-body-secondary">Comunidade</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-2 mb-2">
-                <h5>Serviços</h5>
+                <h5>Contato</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Informações</a></li>
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-2">
-                <h5>Informação</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
+        
 
 
         </div>
 
     </footer>
-    <!-- FINAL DO RODAPÉ -->
+    <!-- FIM DO RODAPÉ -->
+
 </body>
 
 </html>

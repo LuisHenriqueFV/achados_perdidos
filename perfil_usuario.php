@@ -30,12 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 
 <body>
     <main>
-            <!-- INICIO DO HEADER -->
-            <header class="bg-primary-color">
+
+        <!-- INICIO DO HEADER -->
+        <header class="bg-primary-color">
             <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
                 <div class="container py-3">
                     <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/achados&perdidos-logo4.png" alt="achados&perdidos" />
+                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
@@ -48,11 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="sobre_nos.php">Sobre Nós</a>
+                                <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="comunidade.php">Comunidade</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="contato.php">Contato</a>
                             </li>
@@ -95,77 +94,82 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
         </header>
         <!-- FIM DO HEADER -->
 
-        <div id="conteudoPerfil" class="container">
-            <div class="forms">
-                <h1 class="text-center">Olá,
+
+        <div id="conteudoPerfil" class="container mt-5%">
+            <div class="text-center">
+                <h1>Olá,
                     <?php echo $usuario["nome"]; ?>
                 </h1>
-                <div class="row justify-content-center">
+            </div>
 
-                    <div class="col-md-12">
-                        <div id="imagemPerfil" class="mb-3">
-                            <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil"
-                                class="img-thumbnail" style="max-width: 150px;">
-                        </div>
-                        <form id="formImagem" method="POST" enctype="multipart/form-data">
-                            <label for="imagem">Trocar Foto:</label>
-                            <input type="file" name="imagem" accept="image/*" class="form-control-file">
-                            <button type="submit" id="btnEnviarImagem" class="btn btn-primary mt-2">Enviar
-                                Imagem</button>
-                        </form>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-4 text-center">
+                    <div id="imagemPerfil" class="mb-3">
+                        <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil"
+                            class="img-thumbnail" style="max-width: 150px;">
+                    </div>
+                    <form id="formImagem" method="POST" enctype="multipart/form-data">
+                        <label for="imagem" class="form-label">Trocar Foto:</label>
+                        <input type="file" name="imagem" accept="image/*" class="form-control-file">
+                        <button type="submit" id="btnEnviarImagem" class="btn btn-primary mt-2">Enviar Imagem</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center">
+                        <a class="btn btn-primary mx-2" href="endereco.php" role="button">Cadastrar Endereço</a>
+                        <a class="btn btn-primary mx-2" href="minhas_informacoes.php" role="button">Minhas
+                            Informações</a>
                     </div>
                 </div>
-                <div class="mt-3">
-                    <a class="btn btn-primary" href="endereco.php" role="button">Cadastrar Endereço</a>
-                    <a class="btn btn-primary" href="minhas_informacoes.php" role="button">Minhas Informações</a>
 
-                    <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-md-6 text-center">
+                        <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+                    </div>
                 </div>
+
             </div>
         </div>
+        
+
+
+    
 
     </main>
- <!-- RODAPE -->
-    <footer class="py-5 bg-primary-color">
+    <!-- RODAPE -->
+    <footer class="py-5 bg-footer-custom">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5>Comunidade</h5>
+                <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
+                            Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como
+                            Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php"
+                            class="nav-link p-0 text-body-secondary">Comunidade</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-2 mb-2">
-                <h5>Serviços</h5>
+                <h5>Contato</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    <li class="nav-item mb-2"><a href="contato.php"
+                            class="nav-link p-0 text-body-secondary">Informações</a></li>
                 </ul>
             </div>
 
-            <div class="col-6 col-md-2 mb-2">
-                <h5>Informação</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
 
-           
+
+
         </div>
 
     </footer>
-    <!-- FINAL DO RODAPÉ -->
+    <!-- FIM DO RODAPÉ -->
+
 </body>
 
 </html>
