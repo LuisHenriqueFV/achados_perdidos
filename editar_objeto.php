@@ -60,11 +60,13 @@ require_once("./includes/components/cabecalho.php");
 <body>
 
     <main>
-        
+
         <!-- INICIO DO HEADER -->
-        <header class="bg-primary-color">
-            <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
-                <div class="container py-3">
+        <header>
+
+            <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+
+                <div class="container">
                     <a class="navbar-logo" href="index.php">
                         <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
                     </a>
@@ -81,10 +83,8 @@ require_once("./includes/components/cabecalho.php");
                             <li class="nav-item">
                                 <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-        
-                            <li class="nav-item">
-                                <a class="nav-link" href="contato.php">Contato</a>
-                            </li>
+
+
                             <?php
                             $userId = $_SESSION["codpessoa"];
                             $adm = verifica_administrador($userId, $pdo);
@@ -101,6 +101,9 @@ require_once("./includes/components/cabecalho.php");
                             }
                             ?>
                         </ul>
+                        <button id="themeToggle" class="btn btn-text-light"><img width="25" height="25"
+                                src="https://img.icons8.com/ios/50/day-and-night.png" alt="day-and-night" /></button>
+
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,6 +123,7 @@ require_once("./includes/components/cabecalho.php");
                         </div>
                     </div>
                 </div>
+
             </nav>
         </header>
         <!-- FIM DO HEADER -->
@@ -174,33 +178,33 @@ require_once("./includes/components/cabecalho.php");
             </form>
         </div>
     </main>
-       <!-- RODAPE -->
-       <footer class="py-5 bg-footer-custom">
+
+    <!-- RODAPE -->
+    <footer class="py-5" id="footer">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
                 <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre Nós</a></li>
-                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como Funciona?</a></li>
-                    <li class="nav-item mb-2"><a href="comunidade.php" class="nav-link p-0 text-body-secondary">Comunidade</a></li>
+                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
+                            Nós</a></li>
+                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como
+                            Funciona?</a></li>
+                    <li class="nav-item mb-2"><a href="comunidade.php"
+                            class="nav-link p-0 text-body-secondary">Comunidade</a></li>
                 </ul>
             </div>
 
             <div class="col-6 col-md-2 mb-2">
-                <h5>Contato</h5>
+                <h5>Informações</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Informações</a></li>
+                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Contato</a>
+                    </li>
                 </ul>
             </div>
-
-        
-
-
         </div>
-
     </footer>
-    <!-- FIM DO RODAPÉ -->
 
+    <!-- FIM DO RODAPÉ -->
 </body>
 
 </html>
