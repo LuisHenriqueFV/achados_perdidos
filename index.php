@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 ?>
 
 
-<body>
+<body class="dark">
 
 
     <main>
- 
+
         <!-- INICIO DO HEADER -->
         <!-- FIM DO HEADER -->
 
@@ -176,9 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <?php endif; ?>
         </div>
 
+        <br><br><br><br><br><br><br><br><br><br>
 
 
-        
         <!-- FIM DO CONTEUDO -->
 
 
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <footer id="footer">
         <div class="row justify-content-center">
             <div class="col-6 col-md-2 mb-2">
-                <h5 >Sobre Nós</h5>
+                <h5>Sobre Nós</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
                             Nós</a></li>
