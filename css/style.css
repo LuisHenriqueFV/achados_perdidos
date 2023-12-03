@@ -44,7 +44,8 @@ main {
   --cor-texto-link-hover: #dadfe9;
   --cor-border-active: #F2D261;
   --cor-hover-underline: #F2D261;
-  --cor-background-container: #fff;
+  --cor-backgraund-container: #fff;
+  --cor-backgraund-conteudo-Perfil: #fff;
 
   --dark-btn-custom-backgraund: #F2C161;
   --dark-btn-custom-backgraund-hover: #D5AA55;
@@ -56,6 +57,8 @@ main {
   --dark-card-text: #ffffff;
   --dark-footer: #38373791;
   --dark-footer-text: #fff;
+  --dark-conteudo-Perfil:#38373791;
+  --dark-conteudo-Cadastro:#38373791;
 }
 
 
@@ -68,6 +71,7 @@ main {
 
 
 }
+
 
 
 
@@ -198,7 +202,20 @@ body.dark-theme {
 
 }
 
+body.dark-theme #conteudoPerfil{
+  background-color: var(--dark-conteudo-Perfil);
 
+}
+
+body.dark-theme #conteudoCadastro{
+  background-color: var(--dark-conteudo-Cadastro);
+  color: var(--dark-text-white);
+}
+
+body.dark-theme #conteudoMinhasInformacoes{
+    background-color: var(--dark-conteudo-Cadastro);
+  color: var(--dark-text-white);
+}
 
 
 /* Seção: Conteúdo da Página */
@@ -219,7 +236,7 @@ body.dark-theme {
 #conteudoPerfil {
   margin-top: 14%;
   height: auto;
-  background-color: #fff;
+  background-color: var(--cor-backgraund-conteudo-Perfil);
   border-radius: 20px;
   padding-top: 3%;
   padding-bottom: 3%;
@@ -232,9 +249,22 @@ body.dark-theme {
 }
 
 #conteudoCadastro {
-  height: auto;
+  padding: 20px;
+  height: 650px;
   margin-top: 5%;
   margin-bottom: 30%;
+  border-radius: 10px;
+    background-color: var(--cor-backgraund-container);
+}
+
+#conteudoMinhasInformacoes {
+  padding: 20px;
+  width: 550px;
+  height: 500px;
+  margin-top: 5%;
+  margin-bottom: 30%;
+  border-radius: 10px;
+  background-color: var(--cor-backgraund-container);
 }
 
 /* Seção: Footer */

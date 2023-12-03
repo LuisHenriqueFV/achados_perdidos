@@ -14,9 +14,13 @@ $usuario = $consulta->fetch();
 
 <body>
     <main>
-  
+    <div class="row col 12">
+                <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
+                        src="img/icons8-back-100.png " alt="filled-trash" /></a>
+            </div>
 
-        <div id="conteudoCadastro" class="container">
+        <div id="conteudoMinhasInformacoes" class="container d-flex justify-content-center">
+            
             <div class="forms">
                 <h1 class="text-center">Minhas Informações</h1>
                 <div class="row justify-content-center">
@@ -24,26 +28,33 @@ $usuario = $consulta->fetch();
                         <p><strong>Nome de Usuário:</strong>
                             <?php echo $usuario["nome"]; ?>
                         </p>
+                        <hr>
                         <p><strong>Email:</strong>
                             <?php echo $usuario["email"]; ?>
                         </p>
+                        <hr>
                         <p><strong>CEP:</strong>
                             <?php echo $usuario["cep"]; ?>
                         </p>
+                        <hr>
                         <p><strong>Bairro:</strong>
                             <?php echo $usuario["bairro"]; ?>
                         </p>
+                        <hr>
                         <p><strong>Rua:</strong>
                             <?php echo $usuario["logradouro"]; ?>
                         </p>
+                        <hr>
                         <p><strong>Cidade:</strong>
                             <?php echo $usuario["cidade"]; ?>
                         </p>
+                        <hr>
                     </div>
+
                     <div class="col-md-12">
                         <a class="btn btn-primary" href="editar_minhas_informacoes.php" role="button">Editar
                             Informações</a>
-                        <a class="btn btn-secondary" href="perfil_usuario.php" role="button">Voltar</a>
+                     
                     </div>
                 </div>
             </div>

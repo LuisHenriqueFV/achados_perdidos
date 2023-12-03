@@ -63,10 +63,10 @@ $tipos = array("Encontrado", "Perdido");
 <body>
     <main>
 
-    <div class="container">
+        <div class="container">
             <div class="row col 12">
-            <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
-                            src="img/icons8-back-100.png " alt="filled-trash" /></a>
+                <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
+                        src="img/icons8-back-100.png " alt="filled-trash" /></a>
             </div>
         </div>
 
@@ -93,6 +93,7 @@ $tipos = array("Encontrado", "Perdido");
                                 }
                                 ?>
                             </select>
+                            <hr>
                             <select id="tipo" name="tipo" class="form-select" required>
                                 <option value="" disabled selected>Situação</option>
                                 <?php
@@ -101,27 +102,33 @@ $tipos = array("Encontrado", "Perdido");
                                 }
                                 ?>
                             </select>
-
+<hr>
                             <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do objeto"
                                 autocomplete="off" required>
+                                <hr>
                             <input type="text" id="descricao" name="descricao" class="form-control"
                                 placeholder="Descrição do objeto" autocomplete="off" required>
+                                <hr>
                             <input type="text" id="local" name="local" class="form-control" placeholder="Local"
                                 autocomplete="off" required>
+                                <hr>
                             <input type="date" id="data" name="data" class="form-control" required>
-
+<hr>
                             <label for="imagem">Imagem:</label>
                             <input type="file" id="imagem" name="imagem" class="form-control">
 
 
 
-
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-custom-color">Cadastrar Objeto</button>
+                            </div>
+                            
                         </div>
 
 
-                        <button type="submit" class="btn btn-primary">Cadastrar Objeto</button>
-
                     </form>
+
                 </div>
             </div>
 

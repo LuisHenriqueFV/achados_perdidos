@@ -27,62 +27,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 }
 ?>
 
-<body>
+<body class="dark">
     <main>
 
 
-     <?php
+        <?php
         if (!empty($msg)) {
             echo '<div class="alert alert-success">' . $msg . '</div>';
         }
-        ?> 
+        ?>
 
-        <div id="conteudoPerfil" class="container mt-5% col-6">
-            <div class="text-center">
-                <h1>Olá,
-                    <?php echo $usuario["nome"]; ?>.
-                </h1>
-            </div>
+      
 
-            <div class="row justify-content-center mt-4">
-    <div class="col-md-4 text-center">
-        <div id="imagemPerfil" class="mb-3">
-            <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil"
-                class="img-thumbnail" style="max-width: 150px;">
-        </div>
-        <form id="formImagem" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="imagem" class="form-label">Trocar Foto:</label>
-                <input type="file" name="imagem" accept="image/*" class="form-control-file">
-            </div>
-            <button type="submit" id="btnEnviarImagem" class="btn btn-custom-color mt-2">
-               Enviar Imagem  <img width="24" height="24" src="https://img.icons8.com/material/48/000000/send.png" alt="send" />
-               
-            </button>
-        </form>
-    </div>
-</div>
+            <div id="conteudoPerfil" class="container mt-5% col-6">
+                <div class="text-center">
+                    <h1>Olá,
+                        <?php echo $usuario["nome"]; ?>.
+                    </h1>
+                </div>
 
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-4 text-center">
+                        <div id="imagemPerfil" class="mb-3">
+                            <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil"
+                                class="img-thumbnail" style="max-width: 150px;">
+                        </div>
+                        <form id="formImagem" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="imagem" class="form-label">Trocar Foto:</label>
+                                <input type="file" name="imagem" accept="image/*" class="form-control-file">
+                                <hr>
+                            </div>
+                            <button type="submit" id="btnEnviarImagem" class="btn btn-custom-color mt-2">
+                                Enviar Imagem <img width="24" height="24"
+                                    src="https://img.icons8.com/material/48/000000/send.png" alt="send" />
 
-            <div class="mt-4">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 text-center">
-                        <a class="btn btn-custom-color mx-2" href="minhas_informacoes.php" role="button">Minhas
-                            Informações</a>
+                            </button>
+                            <hr>
+                        </form>
                     </div>
                 </div>
 
-                <div class="row justify-content-center mt-3">
-                    <div class="col-md-6 text-center">
-                        <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+
+                <div class="mt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                            <a class="btn btn-custom-color mx-2" href="minhas_informacoes.php" role="button">Minhas
+                                Informações</a>
+                            <hr>
+                        </div>
                     </div>
+
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-md-6 text-center">
+                            <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-            
-        </div>
 
-  
+    
+
+
+
 
     </main>
 
