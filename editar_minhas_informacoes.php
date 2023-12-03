@@ -52,43 +52,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="nome">Nome de Usuário:</label>
                             <input type="text" name="nome" class="form-control" value="<?php echo $usuario["nome"]; ?>"
                                 required>
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control"
                                 value="<?php echo $usuario["email"]; ?>" required>
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="nova_senha">Nova Senha:</label>
                             <input type="password" name="nova_senha" class="form-control"
                                 placeholder="Deixar em branco para não alterar sua senha atual">
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="cep">CEP:</label>
                             <input class="form-control" type="text" name="cep" id="cep"
                                 placeholder="Digite seu cep para obter informações sobre seu endereço"
                                 value="<?php echo $usuario["cep"]; ?>">
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="bairro">Bairro:</label>
                             <input class="form-control" type="text" name="bairro" id="bairro"
                                 value="<?php echo $usuario["bairro"]; ?>">
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="logradouro">Rua:</label>
                             <input class="form-control" type="text" id="logradouro" name="logradouro"
                                 value="<?php echo $usuario["logradouro"]; ?>">
+                                <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="cidade">Cidade:</label>
 
                             <input class="form-control" type="text" name="cidade" id="cidade"
                                 value="<?php echo $usuario["cidade"]; ?>">
+                                <hr>
                         </div>
                     </div>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-primary">Atualizar Informações</button>
-                        <a class="btn btn-secondary" href="minhas_informacoes.php" role="button">Cancelar</a>
+                        <button type="submit" class="btn btn-custom-color">Atualizar Informações</button>
+                        <a class="btn btn-secondary" href="minhas_informacoes.php" role="button">Voltar</a>
                     </div>
                 </form>
             </div>

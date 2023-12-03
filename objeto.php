@@ -63,12 +63,6 @@ $tipos = array("Encontrado", "Perdido");
 <body>
     <main>
 
-        <div class="container">
-            <div class="row col 12">
-                <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
-                        src="img/icons8-back-100.png " alt="filled-trash" /></a>
-            </div>
-        </div>
 
 
         <!-- FORMULARIO DE objeto -->
@@ -102,18 +96,18 @@ $tipos = array("Encontrado", "Perdido");
                                 }
                                 ?>
                             </select>
-<hr>
+                            <hr>
                             <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do objeto"
                                 autocomplete="off" required>
-                                <hr>
+                            <hr>
                             <input type="text" id="descricao" name="descricao" class="form-control"
                                 placeholder="Descrição do objeto" autocomplete="off" required>
-                                <hr>
+                            <hr>
                             <input type="text" id="local" name="local" class="form-control" placeholder="Local"
                                 autocomplete="off" required>
-                                <hr>
+                            <hr>
                             <input type="date" id="data" name="data" class="form-control" required>
-<hr>
+                            <hr>
                             <label for="imagem">Imagem:</label>
                             <input type="file" id="imagem" name="imagem" class="form-control">
 
@@ -123,7 +117,12 @@ $tipos = array("Encontrado", "Perdido");
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-custom-color">Cadastrar Objeto</button>
                             </div>
-                            
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-secondary" href="minhas_informacoes.php" role="button">Voltar</a>
+
+                            </div>
+
                         </div>
 
 

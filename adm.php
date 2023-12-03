@@ -45,16 +45,11 @@ $categorias = obter_categorias($pdo);
 <body>
     <main>
 
-        <div class="container">
-            <div class="row col 12">
-            <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
-                            src="img/icons8-back-100.png " alt="filled-trash" /></a>
-            </div>
-        </div>
 
-        
 
-        <div id="conteudoCadastro" class="container">
+
+
+        <div id="conteudoPerfil" class="container">
             <div class="forms">
                 <h1 class="h2 d-flex justify-content-center">Cadastrar Categoria</h1>
                 <?php
@@ -63,7 +58,7 @@ $categorias = obter_categorias($pdo);
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
                 ?>
-<hr>
+                <hr>
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">
@@ -82,13 +77,22 @@ $categorias = obter_categorias($pdo);
                             onclick="toggleCategorias()">Mostrar Categorias</button>
                         <button type="button" id="btnOcultarCategorias" class="btn btn-custom-color"
                             style="display: none;" onclick="toggleCategorias()">Ocultar Categorias</button>
+
                     </div>
+                    <hr>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+                    </div>
+<hr>
 
                 </form>
             </div>
 
             <div id="listaCategorias" class="forms" style="display: none;">
-                <h3>Lista de Categorias</h3>
+            <div class="d-flex justify-content-center">
+                                <h3>Lista de Categorias</h3>
+
+            </div>
                 <ul class="list-group">
                     <?php foreach ($categorias as $categoria): ?>
                         <li class='list-group-item d-flex justify-content-between align-items-center'>

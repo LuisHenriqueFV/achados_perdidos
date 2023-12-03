@@ -57,8 +57,8 @@ main {
   --dark-card-text: #ffffff;
   --dark-footer: #38373791;
   --dark-footer-text: #fff;
-  --dark-conteudo-Perfil:#38373791;
-  --dark-conteudo-Cadastro:#38373791;
+  --dark-conteudo-Perfil: #38373791;
+  --dark-conteudo-Cadastro: #38373791;
 }
 
 
@@ -202,18 +202,18 @@ body.dark-theme {
 
 }
 
-body.dark-theme #conteudoPerfil{
+body.dark-theme #conteudoPerfil {
   background-color: var(--dark-conteudo-Perfil);
 
 }
 
-body.dark-theme #conteudoCadastro{
+body.dark-theme #conteudoCadastro {
   background-color: var(--dark-conteudo-Cadastro);
   color: var(--dark-text-white);
 }
 
-body.dark-theme #conteudoMinhasInformacoes{
-    background-color: var(--dark-conteudo-Cadastro);
+body.dark-theme #conteudoMinhasInformacoes {
+  background-color: var(--dark-conteudo-Cadastro);
   color: var(--dark-text-white);
 }
 
@@ -242,7 +242,15 @@ body.dark-theme #conteudoMinhasInformacoes{
   padding-bottom: 3%;
 
 }
-
+#conteudoRegistro{
+  background-color: var(--cor-backgraund-container);
+  width: 400px;
+  height: auto;
+  padding: 20px;
+  margin-top: 10%;
+  border-radius: 20px;
+  margin-bottom: 15%;
+}
 #conteudo {
   margin-top: 2%;
   height: auto;
@@ -250,18 +258,18 @@ body.dark-theme #conteudoMinhasInformacoes{
 
 #conteudoCadastro {
   padding: 20px;
-  height: 650px;
+  height: auto;
   margin-top: 5%;
   margin-bottom: 30%;
   border-radius: 10px;
-    background-color: var(--cor-backgraund-container);
+  background-color: var(--cor-backgraund-container);
 }
 
 #conteudoMinhasInformacoes {
-  padding: 20px;
-  width: 550px;
-  height: 500px;
-  margin-top: 5%;
+  padding-top: 20px;
+  width: 560px;
+  height: auto;
+  margin-top: 2%;
   margin-bottom: 30%;
   border-radius: 10px;
   background-color: var(--cor-backgraund-container);
@@ -307,6 +315,7 @@ footer p {
   width: 350px;
   height: 100vh;
   margin-top: 15%;
+  
 
 }
 

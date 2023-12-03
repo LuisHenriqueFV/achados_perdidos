@@ -12,18 +12,18 @@ $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
 ?>
 
+<html>
+
 <body>
     <main>
-    <div class="row col 12">
-                <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
-                        src="img/icons8-back-100.png " alt="filled-trash" /></a>
-            </div>
+
+
 
         <div id="conteudoMinhasInformacoes" class="container d-flex justify-content-center">
-            
+
             <div class="forms">
                 <h1 class="text-center">Minhas Informações</h1>
-                <div class="row justify-content-center">
+                <div class="row justify-content-center py-5">
                     <div class="col-md-12">
                         <p><strong>Nome de Usuário:</strong>
                             <?php echo $usuario["nome"]; ?>
@@ -51,17 +51,24 @@ $usuario = $consulta->fetch();
                         <hr>
                     </div>
 
-                    <div class="col-md-12">
-                        <a class="btn btn-primary" href="editar_minhas_informacoes.php" role="button">Editar
+                    <div class="d-flex justify-content-center pb-2">
+                        <a class="btn btn-custom-color" href="editar_minhas_informacoes.php" role="button">Editar
                             Informações</a>
-                     
+
+                    </div>
+                    <hr>
+                    <div class="container d-flex justify-content-center">
+                        <div class="row col-2">
+                        <a class="btn btn-secondary" href="perfil_usuario.php" role="button">Voltar</a>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
     </main>
- 
+
     <!-- RODAPE -->
     <footer class="py-5" id="footer">
         <div class="row justify-content-center">
