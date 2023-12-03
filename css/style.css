@@ -242,7 +242,8 @@ body.dark-theme #conteudoMinhasInformacoes {
   padding-bottom: 3%;
 
 }
-#conteudoRegistro{
+
+#conteudoRegistro {
   background-color: var(--cor-backgraund-container);
   width: 400px;
   height: auto;
@@ -251,6 +252,7 @@ body.dark-theme #conteudoMinhasInformacoes {
   border-radius: 20px;
   margin-bottom: 15%;
 }
+
 #conteudo {
   margin-top: 2%;
   height: auto;
@@ -263,6 +265,24 @@ body.dark-theme #conteudoMinhasInformacoes {
   margin-bottom: 30%;
   border-radius: 10px;
   background-color: var(--cor-backgraund-container);
+}
+
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  padding: 20px 10px;
+  height: 50px;
+  width: 50px;
+  background-color: #333;
+  color: #FFF;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 #conteudoMinhasInformacoes {
@@ -315,7 +335,7 @@ footer p {
   width: 350px;
   height: 100vh;
   margin-top: 15%;
-  
+
 
 }
 
