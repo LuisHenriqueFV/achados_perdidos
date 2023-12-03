@@ -30,10 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 ?>
 
+
 <body>
+
+
     <main>
-
-
+ 
         <!-- INICIO DO HEADER -->
         <!-- FIM DO HEADER -->
 
@@ -47,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <div id="filtro" class="container">
                 <div class="row col-lg-12  mb-2 col-md-12 col-ms-12">
                     <a class="btn btn-custom-color" href="objeto.php"><img width="30" height="30"
-                            src="img/icons8-add-40.png " alt="filled-trash" /></a>
+                            src="img/icons8-add-100.png " alt="filled-trash" /></a>
                 </div>
                 <div class="row mb-2 justify-content-center">
                     <div class="row col-lg-3">
@@ -176,6 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
 
+        
         <!-- FIM DO CONTEUDO -->
 
 

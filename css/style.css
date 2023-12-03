@@ -9,6 +9,9 @@ body {
   background: linear-gradient(var(--cor-background));
 }
 
+html {
+  height: auto;
+}
 
 
 main {
@@ -26,6 +29,7 @@ main {
 :root {
   --cor-background: #616FF2, #D6A6F2;
   --cor-background-navbar: #06138550;
+  --cor-background-card:#ffffff;
   --cor-footer: #1F2133;
   --cor-botao-fundo: #F2D261;
   --cor-botao-hover-fundo: #f2f261;
@@ -38,17 +42,22 @@ main {
   --cor-border: #000000;
   --cor-texto-link: #ffffff;
   --cor-texto-link-hover: #dadfe9;
-  --cor-border-active: #3096d1;
-  --cor-hover-underline: #3096d1;
+  --cor-border-active: #F2D261;
+  --cor-hover-underline: #F2D261;
   --cor-background-container: #fff;
 
-
+  --dark-background-card: #38373791;
   --dark-background: #1a1a1a;
   --dark-text: #000000;
   --dark-text-white: #fff;
 
   --dark-link: #90caf9;
 }
+
+.card {
+  background-color: var(--cor-background-card);
+}
+
 
 /* Estilos específicos para o navbar */
 
@@ -108,6 +117,7 @@ main {
 /* Estilos para o footer */
 
 #footer {
+  
   background-color: var(--cor-footer);
   width: 100%;
   border-top: 3px solid var(--cor-border);
@@ -126,6 +136,7 @@ body.dark-theme {
   background: var(--dark-background);
   color: var(--dark-text);
 }
+
 
 #navbar.dark-theme {
   background-color: var(--dark-background-navbar);

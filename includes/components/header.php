@@ -27,6 +27,12 @@ $usuario = $consulta->fetch();
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="objeto.php">Achei</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="objeto.php">Perdi </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="como_funciona.php">Sobre</a>
                 </li>
 
