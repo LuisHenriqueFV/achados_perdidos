@@ -30,7 +30,7 @@ main {
   --cor-background: #616FF2, #D6A6F2;
   --cor-background-navbar: #06138550;
   --cor-background-card: #ffffff;
-  --cor-footer: #1F2133;
+  --cor-footer: #616FF2;
   --cor-btn-custom-backgraund: #F2D261;
   --cor-btn-custom-backgraund-hover: #f2f261;
   --cor-botao-texto: #000000;
@@ -38,7 +38,7 @@ main {
   --cor-custom-button-fundo: #6170f200;
   --cor-custom-button-hover-fundo: #b161f200;
   --cor-custom-button-texto: #ffffff;
-  --cor-texto-titulo: #2B2D42;
+  --cor-texto-titulo: #000000;
   --cor-border: #000000;
   --cor-texto-link: #ffffff;
   --cor-texto-link-hover: #dadfe9;
@@ -46,8 +46,8 @@ main {
   --cor-hover-underline: #F2D261;
   --cor-background-container: #fff;
 
-  --dark-btn-custom-backgraund: #383737;
-  --dark-btn-custom-backgraund-hover: #292828;
+  --dark-btn-custom-backgraund: #F2C161;
+  --dark-btn-custom-backgraund-hover: #D5AA55;
   --dark-background: #1a1a1a;
   --dark-text: #000000;
   --dark-text-white: #fff;
@@ -134,10 +134,16 @@ main {
 
   position: absolute;
   background-color: var(--cor-footer);
+  color: var(--cor-texto-titulo);
   width: 100%;
   border-top: 3px solid var(--cor-border);
   padding: 20px;
 }
+
+#footer a {
+  color: var(--cor-texto-link);
+}
+
 
 /* Estilos para textos no centro */
 
@@ -146,7 +152,7 @@ main {
   color: var(--cor-texto-titulo);
 }
 
-/* DARK */
+/* DARK THEME*/
 body.dark-theme {
   background: var(--dark-background);
   color: var(--dark-text);
@@ -165,7 +171,7 @@ body.dark-theme {
   color: var(--dark-card-text);
 }
 
-.dark-theme #navbar{
+.dark-theme #navbar {
   background-color: var(--dark-background-navbar);
 }
 
@@ -175,11 +181,22 @@ body.dark-theme {
   color: var(--dark-footer-text);
 }
 
+.dark-theme #footer a {
+  color: var(--dark-link);
+}
+
 .dark-theme #navbar a {
   color: var(--dark-link);
 }
 
+.dark-theme .h2 {
+  color: var(--dark-text-white);
+}
 
+.dark-theme .inputs-forms {
+  color: var(--dark-text-white);
+
+}
 
 
 
@@ -193,9 +210,11 @@ body.dark-theme {
 
 #filtro {
   padding: 0;
-  margin-top: 8%;
+  margin-top: 3%;
   height: auto;
 }
+
+
 
 #conteudoPerfil {
   margin-top: 14%;
@@ -208,13 +227,13 @@ body.dark-theme {
 }
 
 #conteudo {
-  margin-top: 3%;
+  margin-top: 2%;
   height: auto;
 }
 
 #conteudoCadastro {
   height: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 30%;
 }
 
@@ -245,14 +264,20 @@ footer p {
 }
 
 /* Seção: Página de Login */
-#loginContainer {
+/* #loginContainer {
   width: 100%;
-
   display: flex;
   height: 100vh;
   margin: 0;
   align-items: center;
   justify-content: center;
+} */
+
+#loginContainer {
+  width: 350px;
+  height: 100vh;
+  margin-top: 15%;
+
 }
 
 /* Seção: Logo Navbar */
@@ -315,4 +340,31 @@ footer p {
   /* Mantém a proporção original da imagem */
   margin: 150px auto 0 auto;
   /* Centraliza horizontalmente */
+}
+
+
+/* MEDIA */
+.containerTUDO {
+  margin-top: 5%;
+
+  @media (max-width: 960px) {
+    margin-top: 15%;
+  }
+
+  @media (max-width: 720px) {
+    margin-top: 20%;
+  }
+
+  @media (max-width: 550px) {
+    margin-top: 25%;
+  }
+
+  @media (max-width: 430px) {
+    margin-top: 20%;
+  }
+
+  @media (max-width: 400px) {
+    margin-top: 20%;
+  }
+
 }

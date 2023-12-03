@@ -63,6 +63,12 @@ $tipos = array("Encontrado", "Perdido");
 <body>
     <main>
 
+    <div class="container">
+            <div class="row col 12">
+            <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
+                            src="img/icons8-back-100.png " alt="filled-trash" /></a>
+            </div>
+        </div>
 
 
         <!-- FORMULARIO DE objeto -->
@@ -114,7 +120,6 @@ $tipos = array("Encontrado", "Perdido");
 
 
                         <button type="submit" class="btn btn-primary">Cadastrar Objeto</button>
-                        <a href="index.php" class="btn btn-secondary">Voltar</a>
 
                     </form>
                 </div>

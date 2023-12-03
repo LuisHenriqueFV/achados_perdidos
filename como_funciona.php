@@ -44,27 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <!-- FIM DO CARROSEL -->
 <!-- ---------------------------------------------------------------------- -->
 
-        <!-- INICIO DOS FEATURES    -->
-        <section class="features mt-5">
-            <div class="container">
-                <div class="row justify-content-lg-center">
-                    <div class="col-lg-2 col-md-12">
-
-                        <div class="features-post">
-                            <div class="features-content d-flex align-items-center justify-content-center">
-                                <div class="content-show">
-                                    <a class="nav-link" href="objeto.php">Achei / Perdi</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                
-
-                </div>
-            </div>
-        </section>
-        <!-- FIM DOS FEATURES    -->
 
         </main>
 

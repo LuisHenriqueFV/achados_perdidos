@@ -36,63 +36,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     <main>
 
-        <!-- INICIO DO HEADER -->
-        <!-- FIM DO HEADER -->
-
-        <!-- ---------------------------------------------------------------------- -->
+        <div class="containerTUDO">
 
 
-
-        <!-- INICIO DO CONTEUDO -->
-
-        <form action="index.php" method="GET">
-            <div id="filtro" class="container">
-                <div class="row col-lg-12  mb-2 col-md-12 col-ms-12">
-                    <a class="btn btn-custom-color" href="objeto.php"><img width="30" height="30"
-                            src="img/icons8-add-100.png " alt="filled-trash" /></a>
+            <div class="container">
+                <div class="row col 12">
+                    <a class="btn btn-custom-color" href="objeto.php"><img width="29" height="29"
+                            src="img/icons8-add-100.png" alt="filled-trash" /></a>
                 </div>
-                <div class="row mb-2 justify-content-center">
-                    <div class="row col-lg-3">
-                        <div class="input-group">
-                            <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto"
-                                autocomplete="off">
+            </div>
+
+            <form action="index.php" method="GET">
+                <div id="filtro" class="container">
+
+                    <div class="d-flex mb-2 justify-content-center">
+                        <div class="px-1 col-lg-3">
+                            <div class="input-group">
+                                <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto"
+                                    autocomplete="off">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row px-5 col-lg-3">
-                        <select name="categoria" class="form-select">
-                            <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>
-                                Todas
-                                Categorias</option>
-                            <?php foreach ($categorias as $cat): ?>
-                                <option value="<?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>"
-                                    <?= $categoria === $cat['nome'] ? 'selected' : ''; ?>>
-                                    <?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>
+                        <div class="px-1 col-lg-3">
+                            <select name="categoria" class="form-select">
+                                <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>
+                                    Todas
+                                    Categorias</option>
+                                <?php foreach ($categorias as $cat): ?>
+                                    <option value="<?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>"
+                                        <?= $categoria === $cat['nome'] ? 'selected' : ''; ?>>
+                                        <?= htmlspecialchars($cat['nome'], ENT_QUOTES) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="px-1 col-lg-3">
+
+                            <select name="tipo" class="form-select">
+                                <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Situação</option>
+                                <option value="Encontrado" <?= $tipo === 'Encontrado' ? 'selected' : ''; ?>>Encontrado
                                 </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="row col-lg-3">
-
-                        <select name="tipo" class="form-select">
-                            <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Situação</option>
-                            <option value="Encontrado" <?= $tipo === 'Encontrado' ? 'selected' : ''; ?>>Encontrado
-                            </option>
-                            <option value="Perdido" <?= $tipo === 'Perdido' ? 'selected' : ''; ?>>Perdido</option>
+                                <option value="Perdido" <?= $tipo === 'Perdido' ? 'selected' : ''; ?>>Perdido</option>
 
 
-                        </select>
+                            </select>
 
-                    </div>
-                    <button id="customButton" class="btn" type="submit" name="filtrarCategoria"><img width="25"
-                            height="25" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1" />
+                        </div>
+                        <button id="customButton" class="btn" type="submit" name="filtrarCategoria"><img width="25"
+                                height="25" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1" />
 
-                    </button>
-                    <!-- <div class="row col-lg-12">
+                        </button>
+                        <!-- <div class="row col-lg-12">
 
                     </div> -->
 
-        </form>
+            </form>
 
 
         </div>
@@ -180,6 +178,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 
         <!-- FIM DO CONTEUDO -->
+
+
+
+
+
+        </div>
+        <!-- INICIO DO CONTEUDO -->
+
+
 
 
 

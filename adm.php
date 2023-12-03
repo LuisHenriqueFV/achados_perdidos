@@ -45,29 +45,45 @@ $categorias = obter_categorias($pdo);
 <body>
     <main>
 
+        <div class="container">
+            <div class="row col 12">
+            <a class="btn btn-custom-color" href="index.php"><img width="29" height="29"
+                            src="img/icons8-back-100.png " alt="filled-trash" /></a>
+            </div>
+        </div>
+
+        
 
         <div id="conteudoCadastro" class="container">
             <div class="forms">
-                <h3>Cadastrar Categoria</h3>
+                <h1 class="h2 d-flex justify-content-center">Cadastrar Categoria</h1>
                 <?php
                 // Exibe a mensagem de sucesso se houver
                 if (!empty($msg)) {
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
                 ?>
-
+<hr>
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">
-                        <label for="nome_categoria" class="form-label">Nome da Categoria:</label>
+                        <!-- <label for="nome_categoria" class="form-label">Nome da Categoria:</label> -->
                         <input type="text" id="nome_categoria" name="nome_categoria" class="form-control"
                             placeholder="Digite o nome da categoria" autocomplete="off" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Adicionar Categoria</button>
-                    <button type="button" id="btnMostrarCategorias" class="btn btn-primary"
-                        onclick="toggleCategorias()">Mostrar Todas as Categorias</button>
-                    <button type="button" id="btnOcultarCategorias" class="btn btn-primary" style="display: none;"
-                        onclick="toggleCategorias()">Ocultar Todas as Categorias</button>
+                    <div class="col-12 d-flex justify-content-center">
+
+                        <button type="submit" class="btn btn-custom-color">Adicionar Categoria</button>
+                    </div>
+                    <hr>
+
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="button" id="btnMostrarCategorias" class="btn btn-custom-color"
+                            onclick="toggleCategorias()">Mostrar Categorias</button>
+                        <button type="button" id="btnOcultarCategorias" class="btn btn-custom-color"
+                            style="display: none;" onclick="toggleCategorias()">Ocultar Categorias</button>
+                    </div>
+
                 </form>
             </div>
 
@@ -78,13 +94,14 @@ $categorias = obter_categorias($pdo);
                         <li class='list-group-item d-flex justify-content-between align-items-center'>
                             <?= $categoria['nome'] ?>
                             <a href="excluir_categoria.php?id=<?= $categoria['id']; ?>&excluir=true"
-                                class="btn btn-danger">Excluir</a>
+                                class="btn btn-custom-color"><img width="30" height="30"
+                                    src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
+                                    alt="filled-trash" /></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
 
-            <a href="index.php" class="btn btn-secondary">Voltar</a>
 
         </div>
     </main>

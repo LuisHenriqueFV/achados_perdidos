@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["msg"] = "Seu e-mail ainda não foi verificado. Por favor, verifique seu e-mail.";
             }
         } else {
-            $_SESSION["msg"] = "Usuário não encontrado. Verifique suas credenciais.";
+            $_SESSION["msg"] = "Usuário não encontrado.";
         }
     }
 }
@@ -58,8 +58,8 @@ require("./includes/components/cabecalho.php");
 
     <main>
         <!-- INICIO DO HEADER -->
-        <header class="bg-primary-color ">
-            
+        <!-- <header class="bg-primary-color ">
+
             <nav class="navbar navbar-expand-lg bg-primary-color" id="navbar">
                 <div id="container" class="container">
                     <a class="navbar-logo" href="index.php">
@@ -78,11 +78,12 @@ require("./includes/components/cabecalho.php");
                     </div>
                 </div>
             </nav>
-        </header>
+        </header> -->
         <!-- FIM DO HEADER -->
         <!-- CONTEUDO -->
-        <div id="loginContainer">
-            <div class=" m-auto form-container rounded-4 p-5">
+        <div id="loginContainer" class="container">
+
+            <div class="form-container rounded-4">
                 <form action="login.php" method="POST" class="needs-validation">
 
                     <div class="text-center mb-4">
@@ -108,6 +109,7 @@ require("./includes/components/cabecalho.php");
                             <p><a href="registro.php"
                                     class="link-secondary link-offset-2 link-opacity-25 link-opacity-100-hover">Registre-se</a>
                             </p>
+                        
                         </div>
                         <div class="col-md-6 text-center">
                             <p><a href="recuperar_senha.php"
@@ -115,6 +117,7 @@ require("./includes/components/cabecalho.php");
                                     a Senha</a></p>
                         </div>
                     </div>
+                    <hr>
 
                     <?php echo $_SESSION["msg"]; ?>
                 </form>
@@ -129,35 +132,8 @@ require("./includes/components/cabecalho.php");
         </div>
         </div>
         <!-- FIM DO CONTEUDO -->
-
-    <!-- RODAPE -->
-    <footer id="footer">
-        <div class="row justify-content-center">
-            <div class="col-6 col-md-2 mb-2">
-                <h5 >Sobre Nós</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="sobre_nos.php" class="nav-link p-0 text-body-secondary">Sobre
-                            Nós</a></li>
-                    <li class="nav-item mb-2"><a href="como_funciona.php" class="nav-link p-0 text-body-secondary">Como
-                            Funciona?</a></li>
-                    <li class="nav-item mb-2"><a href="comunidade.php"
-                            class="nav-link p-0 text-body-secondary">Comunidade</a></li>
-                </ul>
-            </div>
-
-            <div class="col-6 col-md-2 mb-2">
-                <h5>Informações</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="contato.php" class="nav-link p-0 text-body-secondary">Contato</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-    <!-- FIM DO RODAPÉ -->
-
-    <!-- ---------------------------------------------------------------------- -->
+    </main>
+  
 
 </body>
 
