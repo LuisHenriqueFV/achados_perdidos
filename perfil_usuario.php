@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                                         src="https://img.icons8.com/color/48/000000/edit-user-male--v1.png"
                                         alt="edit-user-male--v1" /></span>
                             </label>
-                            <input type="file" name="imagem" accept="image/*" id="imagem" class="form-control-file">
+                            <input type="file" name="imagem" accept="image/*" id="imagem" class="form-control-file custom-file-input">
                             <hr>
 
 

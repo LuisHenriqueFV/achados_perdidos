@@ -112,14 +112,13 @@ $tipos = array("Encontrado", "Perdido");
                             <input type="file" id="imagem" name="imagem" class="form-control">
 
 
-
                             <hr>
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-custom-color">Cadastrar Objeto</button>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <a class="btn btn-secondary" href="minhas_informacoes.php" role="button">Voltar</a>
+                                <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
 
                             </div>
 
