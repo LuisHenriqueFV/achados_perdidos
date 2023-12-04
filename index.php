@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 
-
 ?>
 
 
-<body class="dark">
+
+<body>
 
 
     <main>

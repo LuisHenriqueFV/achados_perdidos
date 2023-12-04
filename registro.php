@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->addAddress($email);
                 $mail->Subject = 'Verificar E-mail Registrado na plataforma Achados & Perdidos';
 
-                $linkVerificacao = "https://henriquefonseca.000webhostapp.com/achados_perdidos/verificar.php?email=$email&codigo=$codigoVerificacao";
+                $linkVerificacao = "https://henriquefonsecaachadoseperdidos.000webhostapp.com/achados_perdidos/verificar.php?email=$email&codigo=$codigoVerificacao";
                 $mail->Body = "Clique no link para verificar seu e-mail: $linkVerificacao";
 
                 $mail->send();

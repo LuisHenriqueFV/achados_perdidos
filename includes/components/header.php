@@ -27,13 +27,15 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="objeto.php">Cadastrar</a>
+                                <a class="nav-link" href="objeto.php">Achei/Perdi</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="como_funciona.php">Sobre</a>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="historias.php">Historias</a>
+                            </li>
 
                             <?php
                             $userId = $_SESSION["codpessoa"];

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conf->bindParam(':chave', $hashedChave);
 
         if ($conf->execute()) {
-            $link = "https://henriquefonseca.000webhostapp.com/achados_perdidos/redefinir_senha.php?utilizador=$email&confirmacao=$chave";
+            $link = "https://henriquefonsecaachadoseperdidos.000webhostapp.com/achados_perdidos/redefinir_senha.php?utilizador=$email&confirmacao=$chave";
 
             $mail = new PHPMailer(true);
 

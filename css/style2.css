@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+
+    nav,
+    ul {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        cursor: pointer
+    }
+}
+
+
+:root {
+    --cor-background: #616FF2, #D6A6F2;
+    --cor-background-navbar: #06138550;
+    --cor-background-card: #ffffff;
+    --cor-footer: #616FF2;
+    --cor-btn-custom-backgraund: #F2D261;
+    --cor-btn-custom-backgraund-hover: #f2f261;
+    --cor-botao-texto: #000000;
+    --cor-botao-hover-texto: #000000;
+    --cor-custom-button-fundo: #6170f200;
+    --cor-custom-button-hover-fundo: #b161f200;
+    --cor-custom-button-texto: #ffffff;
+    --cor-texto-titulo: #000000;
+    --cor-border: #000000;
+    --cor-texto-link: #ffffff;
+    --cor-texto-link-hover: #dadfe9;
+    --cor-border-active: #F2D261;
+    --cor-hover-underline: #F2D261;
+    --cor-backgraund-container: #fff;
+    --cor-backgraund-conteudo-Perfil: #fff;
+
+    --dark-btn-custom-backgraund: #F2C161;
+    --dark-btn-custom-backgraund-hover: #D5AA55;
+    --dark-background: #1a1a1a;
+    --dark-text: #000000;
+    --dark-text-white: #fff;
+    --dark-link: #ffffff;
+    --dark-background-card: #38373791;
+    --dark-card-text: #ffffff;
+    --dark-footer: #38373791;
+    --dark-footer-text: #fff;
+    --dark-conteudo-Perfil: #38373791;
+    --dark-conteudo-Cadastro: #38373791;
+}
+
+/* DARK THEME*/
+body.dark-theme {
+    background: var(--dark-background);
+    color: var(--dark-text);
+}
+
+.dark-theme header {
+    background-color: var(--dark-background-navbar);
+}
+
+.dark-theme .card {
+    background-color: var(--dark-background-card);
+    color: var(--dark-card-text);
+}
+
+.dark-theme footer {
+    background-color: var(--dark-footer);
+    color: var(--dark-footer-text);
+}
+
+.dark-theme #footer a {
+    color: var(--dark-link);
+}
+
+
+body {
+
+    display: flex;
+    background: linear-gradient(#616FF2, #D6A6F2);
+    flex-wrap: wrap;
+    flex: 1 1 100vw;
+}
+
+
+
+
+header {
+
+    background: var(--cor-background-navbar);
+    flex: 1 1 100vw;
+    display: flex;
+    border-bottom: 3px solid black;
+}
+
+header #logo {
+
+    display: flex;
+
+
+    flex: 0 1 200px;
+    margin-left: 5%;
+
+
+    justify-content: center;
+
+
+    align-items: center;
+}
+
+header #logo img {
+    width: 63px;
+    height: 63px;
+    margin: 8px
+}
+
+nav {
+
+    display: flex;
+    color: var(--cor-texto-link);
+}
+
+main {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 3px;
+
+}
+
+.cards {
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.card {
+    height: auto;
+    flex: 0 1 calc(33% - 1em);
+    margin: 1rem .25em;
+    background: var(--cor-background-card);
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+
+}
+
+footer {
+
+    /* align-items: center; */
+    justify-content: center;
+    background: var(--cor-footer);
+    height: 175px;
+    border-top: 3px solid black;
+    display: flex;
+}
+
+footer .lista {
+    list-style: none;
+}
+
+.listas {
+    padding: 20px;
+
+}
+
+
+
+
+#openMenu,
+#closeMenu {
+    border: none;
+    background: none;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+    display: none;
+}
+
+nav {
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 200px;
+}
+
+nav a {
+    margin: 0 3%;
+    font-size: 13pt;
+}
+
+.perfil {
+    margin-right: 10%;
+    align-items: center;
+}
+
+img.rounded-circle {
+    margin-top: 50%;
+}
+
+main {
+    flex: 20 1 500px;
+}
+
+footer {
+    flex: 1 1 100vw;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+@media only screen and (max-width: 717px) {
+
+    #openMenu,
+    #closeMenu {
+        display: block;
+    }
+
+    #openMenu {
+        margin-left: auto;
+    }
+
+    #closeMenu {
+        position: fixed;
+
+        right: 15px;
+
+        top: 15px;
+    }
+
+    header {
+        order: 0;
+    }
+
+    nav {
+        order: 1;
+
+        position: fixed;
+
+        width: 100vw;
+
+        height: 100vh;
+
+        background: var(--cor-border-active);
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin: 0;
+
+        display: none;
+
+        opacity: 0;
+
+        transition: 0.3s;
+    }
+
+    nav a {
+        margin: 3%;
+    }
+
+    main {
+        order: 2;
+    }
+
+    footer {
+        order: 4;
+    }
+}
