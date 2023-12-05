@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <div class="d-flex mb-2 justify-content-center">
                         <div class="px-1 col-lg-3">
                             <div class="input-group">
-                                <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar objeto"
+                                <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar por nome"
                                     autocomplete="off">
                             </div>
                         </div>

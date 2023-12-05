@@ -152,6 +152,50 @@ main {
 
 }
 
+.form-container {
+    background-color: var(--cor-backgraund-container);
+    margin-top: 10%;
+    /* margin-left: 20%; */
+    margin-bottom: 15%;
+    width: auto;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+/* .form-container form {
+
+} */
+
+.form-container form textarea {
+    width: 100%;
+    height: 100px;
+
+
+}
+
+.form-container form button,
+.form-container form a {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+.form-container form button:hover{
+    background-color: var(--cor-btn-custom-backgraund-hover);
+}
+
+.form-container form button {
+    background-color: var(--cor-btn-custom-backgraund);
+    /* Cor de fundo verde (Bootstrap success color) */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* .form-container form a {} */
+
 footer {
 
     align-items: center;
@@ -233,9 +277,11 @@ nav a {
 main {
     flex: 20 1 500px;
 }
-.container{
+
+.container {
     margin-top: 2%;
 }
+
 footer {
     flex: 1 1 100vw;
     margin-top: 10px;

@@ -62,7 +62,7 @@ $tipos = array("Encontrado", "Perdido");
 
 
         <div id="conteudoCadastro" class="container">
-            <h1 class="h2">Deixe aqui as informações do objeto que você perdeu ou encontrou.</h1>
+            <h1 class="h2">Relate informações do que você perdeu ou encontrou.</h1>
             <div class="col-lg-12 col-md-3">
 
                 <div class="forms">
@@ -92,13 +92,13 @@ $tipos = array("Encontrado", "Perdido");
                                 ?>
                             </select>
                             <hr>
-                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do objeto"
+                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"
                                 autocomplete="off" required>
                             <hr>
                             <input type="text" id="descricao" name="descricao" class="form-control"
-                                placeholder="Descrição do objeto" autocomplete="off" required>
+                                placeholder="Descrição" autocomplete="off" required>
                             <hr>
-                            <input type="text" id="local" name="local" class="form-control" placeholder="Local"
+                            <input type="text" id="local" name="local" class="form-control" placeholder="Local encontrado ou perdido"
                                 autocomplete="off" required>
                             <hr>
                             <input type="date" id="data" name="data" class="form-control" required>
@@ -109,7 +109,7 @@ $tipos = array("Encontrado", "Perdido");
 
                             <hr>
                             <div class="d-flex justify-content-center">
-                                <button type="submit" class="btn btn-custom-color">Cadastrar Objeto</button>
+                                <button type="submit" class="btn btn-custom-color">Enviar Informações</button>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-center">

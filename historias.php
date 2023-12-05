@@ -2,14 +2,15 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-?>
-<?php
+
 $userId = $_SESSION["codpessoa"];
 $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
-?>
 
+$historias = obter_historias($pdo);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -93,104 +94,29 @@ $usuario = $consulta->fetch();
     <main>
 
 
-
         <div class="container">
-
             <section class="cards">
-
-                <article class="card">
-                    <p>
-                        "O Reencontro das Cartas"
-
-                        Carolina, uma jovem escritora, perdeu seu caderno de anotações favorito enquanto trabalhava em
-                        um parque. Desesperada, ela acessou o site "Achados e Perdidos" e deixou um anúncio detalhando a
-                        perda. Do outro lado da cidade, João, um estudante universitário, encontrou o caderno debaixo de
-                        uma árvore.
-
-                        Ao acessar o mesmo site para relatar seu achado, João leu o anúncio de Carolina. Ambos se
-                        encontraram em um café próximo para a devolução. A amizade floresceu entre eles, e a história de
-                        como o caderno viajou de mãos perdidas para mãos encontradas tornou-se a inspiração para o
-                        próximo romance de Carolina.</p>
-                </article>
-
-                <article class="card">
-                    <p> "A Conexão dos Relógios"
-
-                        Luís, um apaixonado por antiguidades, achou um relógio antigo no metrô. Curioso para descobrir
-                        sua história, ele procurou o site "Achados e Perdidos" para encontrar o dono. Maria, uma senhora
-                        idosa, tinha perdido o relógio durante uma viagem.
-
-                        Ao se reunirem para a devolução, Maria compartilhou histórias emocionantes sobre o relógio, que
-                        pertencera a seu avô. A conexão entre Luís e Maria transcendeu a simples devolução de um objeto;
-                        uma amizade entre gerações começou a se formar, e Luís continuou visitando Maria para ouvir mais
-                        histórias fascinantes.</p>
-                </article>
-
-                <article class="card">
-                    <p>"O Retorno da Fotografia"
-
-                        Rafael, um fotógrafo amador, deixou sua câmera em um ônibus. Desesperado pela perda das fotos
-                        preciosas de um evento especial, ele publicou um anúncio no site "Achados e Perdidos". Isabel,
-                        uma estudante de fotografia, encontrou a câmera no banco traseiro do ônibus.
-
-                        Ao devolver a câmera, Isabel não apenas trouxe de volta as memórias de Rafael, mas também
-                        ofereceu-se para compartilhar técnicas de fotografia. Os dois começaram a sair juntos para
-                        explorar a cidade através das lentes de suas câmeras, transformando uma perda momentânea em uma
-                        jornada fotográfica compartilhada.
-
-                        Essas histórias fictícias destacam como o site "Achados e Perdidos" não apenas ajuda na
-                        recuperação de objetos, mas também pode ser o catalisador para conexões significativas entre as
-                        pessoas.</p>
-                </article>
-
-                <article class="card">
-                    <p> "O Encontro dos Colecionadores"
-
-                        Ana, uma entusiasta de selos raros, percebeu que sua coleção havia desaparecido depois de uma
-                        mudança de casa. Ela decidiu postar um anúncio no site "Achados e Perdidos" na esperança de
-                        recuperar seus tesouros filatélicos. Do outro lado da cidade, Pedro, um colecionador ocasional,
-                        encontrou a coleção esquecida em uma caixa no sótão de sua nova casa.
-
-                        Ao se encontrarem para a devolução, Ana e Pedro descobriram que compartilhavam uma paixão comum
-                        por selos raros. Isso levou não apenas à recuperação da coleção de Ana, mas também ao início de
-                        uma amizade baseada em sua paixão compartilhada por filatelia. Juntos, eles começaram a
-                        frequentar feiras de colecionadores e a expandir suas coleções.</p>
-                </article>
-
-                <article class="card">
-                    <p>"O Livro Perdido e a Troca Cultural"
-
-                        Miguel, um estudante estrangeiro, perdeu seu livro de gramática em uma biblioteca movimentada.
-                        Desanimado pela dificuldade de encontrar um substituto em seu idioma nativo, ele recorreu ao
-                        site "Achados e Perdidos". Sofia, uma estudante local, encontrou o livro e percebeu que Miguel
-                        era um estrangeiro.
-
-                        Ao devolver o livro, Sofia e Miguel começaram a conversar sobre suas respectivas culturas e
-                        línguas. Isso levou a uma amizade intercultural, onde eles começaram a trocar experiências
-                        linguísticas e culinárias. O livro perdido não só retornou ao seu dono, mas também abriu as
-                        portas para uma troca cultural enriquecedora.</p>
-                </article>
-
-                <article class="card">
-                    <p> "O Retorno do Brinquedo Favorito"
-
-                        Lucas, um menino de sete anos, perdeu seu brinquedo favorito, um pequeno robô, enquanto brincava
-                        no parque. Sua mãe, Carla, publicou um pedido de ajuda no site "Achados e Perdidos". Sofia, uma
-                        adolescente que passava pelo parque, encontrou o robô e ficou comovida com a tristeza de Lucas.
-
-                        Ao devolver o brinquedo, Sofia não apenas trouxe alegria de volta à vida de Lucas, mas também
-                        decidiu passar algum tempo brincando com ele no parque. Essa simples devolução transformou-se em
-                        um momento especial, mostrando como a generosidade e empatia podem criar laços inesperados entre
-                        diferentes gerações.
-
-                        Essas histórias fictícias destacam a diversidade de situações que podem ocorrer ao redor do tema
-                        "Achados e Perdidos", mostrando como a plataforma não apenas facilita a recuperação de objetos,
-                        mas também pode ser o ponto de partida para experiências significativas e conexões humanas.</p>
-                </article>
-
+                <?php foreach ($historias as $historia): ?>
+                    <article class="card">
+                        <?php if (isset($historia['relato'])): ?>
+                            <p>
+                                <?= $historia['relato']; ?>
+                            </p>
+                            <?php if (isset($_SESSION["adm"]) && $_SESSION["adm"] == 1): ?>
+                                <div class="justfy-content-between">
+                                    <a href="editar_historia.php?id=<?= $historia['id']; ?>" class="btn"><img width="24" height="24"
+                                            src="https://img.icons8.com/dusk/64/000000/edit--v1.png" alt="edit--v1" /></a>
+                                    <a href="excluir_historia.php?id=<?= $historia['id']; ?>" class="btn"><img width="30"
+                                            height="30" src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
+                                            alt="filled-trash" /></a>
+                                </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <p>Conteúdo não disponível</p>
+                        <?php endif; ?>
+                    </article>
+                <?php endforeach; ?>
             </section>
-
-
         </div>
 
 

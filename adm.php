@@ -3,8 +3,6 @@ require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
 require_once("./includes/components/cabecalho.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
 
 $msg = "";
 
@@ -23,6 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Erro ao cadastrar categoria no banco de dados.");
         }
     }
+    if (isset($_POST['relato']) && $_POST['relato'] !== '') {
+        $relato = $_POST['relato'];
+
+        // Tenta cadastrar o relato (assumindo que apenas administradores têm acesso a esta página)
+        $cadastra_historia = cadastra_historia($relato, $pdo);
+
+        // Verifica se o relato foi cadastrado com sucesso
+        if ($cadastra_historia) {
+            $msg = "Relato cadastrado com sucesso!";
+
+            // Redireciona para historias.php após cadastrar a história
+            header("Location: historias.php?msg=" . urlencode($msg));
+            exit();
+        } else {
+            $msg = "Erro ao cadastrar o relato. Verifique o log de erros para mais informações.";
+            error_log("Erro ao cadastrar relato no banco de dados.");
+        }
+    }
+
 }
 
 if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
@@ -39,6 +56,7 @@ if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
 }
 
 $categorias = obter_categorias($pdo);
+require_once("./includes/components/header.php");
 
 ?>
 
@@ -62,15 +80,16 @@ $categorias = obter_categorias($pdo);
 
                 <form action="adm.php" method="POST">
                     <div class="mb-3 input-group">
-                        <!-- <label for="nome_categoria" class="form-label">Nome da Categoria:</label> -->
                         <input type="text" id="nome_categoria" name="nome_categoria" class="form-control"
                             placeholder="Digite o nome da categoria" autocomplete="off" required>
                     </div>
+
                     <div class="col-12 d-flex justify-content-center">
 
                         <button type="submit" class="btn btn-custom-color">Adicionar Categoria</button>
                     </div>
                     <hr>
+
 
                     <div class="col-12 d-flex justify-content-center">
                         <button type="button" id="btnMostrarCategorias" class="btn btn-custom-color"
@@ -79,20 +98,48 @@ $categorias = obter_categorias($pdo);
                             style="display: none;" onclick="toggleCategorias()">Ocultar Categorias</button>
 
                     </div>
+
                     <hr>
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
                     </div>
-<hr>
+                    <hr>
 
                 </form>
+                <div class="forms">
+                    <h1 class="h2 d-flex justify-content-center">Cadastrar História</h1>
+                    <?php
+                    // Exibe a mensagem de sucesso se houver
+                    if (!empty($msg)) {
+                        echo '<div class="alert alert-success">' . $msg . '</div>';
+                    }
+                    ?>
+                    <hr>
+
+                    <form action="adm.php" method="POST">
+                        <!-- Campo para cadastrar história -->
+                        <div class="mb-3 input-group">
+                            <textarea id="relato" name="relato" class="form-control" placeholder="Digite a história"
+                                autocomplete="off" required></textarea>
+                        </div>
+
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-custom-color">Adicionar História</button>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
+                        </div>
+                        <hr>
+                    </form>
+                </div>
             </div>
 
             <div id="listaCategorias" class="forms" style="display: none;">
-            <div class="d-flex justify-content-center">
-                                <h3>Lista de Categorias</h3>
+                <div class="d-flex justify-content-center">
+                    <h3>Lista de Categorias</h3>
 
-            </div>
+                </div>
                 <ul class="list-group">
                     <?php foreach ($categorias as $categoria): ?>
                         <li class='list-group-item d-flex justify-content-between align-items-center'>
@@ -110,7 +157,7 @@ $categorias = obter_categorias($pdo);
         </div>
     </main>
 
-  
+
     <!-- RODAPE -->
     <footer id="footer">
 
@@ -139,6 +186,10 @@ $categorias = obter_categorias($pdo);
 
     <!-- FIM DO RODAPÉ -->
 
+    <?php
+    require_once("./includes/components/js.php");
+
+    ?>
 </body>
 
 </html>

@@ -68,7 +68,7 @@ require_once("./includes/components/cabecalho.php");
         <div id="conteudoCadastro" class="container">
 
 
-            <h1>Editar Objeto</h1>
+            <h1>Editar Publicação</h1>
             <form action="editar_objeto.php?id=<?= $objetoId ?>" method="POST" enctype="multipart/form-data">
                 <select id="tipo" name="tipo" class="form-select" required>
                     <option value="" disabled selected>Tipo</option>

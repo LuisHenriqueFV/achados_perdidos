@@ -79,6 +79,8 @@ $usuario = $consulta->fetch();
                 </div>
 
             </nav>
+           
         </header>
         <!-- FIM DO HEADER -->
     </main>
+    

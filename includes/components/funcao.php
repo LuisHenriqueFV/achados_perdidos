@@ -113,7 +113,8 @@ function obter_objeto_por_id($objetoId, $pdo)
     }
 }
 
-function obter_cards_do_banco($pdo) {
+function obter_cards_do_banco($pdo)
+{
     $stmt = $pdo->prepare("SELECT * FROM objeto");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -126,9 +127,9 @@ function pesquisa_pessoa_por_id($codpessoa, $pdo)
     $pessoa = $pdo->prepare('select * from pessoa where codpessoa = :codpessoa');
     $pessoa->bindValue(':codpessoa', $codpessoa);
     $pessoa->execute();
-    
+
     return $pessoa->fetch();
-  
+
 }
 
 
@@ -218,6 +219,74 @@ function buscaUtilizador($user, $hash, $pdo)
         return $utilizador->fetchAll();
     }
 
+}
+
+function cadastra_historia($relato, $pdo)
+{
+    try {
+        $stmt = $pdo->prepare("INSERT INTO historia (relato) VALUES (?)");
+        $stmt->execute([$relato]);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Erro ao cadastrar história no banco de dados: " . $e->getMessage());
+        return false;
+    }
+}
+
+// Função para obter relatos da tabela "historia"
+
+
+function obter_historias($pdo)
+{
+    try {
+        $stmt = $pdo->prepare("SELECT * FROM historia");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        // Log de erro ou tratamento adequado
+        error_log("Erro ao obter histórias do banco de dados: " . $e->getMessage());
+        return false;
+    }
+}
+
+
+
+function exclui_historia($historia_id, $pdo)
+{
+    try {
+        // Prepare a SQL statement
+        $stmt = $pdo->prepare("DELETE FROM historia WHERE id = :id");
+
+        // Bind parameters
+        $stmt->bindParam(':id', $historia_id, PDO::PARAM_INT);
+
+        // Execute the statement
+        $stmt->execute();
+
+        // Check if the deletion was successful
+        return $stmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        // Handle any database errors
+        error_log("Erro ao excluir história: " . $e->getMessage());
+        return false;
+    }
+}
+
+
+function atualiza_historia($relato, $novo_relato, $pdo)
+{
+    try {
+        $stmt = $pdo->prepare("UPDATE historia SET relato = :novo_relato WHERE id = :relato_id");
+        $stmt->bindParam(':novo_relato', $novo_relato, PDO::PARAM_STR);
+        $stmt->bindParam(':relato_id', $relato, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        // Log de erro ou tratamento adequado
+        error_log("Erro ao atualizar história no banco de dados: " . $e->getMessage());
+        return false;
+    }
 }
 
 ?>
