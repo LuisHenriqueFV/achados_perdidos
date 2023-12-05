@@ -203,17 +203,7 @@ $usuario = $consulta->fetch();
     
          <img class="logo" src="img/logo3.png" alt="logo">
     
-        <!-- <div class="listas">
-            <h2>Informação</h2>
-            <ul class="lista">
-            <li><a href="como_funciona.php">Como Funciona?</a></li>
-            <li><a href="sobre_nos.php">Sobre</a></li>
-            <li><a href="comunidade.php">Comunidade</a></li>
-            <li><a href="contato.php">Contato</a></li>
-
-
-            </ul> -->
-        <!-- </div> -->
+        
 
     </footer>
 

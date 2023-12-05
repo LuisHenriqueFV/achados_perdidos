@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
+        
+
         if ($usuario) {
             $verificado = $usuario['verificado'];
 

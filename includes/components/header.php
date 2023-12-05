@@ -31,11 +31,12 @@ $usuario = $consulta->fetch();
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="como_funciona.php">Sobre</a>
+                                <a class="nav-link" href="como_funciona.php">Informações</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="historias.php">Historias</a>
                             </li>
+                            
 
                             <?php
                             $userId = $_SESSION["codpessoa"];

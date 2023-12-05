@@ -32,7 +32,6 @@ main {
 }
 .custom-color:hover{
   background-color: #f1f1f1;
-
 }
 
 :root {
@@ -101,7 +100,6 @@ main {
 
 #navbar a:hover {
   color: var(--cor-texto-link-hover);
-  
 }
 
 #navbar .active {
