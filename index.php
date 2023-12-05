@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                             <div class="row g-0">
                                                 <div class="col-lg-4">
                                                     <img src="<?= $obj['imagem']; ?>" class="img-fluid rounded-start"
-                                                        alt="Imagem do Card" style="width: 100%; height: 150px ;">
+                                                        alt="Imagem do Card" style="height: 150px ;">
                                                 </div>
                                                 <div class="col-lg-8">
                                                     <div class="card-body">

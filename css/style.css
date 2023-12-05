@@ -91,7 +91,6 @@ color: var(--cor-btn-custom-backgraund);
   border-bottom: 3px solid var(--cor-border);
   position: absolute;
   width: 100%;
-  /* z-index: 1000; */
   background-color: var(--cor-background-navbar);
 }
 
@@ -403,11 +402,8 @@ footer p {
 /* Seção: Imagem Personalizada */
 .custom-img {
   width: 60%;
-  /* Ajuste a porcentagem conforme necessário */
   height: auto;
-  /* Mantém a proporção original da imagem */
   margin: 150px auto 0 auto;
-  /* Centraliza horizontalmente */
 }
 
 
