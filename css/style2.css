@@ -13,8 +13,9 @@
         text-decoration: none;
         cursor: pointer
     }
+  
 }
-
+ 
 
 :root {
     --cor-background: #616FF2, #D6A6F2;
@@ -69,6 +70,7 @@ body.dark-theme {
 .dark-theme footer {
     background-color: var(--dark-footer);
     color: var(--dark-footer-text);
+    height: auto;
 }
 
 .dark-theme #footer a {
@@ -240,6 +242,29 @@ img.logo {
 
 }
 
+.instructions-container {
+    padding-top: 5%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.instruction-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.instruction-section h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.instruction-section p {
+    font-size: 1em;
+    color: #666;
+}
 #openMenu,
 #closeMenu {
     border: none;

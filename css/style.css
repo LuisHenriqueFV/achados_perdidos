@@ -154,11 +154,13 @@ color: var(--cor-btn-custom-backgraund);
 
 #footer a {
   color: var(--cor-texto-link);
+  
 }
 
 #footer p{
   color: white;
 }
+
 
 /* Estilos para textos no centro */
 

@@ -15,9 +15,9 @@ $cards = obter_cards_do_banco($pdo);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : "";
-    $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
-    $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
+    $categoria = $_GET['categoria'] ?? "";
+    $tipo = $_GET['tipo'] ?? "";
+    $nome = $_GET['pesquisar'] ?? "";
 
     if ($categoria === "MostrarTodos") {
         $objeto = pesquisa_objeto($nome, null, $tipo, $pdo);
@@ -52,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     <div class="d-flex mb-2 justify-content-center">
                         <div class="px-1 col-lg-3">
                             <div class="input-group">
-                                <input type="text" name="pesquisar" class="form-control" placeholder="Pesquisar por nome"
-                                    autocomplete="off">
+                                <input type="text" name="pesquisar" class="form-control"
+                                    placeholder="Pesquisar por nome" autocomplete="off">
                             </div>
                         </div>
                         <div class="px-1 col-lg-3">
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         <div class="px-1 col-lg-3">
 
                             <select name="tipo" class="form-select">
-                                <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Situação</option>
+                                <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Encontrados e Perdidos</option>
                                 <option value="Encontrado" <?= $tipo === 'Encontrado' ? 'selected' : ''; ?>>Encontrado
                                 </option>
                                 <option value="Perdido" <?= $tipo === 'Perdido' ? 'selected' : ''; ?>>Perdido</option>
@@ -198,6 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <footer id="footer">
 
         <div class="container">
+
             <div class="h1" id="achados_perdidos">
                 <h1>Achados&Perdidos</h1>
 
@@ -217,7 +218,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     style="width: 25px; height: 25px; margin-bottom:19px; padding-right: 5px;" alt="icon">
                 <p>Pelotas, Rio Grande Do Sul</p>
             </div>
+
+                
         </div>
+
+
+
     </footer>
 
     <!-- FIM DO RODAPÉ -->

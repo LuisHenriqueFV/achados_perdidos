@@ -27,15 +27,19 @@ $usuario = $consulta->fetch();
                                 <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="objeto.php">Achei/Perdi</a>
+                                <a class="nav-link" href="objeto.php">Formulário</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="como_funciona.php">Informações</a>
+                                <a class="nav-link" href="informacao.php">Informações</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="historias.php">Historias</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contato.php">Contato</a>
+                            </li>
+                            
                             
 
                             <?php

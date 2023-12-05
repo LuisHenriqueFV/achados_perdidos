@@ -24,13 +24,13 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
 
 function pesquisa_objeto($nome, $categoria, $tipo, $pdo)
 {
-    $query = "SELECT * FROM objeto WHERE nome LIKE :nome";
+    $sql= "SELECT * FROM objeto WHERE nome LIKE :nome";
 
     if (!empty($categoria)) {
-        $query .= " AND categoria = :categoria";
+        $sql .= " AND categoria = :categoria";
     }
 
-    $stmt = $pdo->prepare($query);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':nome', '%' . $nome . '%', PDO::PARAM_STR);
 
     if (!empty($categoria)) {
@@ -43,16 +43,19 @@ function pesquisa_objeto($nome, $categoria, $tipo, $pdo)
 }
 
 
+
 function obter_categorias($pdo)
 {
     try {
-        $stmt = $pdo->query("SELECT * FROM categoria");
+        $sql = "SELECT * FROM categoria";
+        $stmt = $pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         echo "Erro ao obter categorias: " . $e->getMessage();
         return null;
     }
 }
+
 
 function cadastra_categoria($nomeCategoria, $pdo)
 {

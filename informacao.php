@@ -17,7 +17,7 @@ $historias = obter_historias($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historias</title>
+    <title>Informações</title>
     <!-- Google Montserrat Alternates -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,6 @@ $historias = obter_historias($pdo);
 </head>
 
 <body>
-
 
     <header>
         <button id="openMenu">&#9776;</button>
@@ -94,37 +93,66 @@ $historias = obter_historias($pdo);
 
     </header>
 
-
     <main>
 
 
-        <div class="container">
-            <section class="cards">
-                <?php foreach ($historias as $historia): ?>
-                    <article class="card">
-                        <?php if (isset($historia['relato'])): ?>
-                            <p>
-                                <?= $historia['relato']; ?>
-                            </p>
-                            <?php if (isset($_SESSION["adm"]) && $_SESSION["adm"] == 1): ?>
-                                <div class="justfy-content-between">
-                                    <a href="editar_historia.php?id=<?= $historia['id']; ?>" class="btn"><img width="24" height="24"
-                                            src="https://img.icons8.com/dusk/64/000000/edit--v1.png" alt="edit--v1" /></a>
-                                    <a href="excluir_historia.php?id=<?= $historia['id']; ?>" class="btn"><img width="30"
-                                            height="30" src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
-                                            alt="filled-trash" /></a>
-                                </div>
-                            <?php endif; ?>
-                        <?php else: ?>
-                            <p>Conteúdo não disponível</p>
-                        <?php endif; ?>
-                    </article>
-                <?php endforeach; ?>
-            </section>
+        <div class="instructions-container">
+            <div class="instruction-section">
+                <h2>Visão Geral:</h2>
+                <p>Bem-vindo à plataforma Achados e Perdidos, um serviço dedicado a ajudar a comunidade a recuperar
+                    objetos ou animais perdidos e a devolver itens encontrados.</p>
+            </div>
+
+            <div class="instruction-section">
+                <h2>Como Funciona:</h2>
+                <p>Se você encontrou um objeto: Registre-o em nosso sistema para que a pessoa que o perdeu possa
+                    localizá-lo.<br>
+                    Se você perdeu um objeto: Relate-o imediatamente, fornecendo informações detalhadas para aumentar as
+                    chances de recuperação.</p>
+            </div>
+
+            <div class="instruction-section">
+                <h2>Registro de Encontrados:</h2>
+                <p>Preencha nosso formulário de registro com informações precisas sobre o objeto ou animal encontrado,
+                    incluindo
+                    data, local e uma descrição detalhada.</p>
+            </div>
+
+            <div class="instruction-section">
+                <h2>Relato de Perdidos:</h2>
+
+                <p>Use nosso formulário de relato para fornecer detalhes sobre o objeto perdido, incluindo
+                    características
+                    distintivas, local onde foi visto pela última vez e data aproximada do ocorrido.</p>
+            </div>
+            <div class="instruction-section">
+                <h2>Recuperação de Objetos Perdidos:</h2>
+
+                <p>Caso você encontre um objeto listado como perdido, entre em contato com a pessoa (através do seu
+                    email registrado) que o perdeu para
+                    organizar a devolução.
+                    Lembre-se de seguir as políticas e regras estabelecidas para garantir uma experiência positiva para
+                    todos os envolvidos.</p>
+            </div>
+            <div class="instruction-section">
+                <h2> Contato e Suporte:</h2>
+
+                <p>Se precisar de assistência ou tiver dúvidas, entre em contato conosco através do e-mail
+                    luishenriquefonsecaphp ou utilize nosso formulário de contato disponível em: <a
+                        href="contato.php">contato</a></p>
+
+            </div>
+
+
         </div>
 
 
+
     </main>
+
+
+
+
 
 
     <footer id="footer">
