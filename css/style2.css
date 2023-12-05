@@ -233,15 +233,27 @@ nav a {
 main {
     flex: 20 1 500px;
 }
-
+.container{
+    margin-top: 2%;
+}
 footer {
     flex: 1 1 100vw;
+    margin-top: 10px;
 }
 
 a {
     text-decoration: none;
     color: inherit;
 }
+
+#footer p {
+    color: white;
+}
+
+#achados_perdidos {
+    color: var(--cor-btn-custom-backgraund);
+}
+
 
 @media only screen and (max-width: 1000px) {
     .cards {

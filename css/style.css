@@ -72,12 +72,13 @@ main {
 
 .card {
   background-color: var(--cor-background-card);
-
   color: var(--cor-texto-titulo);
-  /* Outras propriedades do card */
+  
 
+}
 
-
+#achados_perdidos{
+color: var(--cor-btn-custom-backgraund);
 }
 
 
@@ -156,6 +157,9 @@ main {
   color: var(--cor-texto-link);
 }
 
+#footer p{
+  color: white;
+}
 
 /* Estilos para textos no centro */
 
