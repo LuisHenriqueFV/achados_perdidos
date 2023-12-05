@@ -62,7 +62,7 @@ $tipos = array("Encontrado", "Perdido");
 
 
         <div id="conteudoCadastro" class="container">
-            <h1 class="h2">Relate informações do que você perdeu ou encontrou.</h1>
+            <h1 class="h2 text-center">Relate informações do que você perdeu ou encontrou.</h1>
             <div class="col-lg-12 col-md-3">
 
                 <div class="forms">

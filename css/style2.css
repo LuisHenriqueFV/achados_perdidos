@@ -244,6 +244,7 @@ img.logo {
 
 .instructions-container {
     padding-top: 5%;
+    padding-bottom: 5%;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -254,6 +255,10 @@ img.logo {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
+}
+.dark-theme .instruction-section{
+    background-color: var(--dark-background-card);
+    color: var(--dark-text-white);
 }
 
 .instruction-section h2 {

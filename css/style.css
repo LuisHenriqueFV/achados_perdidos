@@ -26,11 +26,12 @@ main {
 
 /* Cores e variáveis globais */
 
-.custom-color{
+.custom-color {
   background-color: #FFF;
   color: #000;
 }
-.custom-color:hover{
+
+.custom-color:hover {
   background-color: #f1f1f1;
 }
 
@@ -73,12 +74,12 @@ main {
 .card {
   background-color: var(--cor-background-card);
   color: var(--cor-texto-titulo);
-  
+
 
 }
 
-#achados_perdidos{
-color: var(--cor-btn-custom-backgraund);
+#achados_perdidos {
+  color: var(--cor-btn-custom-backgraund);
 }
 
 
@@ -144,7 +145,7 @@ color: var(--cor-btn-custom-backgraund);
 
 #footer {
 
-  position: absolute;
+  /* position: absolute; */
   background-color: var(--cor-footer);
   color: var(--cor-texto-titulo);
   width: 100%;
@@ -154,10 +155,10 @@ color: var(--cor-btn-custom-backgraund);
 
 #footer a {
   color: var(--cor-texto-link);
-  
+
 }
 
-#footer p{
+#footer p {
   color: white;
 }
 
@@ -326,8 +327,15 @@ footer p {
 .form-container {
   padding: 1rem;
   /* margin: auto; */
-  background: white;
+  background: var(--cor-backgraund-container);
+  border-radius: 20px;
 }
+
+.dark-theme .form-container {
+  background-color: var(--dark-background-card);
+  color: var(--dark-text-white);
+}
+
 
 /* Seção: Navbar */
 .navbar-nav .nav-link {
