@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
 
-    // Defina a imagem padrão 
     $imagem_padrao = "img/objeto/imagem_padrao.png";
 
     if (!empty($_FILES['imagem']['name'])) {
@@ -43,13 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
         }
     } else {
-        // Caso não seja fornecida uma imagem, utiliza a imagem padrão
         $imagem = $imagem_padrao;
 
-        // Adicione uma mensagem de teste
         echo "Nenhuma imagem fornecida, utilizando imagem padrão: $imagem_padrao";
 
-        // Remova ou ajuste esta linha conforme necessário para o seu caso
         cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
 
         $msg = "Objeto cadastrado com sucesso!";
@@ -65,7 +61,6 @@ $tipos = array("Encontrado", "Perdido");
 
 
 
-        <!-- FORMULARIO DE objeto -->
         <div id="conteudoCadastro" class="container">
             <h1 class="h2">Deixe aqui as informações do objeto que você perdeu ou encontrou.</h1>
             <div class="col-lg-12 col-md-3">

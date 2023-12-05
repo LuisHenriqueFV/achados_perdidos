@@ -6,23 +6,7 @@ require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 require_once("./includes/components/cabecalho.php");
 
-$msg = "";
-$objeto = null;
 
-$categorias = obter_categorias($pdo);
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : "";
-    $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : "";
-    $nome = isset($_GET['pesquisar']) ? $_GET['pesquisar'] : "";
-
-    // Pesquisa objeto
-    if ($categoria === "MostrarTodos") {
-        $objeto = pesquisa_objeto($nome, null, $tipo, $pdo);
-    } else {
-        $objeto = pesquisa_objeto($nome, $categoria, $tipo, $pdo);
-    }
-}
 
 ?>
 

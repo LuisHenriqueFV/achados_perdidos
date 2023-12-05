@@ -14,7 +14,7 @@ $usuario = $consulta->fetch();
 
                 <div class="container">
                     <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
+                        <img id="navbar-logo" src="img/logo3.png" alt="achados&perdidos" />
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
@@ -66,11 +66,12 @@ $usuario = $consulta->fetch();
                                     class="rounded-circle">
                             </a>
                             <ul class="dropdown-menu text-small">
-                                <li><a class="dropdown-item custom-bg-color text-black"
+                                <li><a class="dropdown-item custom-color text-black"
                                         href="perfil_usuario.php">Perfil</a></li>
                                 <li>
+                                    <hr>
                                 </li>
-                                <li><a class="dropdown-item custom-bg-color text-black" href="logout.php">Sair</a></li>
+                                <li><a class="dropdown-item custom-color text-black" href="logout.php">Sair</a></li>
                             </ul>
                         </div>
                     </div>

@@ -154,7 +154,7 @@ main {
 
 footer {
 
-    /* align-items: center; */
+    align-items: center;
     justify-content: center;
     background: var(--cor-footer);
     height: 175px;
@@ -169,10 +169,32 @@ footer .lista {
 .listas {
     padding: 20px;
 
+
 }
 
+img.logo {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: end;
+    /* margin-right: 20%;
+    margin-left: 20%; */
+}
 
+.dropdown-toggle::after {
+    margin-top: 75%;
+}
 
+.custom-color {
+    background-color: #FFF;
+    color: #000;
+}
+
+.custom-color:hover {
+    background-color: #f1f1f1;
+
+}
 
 #openMenu,
 #closeMenu {
@@ -196,13 +218,16 @@ nav a {
     font-size: 13pt;
 }
 
+#menu a:hover {
+    color: var(--cor-texto-link);
+    border-bottom: 3px solid var(--cor-border-active);
+
+}
+
+
 .perfil {
     margin-right: 10%;
     align-items: center;
-}
-
-img.rounded-circle {
-    margin-top: 50%;
 }
 
 main {
@@ -218,6 +243,27 @@ a {
     color: inherit;
 }
 
+@media only screen and (max-width: 1000px) {
+    .cards {
+        margin-top: 10%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 10%;
+    }
+
+    .card {
+        height: auto;
+        flex: 0 1 calc(100% - 1em);
+        margin: 1rem .25em;
+        background: var(--cor-background-card);
+        border-radius: 20px;
+        width: 100%;
+        padding: 20px;
+
+    }
+
+}
 
 @media only screen and (max-width: 717px) {
 

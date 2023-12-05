@@ -32,16 +32,14 @@ $usuario = $consulta->fetch();
 
 <body>
 
-    <!-- Agrupa os elementos que compõe o cabeçalho. -->
     <header>
         <button id="openMenu">&#9776;</button>
         <a href="index.php" id="logo">
-            <img src="img/logo1.png" alt="achados&perdidos" />
+            <img src="img/logo3.png" alt="achados&perdidos" />
         </a>
 
 
 
-        <!-- Agrupa links de navegação no site. -->
         <nav id="menu">
 
             <button id="closeMenu">X</button>
@@ -81,10 +79,10 @@ $usuario = $consulta->fetch();
                         class="rounded-circle">
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item custom-bg-color text-black" href="perfil_usuario.php">Perfil</a></li>
+                    <li><a class="dropdown-item custom-color text-black" href="perfil_usuario.php">Perfil</a></li>
                     <li>
                     </li>
-                    <li><a class="dropdown-item custom-bg-color text-black" href="logout.php">Sair</a></li>
+                    <li><a class="dropdown-item custom-color text-black" href="logout.php">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -92,7 +90,6 @@ $usuario = $consulta->fetch();
 
     </header>
 
-    <!-- Agrupa o conteúdo principal da página ou aplicação. -->
     <main>
 
 
@@ -202,33 +199,21 @@ $usuario = $consulta->fetch();
 
     <footer>
 
-        <div class="listas">
-            <h2>Navigation</h2>
+  
+    
+         <img class="logo" src="img/logo3.png" alt="logo">
+    
+        <!-- <div class="listas">
+            <h2>Informação</h2>
             <ul class="lista">
-                <li>Home</li>
-                <li>Achei/Perdi</li>
-                <li>Sobre</li>
-                <li>Historias</li>
+            <li><a href="como_funciona.php">Como Funciona?</a></li>
+            <li><a href="sobre_nos.php">Sobre</a></li>
+            <li><a href="comunidade.php">Comunidade</a></li>
+            <li><a href="contato.php">Contato</a></li>
 
-            </ul>
-        </div>
-        <div class="listas">
-            <h2>Follow Us</h2>
-            <ul class="lista">
-                <li>social 1</li>
-                <li>social 2</li>
-                <li>social 3</li>
-            </ul>
-        </div>
-        <div class="listas">
-            <h2>Contact</h2>
-            <ul class="lista">
-                <li>Adress</li>
-                <li>Phone</li>
-                <li>Email</li>
-                <li>Website</li>
-            </ul>
-        </div>
+
+            </ul> -->
+        <!-- </div> -->
 
     </footer>
 
