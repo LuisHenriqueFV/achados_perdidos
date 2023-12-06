@@ -11,7 +11,7 @@ $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $email = $_POST["email"];
     $novaSenha = $_POST["nova_senha"];
@@ -20,19 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $logradouro = $_POST["logradouro"];
     $cidade = $_POST["cidade"];
 
-    if (!empty($novaSenha)) {
+    if(!empty($novaSenha)) {
         $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
     } else {
         $senhaHash = $usuario["senha"];
     }
 
-    $atualizaInfo = $pdo->prepare('UPDATE pessoa SET nome = ?, email = ?, senha = ?, cep = ?, bairro = ?, logradouro = ?, cidade = ? WHERE codpessoa = ?');
-    $atualizaInfo->execute([$nome, $email, $senhaHash, $cep, $bairro, $logradouro, $cidade, $userId]);
+    atualizaInfo($nome, $email, $senhaHash, $cep, $bairro, $logradouro, $cidade, $userId, $pdo);
 
-    $consulta->execute([$userId]);
-    $usuario = $consulta->fetch();
 
-    echo "Informações atualizadas com sucesso!";
+    $msg = "Informações Atualizadas!";
 }
 require_once("./includes/components/cabecalho.php");
 require_once("./includes/components/header.php");
@@ -41,11 +38,16 @@ require_once("./includes/components/js.php");
 
 <body>
     <main>
-  
+
 
         <!-- conteudo -->
         <div id="conteudoCadastro" class="container">
             <div class="forms">
+                <?php
+                if(!empty($msg)) {
+                    echo '<div class="alert alert-success">'.$msg.'</div>';
+                }
+                ?>
                 <h1 class="text-center">Editar Minhas Informações</h1>
                 <form method="POST">
                     <div class="row justify-content-center">
@@ -53,45 +55,45 @@ require_once("./includes/components/js.php");
                             <label for="nome">Nome de Usuário:</label>
                             <input type="text" name="nome" class="form-control" value="<?php echo $usuario["nome"]; ?>"
                                 required>
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="email">Email:</label>
                             <input type="email" name="email" class="form-control"
                                 value="<?php echo $usuario["email"]; ?>" required>
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="nova_senha">Nova Senha:</label>
                             <input type="password" name="nova_senha" class="form-control"
                                 placeholder="Deixar em branco para não alterar sua senha atual">
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="cep">CEP:</label>
                             <input class="form-control" type="text" name="cep" id="cep"
                                 placeholder="Digite seu cep para obter informações sobre seu endereço"
                                 value="<?php echo $usuario["cep"]; ?>">
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="bairro">Bairro:</label>
                             <input class="form-control" type="text" name="bairro" id="bairro"
                                 value="<?php echo $usuario["bairro"]; ?>">
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="logradouro">Rua:</label>
                             <input class="form-control" type="text" id="logradouro" name="logradouro"
                                 value="<?php echo $usuario["logradouro"]; ?>">
-                                <hr>
+                            <hr>
                         </div>
                         <div class="col-md-12">
                             <label for="cidade">Cidade:</label>
 
                             <input class="form-control" type="text" name="cidade" id="cidade"
                                 value="<?php echo $usuario["cidade"]; ?>">
-                                <hr>
+                            <hr>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -103,8 +105,8 @@ require_once("./includes/components/js.php");
         </div>
         <!-- fim do conteudo -->
     </main>
-   
-  
+
+
     <!-- RODAPE -->
     <footer id="footer">
 

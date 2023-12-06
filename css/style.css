@@ -83,8 +83,15 @@ main {
 }
 
 
+.btn-custom-color h5 {
+  padding-top: 4px;
+  color: var(--cor-footer);
+  text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.2em
+}
 
-
+/* .btn-custom-color h5 {
+  text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.2em
+} */
 
 /* Estilos específicos para o navbar */
 
@@ -287,9 +294,9 @@ body.dark-theme #conteudoMinhasInformacoes {
 }
 
 .custom-file-upload {
-  padding: 20px 10px;
+  /* padding: 0px 10px; */
   height: 50px;
-  width: 50px;
+  width: 100px;
   background-color: #616FF2;
   color: #FFF;
   display: flex;
@@ -440,6 +447,7 @@ footer p {
   @media (max-width: 400px) {
     margin-top: 45%;
   }
+
   @media (max-width: 350px) {
     margin-top: 45%;
   }

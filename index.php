@@ -41,8 +41,7 @@ require_once("./includes/components/cabecalho.php");
 
             <div class="container">
                 <div class="row col 12">
-                    <a class="btn btn-custom-color" href="objeto.php"><img width="29" height="29"
-                            src="img/icons8-add-100.png" alt="filled-trash" /></a>
+                    <a class="btn btn-custom-color" href="objeto.php"><H5>Publique Aqui!</H5></a>
                 </div>
             </div>
 

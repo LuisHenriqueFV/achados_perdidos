@@ -4,17 +4,17 @@ require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
 
 
-if (empty($usuario["imagem"])) {
+if(empty($usuario["imagem"])) {
     $usuario["imagem"] = "perfil-padrao.png";
 }
 
 $msg = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     $uploadDir = "./uploads/";
-    $uploadFile = $uploadDir . basename($_FILES["imagem"]["name"]);
+    $uploadFile = $uploadDir.basename($_FILES["imagem"]["name"]);
 
-    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
+    if(move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
         $atualizaImagem = $pdo->prepare('UPDATE pessoa SET imagem = ? WHERE codpessoa = ?');
         $atualizaImagem->execute([$_FILES["imagem"]["name"], $_SESSION["codpessoa"]]);
 
@@ -33,19 +33,15 @@ require_once("./includes/components/js.php");
 
 
         <?php
-        if (!empty($msg)) {
-            echo '<div class="alert alert-success">' . $msg . '</div>';
+        if(!empty($msg)) {
+            echo '<div class="alert alert-success">'.$msg.'</div>';
         }
         ?>
 
 
 
         <div id="conteudoPerfil" class="container mt-5% col-6">
-            <div class="text-center">
-                <h1>Olá,
-                    <?php echo $usuario["nome"]; ?>.
-                </h1>
-            </div>
+
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-4 text-center">
@@ -53,11 +49,16 @@ require_once("./includes/components/js.php");
                         <img src="./uploads/<?php echo $usuario["imagem"]; ?>" alt="Imagem do perfil"
                             class="img-thumbnail" style="max-width: 150px;">
                     </div>
+                    <div class="text-center">
+                        <h1>
+                            <?php echo $usuario["nome"]; ?>
+                        </h1>
+                    </div>
                     <form id="formImagem" method="POST" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center py-3">
 
                             <label for="imagem" class="custom-file-upload">
-                                <span><img width="48" height="48"
+                                <span>Trocar Foto<img width="35" height="35"
                                         src="https://img.icons8.com/color/48/000000/edit-user-male--v1.png"
                                         alt="edit-user-male--v1" /></span>
                             </label>
