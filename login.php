@@ -57,30 +57,7 @@ require("./includes/components/cabecalho.php");
 <body>
 
     <main>
-        <!-- INICIO DO HEADER -->
-        <!-- <header class="bg-primary-color ">
-
-            <nav class="navbar navbar-expand-lg bg-primary-color" id="navbar">
-                <div id="container" class="container">
-                    <a class="navbar-logo" href="index.php">
-                        <img id="navbar-logo" src="img/logo1.png" alt="achados&perdidos" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbar-items" aria-controls="navbar-items" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbar-items">
-                        <div class="dropdown text-end">
-
-
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header> -->
-        <!-- FIM DO HEADER -->
-        <!-- CONTEUDO -->
+        
         <div id="loginContainer" class="container">
 
             <div class="form-container rounded-4">

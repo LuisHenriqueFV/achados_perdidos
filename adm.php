@@ -9,10 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['nome_categoria']) && $_POST['nome_categoria'] !== '') {
         $nomeCategoria = $_POST['nome_categoria'];
 
-        // Tenta cadastrar a categoria
         $cadastra_categoria = cadastra_categoria($nomeCategoria, $pdo);
 
-        // Verifica se a categoria foi cadastrada com sucesso
         if ($cadastra_categoria) {
             $msg = "Categoria cadastrada com sucesso!";
         } else {
@@ -23,14 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['relato']) && $_POST['relato'] !== '') {
         $relato = $_POST['relato'];
 
-        // Tenta cadastrar o relato (assumindo que apenas administradores têm acesso a esta página)
         $cadastra_historia = cadastra_historia($relato, $pdo);
 
-        // Verifica se o relato foi cadastrado com sucesso
         if ($cadastra_historia) {
             $msg = "Relato cadastrado com sucesso!";
 
-            // Redireciona para historias.php após cadastrar a história
             header("Location: historias.php?msg=" . urlencode($msg));
             exit();
         } else {
@@ -72,7 +67,6 @@ require_once("./includes/components/cabecalho.php");
             <div class="forms">
                 <h1 class="h2 d-flex justify-content-center">Cadastrar Categoria</h1>
                 <?php
-                // Exibe a mensagem de sucesso se houver
                 if (!empty($msg)) {
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
@@ -110,7 +104,6 @@ require_once("./includes/components/cabecalho.php");
                 <div class="forms">
                     <h1 class="h2 d-flex justify-content-center">Cadastrar História</h1>
                     <?php
-                    // Exibe a mensagem de sucesso se houver
                     if (!empty($msg)) {
                         echo '<div class="alert alert-success">' . $msg . '</div>';
                     }
@@ -118,7 +111,6 @@ require_once("./includes/components/cabecalho.php");
                     <hr>
 
                     <form action="adm.php" method="POST">
-                        <!-- Campo para cadastrar história -->
                         <div class="mb-3 input-group">
                             <textarea id="relato" name="relato" class="form-control" placeholder="Digite a história"
                                 autocomplete="off" required></textarea>
