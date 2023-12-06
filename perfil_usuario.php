@@ -28,7 +28,7 @@ require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 ?>
 
-<body class="dark">
+<body>
     <main>
 
 

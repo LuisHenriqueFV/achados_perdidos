@@ -13,9 +13,9 @@
         text-decoration: none;
         cursor: pointer
     }
-  
+
 }
- 
+
 
 :root {
     --cor-background: #616FF2, #D6A6F2;
@@ -135,24 +135,6 @@ main {
 
 }
 
-.cards {
-    margin-top: 10%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 10%;
-}
-
-.card {
-    height: auto;
-    flex: 0 1 calc(33% - 1em);
-    margin: 1rem .25em;
-    background: var(--cor-background-card);
-    border-radius: 20px;
-    width: 100%;
-    padding: 20px;
-
-}
 
 .form-container {
     background-color: var(--cor-backgraund-container);
@@ -182,9 +164,10 @@ main {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    
+
 }
-.form-container form button:hover{
+
+.form-container form button:hover {
     background-color: var(--cor-btn-custom-backgraund-hover);
 }
 
@@ -256,7 +239,8 @@ img.logo {
     border-radius: 8px;
     background-color: #f9f9f9;
 }
-.dark-theme .instruction-section{
+
+.dark-theme .instruction-section {
     background-color: var(--dark-background-card);
     color: var(--dark-text-white);
 }
@@ -270,16 +254,7 @@ img.logo {
     font-size: 1em;
     color: #666;
 }
-#openMenu,
-#closeMenu {
-    border: none;
-    background: none;
-    font-size: 30px;
-    font-weight: bold;
-    padding: 0px 5px 0px 5px;
-    cursor: pointer;
-    display: none;
-}
+
 
 nav {
     justify-content: center;
@@ -328,6 +303,36 @@ a {
 
 #achados_perdidos {
     color: var(--cor-btn-custom-backgraund);
+}
+
+#openMenu,
+#closeMenu {
+    border: none;
+    background: none;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.cards {
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.card {
+    height: auto;
+    flex: 0 1 calc(33% - 1em);
+    margin: 1rem .25em;
+    background: var(--cor-background-card);
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+
 }
 
 

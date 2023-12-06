@@ -58,7 +58,7 @@ $historias = obter_historias($pdo);
 
 
 
-            if ($adm) {
+            if($adm) {
                 ?>
 
                 <a href="adm.php">Adm</a>
@@ -76,7 +76,7 @@ $historias = obter_historias($pdo);
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
-                    $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/" . $usuario["imagem"];
+                    $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/".$usuario["imagem"];
                     ?>
                     <img src="<?php echo $imagemPerfil; ?>" alt="Perfil do usuário" width="32" height="32"
                         class="rounded-circle">

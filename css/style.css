@@ -89,9 +89,6 @@ main {
   text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.2em
 }
 
-/* .btn-custom-color h5 {
-  text-shadow: rgb(255, 255, 255) 0.1em 0.1em 0.2em
-} */
 
 /* Estilos específicos para o navbar */
 
@@ -175,6 +172,8 @@ main {
 .text-center h1 {
   font-size: 24px;
   color: var(--cor-texto-titulo);
+  text-shadow: #616FF2 0.1em 0.1em 0.2em;
+
 }
 
 /* DARK THEME*/
@@ -305,6 +304,8 @@ body.dark-theme #conteudoMinhasInformacoes {
   text-align: center;
   cursor: pointer;
 }
+
+
 
 #conteudoMinhasInformacoes {
   padding-top: 20px;

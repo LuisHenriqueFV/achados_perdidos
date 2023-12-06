@@ -35,6 +35,7 @@ $historias = obter_historias($pdo);
 
 
     <header>
+        
         <button id="openMenu">&#9776;</button>
         <a href="index.php" id="logo">
             <img src="img/logo3.png" alt="achados&perdidos" />
