@@ -57,7 +57,7 @@ require_once("./includes/components/js.php");
 ?>
 
 
-<body class="dark-theme">
+<body>
 
     <main>
 
