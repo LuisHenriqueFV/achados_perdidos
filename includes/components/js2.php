@@ -40,3 +40,12 @@ closeMenu.addEventListener('click', () => {
 
 </script>
 
+<script>
+    document.getElementById('openMenu').addEventListener('click', function () {
+        document.getElementById('menu').classList.add('active');
+    });
+
+    document.getElementById('closeMenu').addEventListener('click', function () {
+        document.getElementById('menu').classList.remove('active');
+    });
+</script>
