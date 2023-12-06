@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01/12/2023 às 01:27
+-- Tempo de geração: 05/12/2023 às 21:33
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -67,7 +67,30 @@ INSERT INTO `categoria` (`id`, `nome`) VALUES
 (75, 'Equipamentos de Pesca'),
 (76, 'Objetos de Coleção'),
 (77, 'Equipamentos Médicos'),
-(78, 'Remédio');
+(78, 'Remédio'),
+(83, 'Animais');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `historia`
+--
+
+CREATE TABLE `historia` (
+  `id` int(11) NOT NULL,
+  `relato` text NOT NULL,
+  `data_hora` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `historia`
+--
+
+INSERT INTO `historia` (`id`, `relato`, `data_hora`) VALUES
+(7, ' <h1>Fiel Companheiro</h1>Luciana, uma apaixonada por animais, postou no site de achados e perdidos sobre o desaparecimento de seu gato, Whiskers. Meses depois, uma mulher chamada Carla encontrou Whiskers vagando em seu jardim e, ao verificar o site, descobriu que Luciana o procurava. A alegria foi imensa quando Luciana e Whiskers foram reunidos, graças à conexão feita pelo site\r\n\r\n', '2023-12-05 14:14:52'),
+(8, '<h1> A Busca Pelo Ursinho de Estimação</h1 <p>João, um menino de sete anos, perdeu seu ursinho de estimação em um parque movimentado. Sua mãe, Marta, postou no site de achados e perdidos. Uma senhora chamada Maria o encontrou enquanto fazia sua caminhada diária. Ao ver o post, Maria devolveu o ursinho a João, criando um vínculo especial entre eles.</p>', '2023-12-05 14:15:03'),
+(16, '<h1> A Devolução do Anel de Noivado</h1>Ana, distraída após um dia agitado, perdeu seu anel de noivado no transporte público. Um trabalhador chamado Carlos o encontrou e, ao verificar o site de achados e perdidos, localizou a postagem de Ana. Carlos fez questão de devolver pessoalmente o anel, testemunhando o alívio e a gratidão de Ana.', '2023-12-05 15:28:07'),
+(17, '<h1>A Gentileza Inesperada</h1>Pedro, ao sair de um café, percebeu que deixou sua mochila contendo seu laptop no estabelecimento. O garçom, Antonio, encontrou a mochila e, ao verificar o site de achados e perdidos, entrou em contato com Pedro. Eles se encontraram, e Pedro ficou grato pela honestidade de Antonio, reforçando a fé na bondade humana.\r\n', '2023-12-05 15:30:51');
 
 -- --------------------------------------------------------
 
@@ -92,9 +115,16 @@ CREATE TABLE `objeto` (
 --
 
 INSERT INTO `objeto` (`id`, `nome`, `descricao`, `local`, `data`, `categoria`, `tipo`, `imagem`, `codpessoa`) VALUES
-(195, 'Aliança', 'aliança de noivado', 'Pedro Osório', '2023-11-09', 'Joias', 'Perdido', 'uploads/anel.png', 42),
-(197, 'Celular', 'Xiaomi', 'Pelotas, Centro', '2023-11-10', 'Eletrônicos', 'Encontrado', 'uploads/celular_branco.png', 43),
-(198, 'Guarda-Chuva', 'Preto', 'Pelotas, Centro', '2023-11-08', 'Acessórios', 'Encontrado', 'uploads/guarda_chuva.png', 43);
+(208, 'Câmera', 'Tekpix', 'Praça Coronel Pedro Osorio', '2023-12-20', 'Eletrônicos', 'Encontrado', 'uploads/camera.png', 42),
+(213, 'Óculos de Sol', 'Marca da Chilli Beans', 'Dom Guilherme Litran', '2023-12-12', 'Acessórios', 'Perdido', 'uploads/oculos.png', 42),
+(214, 'Urso de Pelúcia', 'Marrom', 'Centro', '2023-12-20', 'Brinquedos', 'Encontrado', 'img/objeto/imagem_656b9cbf56a37.png', 42),
+(215, 'Chave de boca', 'Enferrujada', 'Bairro Cohab 2', '2023-12-21', 'Ferramentas', 'Encontrado', 'img/objeto/imagem_656b9f5a04cde.png', 42),
+(216, 'Celular', 'Marca: Xiaomi, branco', 'Academia Fitness', '2023-12-13', 'Eletrônicos', 'Encontrado', 'img/objeto/imagem_656ba0549c831.png', 42),
+(217, 'Aliança', 'Aliança de casamento', 'Praça do centro', '2023-12-18', 'Joias', 'Encontrado', 'uploads/icons8-one-ring-100.png', 43),
+(218, 'Fones de ouvido', 'Marca: Kz', 'Na escola', '2023-12-14', 'Eletrônicos', 'Perdido', 'img/objeto/imagem_656bc4a067a70.png', 42),
+(219, 'Violão', 'Marca: Giannini', 'Praça', '2023-12-19', 'Instrumentos Musicais', 'Perdido', 'img/objeto/imagem_656cd516d2ce9.png', 42),
+(220, 'Cachorro', 'Viralata caramelo', 'Praia do laranjal', '2023-12-05', 'Animais', 'Encontrado', 'img/objeto/imagem_656f1f359a6f4.png', 42),
+(221, 'camera', 'sony', 'Laranjal, pelotas', '2023-12-05', 'Equipamentos de Fotografia', 'Perdido', 'img/objeto/imagem_padrao.png', 42);
 
 -- --------------------------------------------------------
 
@@ -123,8 +153,9 @@ CREATE TABLE `pessoa` (
 --
 
 INSERT INTO `pessoa` (`codpessoa`, `nome`, `email`, `senha`, `reg_date`, `adm`, `codigo_verificacao`, `verificado`, `imagem`, `cep`, `logradouro`, `bairro`, `cidade`) VALUES
-(42, 'adm', 'adm@gmail.com', '$2y$10$3.XBqL6OS5hNMfeTFvvYXOehHQ.rRK6eXOhc0TxChjhL9lu.Z9xde', '2023-11-30', 1, '88a044f44a03e0459eb99c7ca13bd406', 1, '10.jpeg', NULL, NULL, NULL, NULL),
-(43, 'usuario', 'usuario@gmail.com', '$2y$10$XalNbebQHGQ2yv15.HFbPO9clrOZlQWNTpeoPjoQAFIMWIcLxae.S', '2023-11-30', 0, 'aabdc9e5d4447cf9b86212aeb71ab518', 1, NULL, NULL, NULL, NULL, NULL);
+(42, 'adm', 'adm@gmail.com', '$2y$10$3.XBqL6OS5hNMfeTFvvYXOehHQ.rRK6eXOhc0TxChjhL9lu.Z9xde', '2023-11-30', 1, '88a044f44a03e0459eb99c7ca13bd406', 1, '18.jpeg', '96087060', 'Rua Dom Guilherme Litran', 'Areal', 'Pelotas'),
+(43, 'usuario', 'usuario@gmail.com', '$2y$10$XalNbebQHGQ2yv15.HFbPO9clrOZlQWNTpeoPjoQAFIMWIcLxae.S', '2023-11-30', 0, 'aabdc9e5d4447cf9b86212aeb71ab518', 1, NULL, '96087060', 'Rua Dom Guilherme Litran', 'Areal', 'Pelotas'),
+(44, 'henrique', 'luiishenriiquefonseca@gmail.com', '$2y$10$frDDRWcTeyEqa6iRB1o8OOcPSmQRuK6Wh9AjS9C2cNnGQu7OvG1rS', '2023-12-05', 0, '845ed65730befbee6087327c7d1d85e2', 0, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,6 +187,12 @@ CREATE TABLE `utilizadores` (
 -- Índices de tabela `categoria`
 --
 ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `historia`
+--
+ALTER TABLE `historia`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -191,19 +228,25 @@ ALTER TABLE `utilizadores`
 -- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
+--
+-- AUTO_INCREMENT de tabela `historia`
+--
+ALTER TABLE `historia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `objeto`
 --
 ALTER TABLE `objeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT de tabela `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `codpessoa` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `codpessoa` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `utilizadores`

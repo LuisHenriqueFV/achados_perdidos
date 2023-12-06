@@ -29,10 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (password_verify($senha, $senhaBanco)) {
                     $_SESSION["logged"] = true;
 
-                    // Correção aqui: você precisa armazenar o codpessoa na sessão
                     $_SESSION["codpessoa"] = $usuario['codpessoa'];
 
-                    // Verifica se o usuário é um administrador
                     $_SESSION["adm"] = ($usuario['adm'] == 1);
 
                     envia_email($email);

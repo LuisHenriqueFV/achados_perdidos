@@ -6,10 +6,7 @@ require_once("./includes/components/cabecalho.php");
 require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 
-$userId = $_SESSION["codpessoa"];
-$consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
-$consulta->execute([$userId]);
-$usuario = $consulta->fetch();
+
 ?>
 
 <html>

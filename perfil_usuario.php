@@ -2,15 +2,13 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/cabecalho.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
+
 
 if (empty($usuario["imagem"])) {
     $usuario["imagem"] = "perfil-padrao.png";
 }
 
-$msg = ""; // Adiciona esta linha para inicializar a variável $msg
+$msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     $uploadDir = "./uploads/";
@@ -20,11 +18,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
         $atualizaImagem = $pdo->prepare('UPDATE pessoa SET imagem = ? WHERE codpessoa = ?');
         $atualizaImagem->execute([$_FILES["imagem"]["name"], $_SESSION["codpessoa"]]);
 
-        $msg = "Imagem enviada com sucesso!"; // Define a mensagem de sucesso
+        $msg = "Imagem enviada com sucesso!";
     } else {
         $msg = "Erro ao enviar a imagem.";
     }
 }
+require_once("./includes/components/cabecalho.php");
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 ?>
 
 <body class="dark">
@@ -54,13 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
                     </div>
                     <form id="formImagem" method="POST" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center py-3">
-                        
+
                             <label for="imagem" class="custom-file-upload">
                                 <span><img width="48" height="48"
                                         src="https://img.icons8.com/color/48/000000/edit-user-male--v1.png"
                                         alt="edit-user-male--v1" /></span>
                             </label>
-                            <input type="file" name="imagem" accept="image/*" id="imagem" class="form-control-file custom-file-input">
+                            <input type="file" name="imagem" accept="image/*" id="imagem"
+                                class="form-control-file custom-file-input">
                             <hr>
 
 
@@ -101,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
 
     </main>
 
-  
+
     <!-- RODAPE -->
     <footer id="footer">
 

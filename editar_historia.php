@@ -2,12 +2,14 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/cabecalho.php");
 
 $userId = $_SESSION["codpessoa"];
 $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
+
+$relato = null;
+$conteudo = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $relato_id = $_GET['id'];
@@ -19,9 +21,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
     if (!empty($relato)) {
         $relato = reset($relato);
-        $conteudo = isset($relato['relato']) ? $relato['relato'] : '';
+        $conteudo = $relato['relato'];
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['relato_id'])) {
+    $relato_id = $_POST['relato_id'];
+    $novo_relato = $_POST['novo_relato'];
+
+    $atualizacaoSucesso = atualiza_historia($relato_id, $novo_relato, $pdo);
+
+    if ($atualizacaoSucesso) {
+        header("Location: historias.php");
+        exit;
+    } else {
+        echo "Falha ao atualizar a história.";
+    }
+}
+require_once("./includes/components/cabecalho.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 </head>
 
 <body>
+
     <header>
         <button id="openMenu">&#9776;</button>
         <a href="index.php" id="logo">
@@ -91,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
 
     </header>
+
     <main>
         <?php if (!empty($relato)) { ?>
             <div class="form-container">
@@ -106,15 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
             echo "Relato não encontrado.";
         } ?>
     </main>
-
-
-
-
     <footer id="footer">
-
-
-
-
         <div class="container">
             <div class="h1" id="achados_perdidos">
                 <h1>Achados&Perdidos</h1>
@@ -139,12 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
 
 
     </footer>
-
-
-<?php
-require_once("./includes/components/js2.php");
-require_once("./includes/components/js.php");
-
-?>
-
+    <?php
+    require_once("./includes/components/js2.php");
+    require_once("./includes/components/js.php");
+    ?>
 </body>
+
+</html>

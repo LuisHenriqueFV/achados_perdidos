@@ -2,7 +2,6 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/cabecalho.php");
 
 $msg = "";
 
@@ -56,9 +55,11 @@ if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
 }
 
 $categorias = obter_categorias($pdo);
-require_once("./includes/components/header.php");
 
+require_once("./includes/components/header.php");
+require_once("./includes/components/cabecalho.php");
 ?>
+
 
 <body>
     <main>

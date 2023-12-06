@@ -4,9 +4,7 @@ $msg = "";
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
-require_once("./includes/components/cabecalho.php");
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -44,8 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $imagem = $imagem_padrao;
 
-        echo "Nenhuma imagem fornecida, utilizando imagem padrão: $imagem_padrao";
-
         cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
 
         $msg = "Objeto cadastrado com sucesso!";
@@ -53,6 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 $categorias = obter_categorias($pdo);
 $tipos = array("Encontrado", "Perdido");
+
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
+require_once("./includes/components/cabecalho.php");
 ?>
 
 

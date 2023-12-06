@@ -2,9 +2,7 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
-require_once("./includes/components/cabecalho.php");
+
 
 
 $msg = "";
@@ -25,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $objeto = pesquisa_objeto($nome, $categoria, $tipo, $pdo);
     }
 }
-
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
+require_once("./includes/components/cabecalho.php");
 
 ?>
 
@@ -86,14 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                 height="25" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1" />
 
                         </button>
-                        <!-- <div class="row col-lg-12">
 
-                    </div> -->
 
             </form>
 
 
-        </div>
         </div>
 
 
@@ -174,25 +171,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <?php endif; ?>
         </div>
 
-        <br><br><br><br><br><br><br><br><br><br>
-
-
-        <!-- FIM DO CONTEUDO -->
-
-
-
-
-
-        </div>
-        <!-- INICIO DO CONTEUDO -->
-
-
-
-
-
     </main>
 
-    <!-- ---------------------------------------------------------------------- -->
+
 
     <!-- RODAPE -->
     <footer id="footer">
@@ -219,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <p>Pelotas, Rio Grande Do Sul</p>
             </div>
 
-                
+
         </div>
 
 

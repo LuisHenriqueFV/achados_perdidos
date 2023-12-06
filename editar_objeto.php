@@ -2,13 +2,9 @@
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
 
 
-// require_once("./includes/components/js.php");
 
-//se esta pagina parar de funcionar, exclua o header (até o require)
 
 $objetoId = isset($_GET['id']) ? $_GET['id'] : "";
 
@@ -56,7 +52,8 @@ $tipos = array("Encontrado", "Perdido");
 
 
 require_once("./includes/components/cabecalho.php");
-
+require_once("./includes/components/header.php");
+require_once("./includes/components/js.php");
 ?>
 
 
