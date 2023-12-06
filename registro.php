@@ -1,6 +1,4 @@
 <?php
-
-
 require("./includes/components/conecta.php");
 require "./includes/components/PHPMailer/src/PHPMailer.php";
 require "./includes/components/PHPMailer/src/Exception.php";

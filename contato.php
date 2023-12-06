@@ -1,14 +1,15 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
+require "./includes/components/PHPMailer/src/PHPMailer.php";
+require "./includes/components/PHPMailer/src/Exception.php";
+require "./includes/components/PHPMailer/src/SMTP.php";
 
 
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -65,7 +66,7 @@ require_once("./includes/components/js.php");
                 <p>Dúvidas, sugestões, suporte, ou relatar um caso ocorrido com a utilização da plataforma, fique à
                     vontade para entrar em contato
                     conosco preenchendo o formulário abaixo.</p>
-                    <hr>
+                <hr>
 
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome:</label>
