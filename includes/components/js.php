@@ -75,14 +75,10 @@
         }
     </script>
     <script>
-        // Quando a página é carregada, inicia o temporizador para ocultar alertas
         document.addEventListener("DOMContentLoaded", function () {
-            // Seleciona todos os alertas na página
             var alertas = document.querySelectorAll('.alert');
 
-            // Para cada alerta encontrado
             alertas.forEach(function (alerta) {
-                // Oculta o alerta após 1 segundo
                 setTimeout(function () {
                     alerta.style.display = 'none';
                 }, 1000);
@@ -99,25 +95,20 @@
     </script>
 
 
-    <!-- dark and ligh  -->
-    <!-- Adicione este script no final do seu corpo HTML -->
+ 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('themeToggle');
             const body = document.body;
 
-            // Verifique o localStorage para o tema preferido do usuário
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 body.classList.add(savedTheme);
             }
 
-            // Adicione um ouvinte de evento para o botão de alternância
             themeToggle.addEventListener('click', function () {
-                // Alternar entre os temas
                 body.classList.toggle('dark-theme');
 
-                // Salvar a escolha do usuário no localStorage
                 const currentTheme = body.classList.contains('dark-theme') ? 'dark-theme' : '';
                 localStorage.setItem('theme', currentTheme);
             });

@@ -1,6 +1,5 @@
 <script>
-    /* Ação de eventos sobre o botão menu da tag nav (mobile). */
-/* Parâmetros: Nome do evento, função. */
+  
 openMenu.addEventListener('click', () => {
 
 	/* Sobrepõe a propriedade display: none aplicada no

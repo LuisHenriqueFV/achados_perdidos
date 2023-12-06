@@ -24,7 +24,7 @@ function cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $i
 
 function pesquisa_objeto($nome, $categoria, $tipo, $pdo)
 {
-    $sql= "SELECT * FROM objeto WHERE nome LIKE :nome";
+    $sql = "SELECT * FROM objeto WHERE nome LIKE :nome";
 
     if (!empty($categoria)) {
         $sql .= " AND categoria = :categoria";
@@ -236,7 +236,6 @@ function cadastra_historia($relato, $pdo)
     }
 }
 
-// Função para obter relatos da tabela "historia"
 
 
 function obter_historias($pdo)
@@ -247,7 +246,6 @@ function obter_historias($pdo)
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        // Log de erro ou tratamento adequado
         error_log("Erro ao obter histórias do banco de dados: " . $e->getMessage());
         return false;
     }
@@ -258,19 +256,14 @@ function obter_historias($pdo)
 function exclui_historia($historia_id, $pdo)
 {
     try {
-        // Prepare a SQL statement
         $stmt = $pdo->prepare("DELETE FROM historia WHERE id = :id");
 
-        // Bind parameters
         $stmt->bindParam(':id', $historia_id, PDO::PARAM_INT);
 
-        // Execute the statement
         $stmt->execute();
 
-        // Check if the deletion was successful
         return $stmt->rowCount() > 0;
     } catch (PDOException $e) {
-        // Handle any database errors
         error_log("Erro ao excluir história: " . $e->getMessage());
         return false;
     }
@@ -286,7 +279,6 @@ function atualiza_historia($relato, $novo_relato, $pdo)
 
         return $stmt->execute();
     } catch (PDOException $e) {
-        // Log de erro ou tratamento adequado
         error_log("Erro ao atualizar história no banco de dados: " . $e->getMessage());
         return false;
     }
