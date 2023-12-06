@@ -48,7 +48,7 @@ $historias = obter_historias($pdo);
 
             <a href="index.php">Home</a>
             <a href="objeto.php">Formulário</a>
-            <a href="informacao.php">Informacao</a>
+            <a href="informacao.php">Informações</a>
             <a href="historias.php">Historias</a>
             <a href="contato.php">Contato</a>
 

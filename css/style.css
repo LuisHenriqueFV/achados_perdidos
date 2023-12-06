@@ -440,5 +440,8 @@ footer p {
   @media (max-width: 400px) {
     margin-top: 45%;
   }
+  @media (max-width: 350px) {
+    margin-top: 45%;
+  }
 
 }
