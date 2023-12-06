@@ -76,7 +76,7 @@ require_once("./includes/components/js.php");
 
     <div class="container">
       <div class="h1" id="achados_perdidos">
-        <h1>Achados&Perdidos</h1>
+      <h1>Achei!</h1>
 
       </div>
       <div style="display: flex; align-items: center;">

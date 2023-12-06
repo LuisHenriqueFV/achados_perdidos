@@ -427,8 +427,9 @@ footer p {
 
 /* MEDIA */
 .containerTUDO {
-  margin-top: 10%;
 
+  margin-top: 10%;
+ 
   @media (max-width: 991px) {
     margin-top: 45%;
   }
