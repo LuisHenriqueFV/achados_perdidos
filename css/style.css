@@ -301,7 +301,7 @@ body.dark-theme #conteudoMinhasInformacoes {
 
 #conteudoMinhasInformacoes {
   padding-top: 20px;
-  width: 560px;
+  width: auto;
   height: auto;
   margin-top: 2%;
   margin-bottom: 30%;
@@ -419,26 +419,26 @@ footer p {
 
 /* MEDIA */
 .containerTUDO {
-  margin-top: 5%;
+  margin-top: 10%;
 
-  @media (max-width: 960px) {
-    margin-top: 15%;
+  @media (max-width: 991px) {
+    margin-top: 45%;
   }
 
   @media (max-width: 720px) {
-    margin-top: 20%;
+    margin-top: 45%;
   }
 
   @media (max-width: 550px) {
-    margin-top: 25%;
+    margin-top: 45%;
   }
 
   @media (max-width: 430px) {
-    margin-top: 20%;
+    margin-top: 45%;
   }
 
   @media (max-width: 400px) {
-    margin-top: 20%;
+    margin-top: 45%;
   }
 
 }
