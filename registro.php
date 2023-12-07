@@ -33,10 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $codigoVerificacao = bin2hex(random_bytes(16));
                 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+                $imagemPadrao = "img/perfil_padrao.png";
 
-                $sql = "INSERT INTO pessoa (nome, email, senha, codigo_verificacao) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO pessoa (nome, email, senha, codigo_verificacao, imagem) VALUES (?, ?, ?, ?, ?)";
                 $stmt = $pdo->prepare($sql);
-                $stmt->execute([$nome, $email, $senhaHash, $codigoVerificacao]);
+                $stmt->execute([$nome, $email, $senhaHash, $codigoVerificacao, $imagemPadrao]);
 
                 $mail = new PHPMailer(true);
 
