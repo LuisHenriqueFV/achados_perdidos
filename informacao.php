@@ -17,7 +17,7 @@ $historias = obter_historias($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações</title>
+    <title>Achei!</title>
     <!-- Google Montserrat Alternates -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@ $historias = obter_historias($pdo);
 
 
 
-            if($adm) {
+            if ($adm) {
                 ?>
 
                 <a href="adm.php">Adm</a>
@@ -76,7 +76,7 @@ $historias = obter_historias($pdo);
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <?php
-                    $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/".$usuario["imagem"];
+                    $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/" . $usuario["imagem"];
                     ?>
                     <img src="<?php echo $imagemPerfil; ?>" alt="Perfil do usuário" width="32" height="32"
                         class="rounded-circle">
@@ -157,28 +157,25 @@ $historias = obter_historias($pdo);
 
     <footer id="footer">
 
-
-
-
         <div class="container">
             <div class="h1" id="achados_perdidos">
-            <h1>Achei!</h1>
+                <h1>Achei!</h1>
 
             </div>
             <div style="display: flex; align-items: center;">
                 <img class="icon" src="img/icons8-phone-48.png"
                     style="width: 25px; height: 25px;  margin-bottom:17px; padding-right: 5px;" alt="icon">
-                +55 5398405-5364
+                <p>+55 5398405-5364</p>
             </div>
             <div style="display: flex; align-items: center;">
                 <img class="icon" src="img/icons8-gmail-50.png"
                     style="width: 25px; height: 25px; margin-bottom:19px; padding-right: 5px;" alt="icon">
-                luishenriquefonsecaphp@gmail.com
+                <p>luishenriquefonsecaphp@gmail.com</p>
             </div>
             <div style="display: flex; align-items: center;">
                 <img class="icon" src="img/icons8-location-60.png"
                     style="width: 25px; height: 25px; margin-bottom:19px; padding-right: 5px;" alt="icon">
-                Pelotas, Rio Grande Do Sul
+                <p>Pelotas, Rio Grande Do Sul</p>
             </div>
         </div>
 

@@ -3,24 +3,23 @@ require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
 
-
-if(empty($usuario["imagem"])) {
-    $usuario["imagem"] = "perfil-padrao.png";
-}
-
 $msg = "";
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
-    $uploadDir = "./uploads/";
-    $uploadFile = $uploadDir.basename($_FILES["imagem"]["name"]);
+if (empty($_FILES['imagem']['name'])) {
+    $uploadDir = "img/perfil-padrao.png";
+}
 
-    if(move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
+    $uploadDir = "./uploads/";
+    $uploadFile = $uploadDir . basename($_FILES["imagem"]["name"]);
+
+    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $uploadFile)) {
         $atualizaImagem = $pdo->prepare('UPDATE pessoa SET imagem = ? WHERE codpessoa = ?');
         $atualizaImagem->execute([$_FILES["imagem"]["name"], $_SESSION["codpessoa"]]);
 
         $msg = "Imagem enviada com sucesso!";
-    } else {
-        $msg = "Erro ao enviar a imagem.";
     }
 }
 require_once("./includes/components/cabecalho.php");
@@ -33,8 +32,8 @@ require_once("./includes/components/js.php");
 
 
         <?php
-        if(!empty($msg)) {
-            echo '<div class="alert alert-success">'.$msg.'</div>';
+        if (!empty($msg)) {
+            echo '<div class="alert alert-success">' . $msg . '</div>';
         }
         ?>
 
@@ -110,7 +109,7 @@ require_once("./includes/components/js.php");
 
         <div class="container">
             <div class="h1" id="achados_perdidos">
-            <h1>Achei!</h1>
+                <h1>Achei!</h1>
 
             </div>
             <div style="display: flex; align-items: center;">

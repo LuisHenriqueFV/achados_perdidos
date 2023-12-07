@@ -1,7 +1,7 @@
 <?php
 require "./includes/components/conecta.php";
 require "./includes/components/funcao.php";
-require("./includes/components/cabecalho.php");
+require("./includes/css/style2.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['utilizador']) && isset($_GET['confirmacao'])) {

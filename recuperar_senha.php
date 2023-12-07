@@ -6,9 +6,10 @@ require "./includes/components/PHPMailer/src/PHPMailer.php";
 require "./includes/components/PHPMailer/src/Exception.php";
 require "./includes/components/PHPMailer/src/SMTP.php";
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+$msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -45,31 +46,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->send();
 
-                echo '<p>Um e-mail foi enviado para o seu endereço com um link único para alterar sua senha.</p>';
-                
-
-                
+                $msg = '<p>Um e-mail foi enviado para o seu endereço com um link único para alterar sua senha.</p>';
             } catch (Exception $e) {
-                echo '<p>Ocorreu um erro ao enviar o e-mail: ' . $mail->ErrorInfo . '</p>';
+                $msg = '<p>Ocorreu um erro ao enviar o e-mail: ' . $mail->ErrorInfo . '</p>';
             }
         } else {
-            echo '<p>Não foi possível gerar o endereço único.</p>';
+            $msg = '<p>Não foi possível gerar o endereço único.</p>';
         }
     } else {
-        echo '<p>Este usuário não existe.</p>';
+        $msg = '<p>Este usuário não existe.</p>';
     }
-} else {
-    ?>
-   <div id="conteudoCadastro" class="container">
-       
-        <form method="post" class="mt-3">
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail:</label>
-                <input type="text" name="email" id="email" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-custom-color">Recuperar</button>
-            <a class="btn btn-secondary" href="login.php" role="button">Voltar</a>
-        </form
-    <?php
 }
+
 ?>
+
+<div id="conteudoCadastro" class="container">
+       
+    <form method="post" action="recuperar_senha.php" class="mt-3">
+        <h4>Digite seu E-mail cadastrado para alterar sua senha.</h4>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="text" name="email" id="email" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-custom-color">Recuperar</button>
+        <a class="btn btn-secondary" href="login.php" role="button">Voltar</a>
+    </form>
+
+    <?php echo $msg;  ?>
+
+</div>
