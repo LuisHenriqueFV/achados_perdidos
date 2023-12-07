@@ -252,9 +252,8 @@ body.dark-theme #conteudoMinhasInformacoes {
 }
 
 
-
 #conteudoPerfil {
-  margin-top: 14%;
+  margin-top: 8%;
   height: auto;
   background-color: var(--cor-backgraund-conteudo-Perfil);
   border-radius: 20px;
@@ -430,10 +429,15 @@ footer p {
 .containerTUDO {
 
   margin-top: 10%;
- 
+
   @media (max-width: 991px) {
     margin-top: 45%;
+
+
   }
+
+
+
 
   @media (max-width: 720px) {
     margin-top: 45%;
@@ -453,6 +457,31 @@ footer p {
 
   @media (max-width: 350px) {
     margin-top: 45%;
+  }
+
+}
+
+@media (max-width: 991px) {
+  .dropdown.text-end {
+    margin-top: 1%;
+    margin-right: 92%;
+  }
+
+  #navbar {
+    background-color: var(--cor-btn-custom-backgraund);
+
+  }
+
+  #navbar a {
+    color: #000;
+  }
+
+  .dark-theme #navbar {
+    background-color: #000;
+  }
+
+  .dark-theme #navbar>div>button {
+    background-color: #D5AA55;
   }
 
 }

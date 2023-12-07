@@ -361,7 +361,17 @@ a {
 
 }
 
-@media only screen and (max-width: 717px) {
+@media only screen and (max-width: 991px) {
+
+    body>header {
+        background-color: var(--cor-btn-custom-backgraund);
+    }
+
+
+    #menu>a {
+        color: black;
+    }
+
 
     #openMenu,
     #closeMenu {
@@ -391,7 +401,7 @@ a {
 
         width: 100vw;
 
-        height: 100vh;
+        height: 70vh;
 
         background: var(--cor-border-active);
         flex-direction: column;

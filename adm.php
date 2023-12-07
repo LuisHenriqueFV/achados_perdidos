@@ -62,6 +62,9 @@ require_once("./includes/components/cabecalho.php");
 
 
 
+        <div class="containerTUDO">
+
+
 
         <div id="conteudoPerfil" class="container">
             <div class="forms">
@@ -95,10 +98,7 @@ require_once("./includes/components/cabecalho.php");
                     </div>
 
                     <hr>
-                    <div class="d-flex justify-content-center">
-                        <a class="btn btn-secondary" href="index.php" role="button">Voltar</a>
-                    </div>
-                    <hr>
+                
 
                 </form>
                 <div class="forms">
@@ -148,6 +148,8 @@ require_once("./includes/components/cabecalho.php");
 
 
         </div>
+        </div>
+        
     </main>
 
 

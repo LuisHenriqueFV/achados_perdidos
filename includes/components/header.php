@@ -67,6 +67,7 @@ $usuario = $consulta->fetch();
                                 <?php
                                 $imagemPerfil = empty($usuario["imagem"]) ? "img/perfil-padrao.png" : "uploads/" . $usuario["imagem"];
                                 ?>
+
                                 <img src="<?php echo $imagemPerfil; ?>" alt="Perfil do usuário" width="32" height="32"
                                     class="rounded-circle">
                             </a>
@@ -78,6 +79,7 @@ $usuario = $consulta->fetch();
                                 </li>
                                 <li><a class="dropdown-item custom-color text-black" href="logout.php">Sair</a></li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>

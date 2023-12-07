@@ -289,11 +289,9 @@ function atualiza_historia($relato, $novo_relato, $pdo)
 
 function atualizaInfo($nome, $email, $senhaHash, $cep, $bairro, $logradouro, $cidade, $userId, $pdo)
 {
-    // Atualiza as informações na tabela pessoa
     $atualizaInfo = $pdo->prepare('UPDATE pessoa SET nome = ?, email = ?, senha = ?, cep = ?, bairro = ?, logradouro = ?, cidade = ? WHERE codpessoa = ?');
     $atualizaInfo->execute([$nome, $email, $senhaHash, $cep, $bairro, $logradouro, $cidade, $userId]);
 
-    // Consulta as informações atualizadas
     $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
     $consulta->execute([$userId]);
     $usuario = $consulta->fetch();
