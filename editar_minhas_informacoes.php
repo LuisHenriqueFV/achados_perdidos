@@ -3,15 +3,15 @@ require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
 require_once("./includes/components/funcao.php");
 
-
-
-
 $userId = $_SESSION["codpessoa"];
 $consulta = $pdo->prepare('SELECT * FROM pessoa WHERE codpessoa = ?');
 $consulta->execute([$userId]);
 $usuario = $consulta->fetch();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+$msg = "";
+$mensagem = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $email = $_POST["email"];
     $novaSenha = $_POST["nova_senha"];
@@ -20,17 +20,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $logradouro = $_POST["logradouro"];
     $cidade = $_POST["cidade"];
 
-    if(!empty($novaSenha)) {
-        $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
+    if (!empty($novaSenha)) {
+        if (strlen($novaSenha) >= 8) {
+            $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
+        } else {
+            $mensagem = "A nova senha deve ter pelo menos 8 caracteres. A senha não foi alterada.";
+            $senhaHash = $usuario["senha"]; 
+        }
     } else {
         $senhaHash = $usuario["senha"];
+        $msg = "Informações Atualizadas!";
     }
 
     atualizaInfo($nome, $email, $senhaHash, $cep, $bairro, $logradouro, $cidade, $userId, $pdo);
-
-
-    $msg = "Informações Atualizadas!";
 }
+
 require_once("./includes/components/cabecalho.php");
 require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
@@ -38,17 +42,20 @@ require_once("./includes/components/js.php");
 
 <body>
     <main>
-
-
         <!-- conteudo -->
         <div id="conteudoCadastro" class="container">
             <div class="forms">
+                <h1 class="text-center">Editar Minhas Informações</h1>
+                <hr>
                 <?php
-                if(!empty($msg)) {
-                    echo '<div class="alert alert-success">'.$msg.'</div>';
+                if (!empty($msg)) {
+                    echo '<div class="alert alert-success">' . $msg . '</div>';
+                }
+                if (!empty($mensagem)) {
+                    echo '<div class="alert alert-warning">' . $mensagem . '</div>'; 
                 }
                 ?>
-                <h1 class="text-center">Editar Minhas Informações</h1>
+                
                 <form method="POST">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -67,6 +74,7 @@ require_once("./includes/components/js.php");
                             <label for="nova_senha">Nova Senha:</label>
                             <input type="password" name="nova_senha" class="form-control"
                                 placeholder="Deixar em branco para não alterar sua senha atual">
+
                             <hr>
                         </div>
                         <div class="col-md-12">
@@ -112,7 +120,7 @@ require_once("./includes/components/js.php");
 
         <div class="container">
             <div class="h1" id="achados_perdidos">
-            <h1>Achei!</h1>
+                <h1>Achei!</h1>
 
             </div>
             <div style="display: flex; align-items: center;">
