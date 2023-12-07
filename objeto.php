@@ -1,5 +1,6 @@
 <?php
 $msg = "";
+$aviso = "";
 
 require_once("./includes/components/autenticacao.php");
 require_once("./includes/components/conecta.php");
@@ -16,13 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $imagem_padrao = "img/objeto/imagem_padrao.png";
 
-    if (!empty($_FILES['imagem']['name'])) {
-        $uploadDir = "img/objeto/";
+  if (!empty($_FILES['imagem']['name'])) {
+    $uploadDir = "img/objeto/";
 
-        $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
+    $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
+    // Verificar se a extensão é permitida
+    $extensoesPermitidas = array("png", "jpg", "jpeg");
+    if (!in_array($extensao, $extensoesPermitidas)) {
+        $aviso = "Apenas arquivos PNG, JPG e JPEG são permitidos.";
+    } else {
         $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
-
         $uploadFile = $uploadDir . $nomeArquivo;
 
         if (!is_dir($uploadDir)) {
@@ -39,13 +44,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msg = "Erro no upload da imagem. Verifique o log de erros para mais informações.";
             error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
         }
-    } else {
-        $imagem = $imagem_padrao;
-
-        cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
-
-        $msg = "Objeto cadastrado com sucesso!";
     }
+} else {
+    $imagem = $imagem_padrao;
+
+    cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
+
+    $msg = "Objeto cadastrado com sucesso!";
+}
 }
 $categorias = obter_categorias($pdo);
 $tipos = array("Encontrado", "Perdido");
@@ -70,6 +76,11 @@ require_once("./includes/components/cabecalho.php");
                     if (!empty($msg)) {
                         echo '<div class="alert alert-success">' . $msg . '</div>';
                     }
+
+                    if (!empty($aviso)) {
+                        echo '<div class="alert alert-danger">' . $aviso . '</div>';
+                    }
+
                     ?>
                     <form action="objeto.php" method="POST" enctype="multipart/form-data">
                         <div class="inputs-forms">

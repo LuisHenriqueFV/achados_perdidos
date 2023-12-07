@@ -31,16 +31,16 @@ require_once("./includes/components/js.php");
     <main>
 
 
-        <?php
-        if (!empty($msg)) {
-            echo '<div class="alert alert-success">' . $msg . '</div>';
-        }
-        ?>
+
 
 
 
         <div id="conteudoPerfil" class="container mt-5% col-6">
-
+            <?php
+            if (!empty($msg)) {
+                echo '<div class="alert alert-success">' . $msg . '</div>';
+            }
+            ?>
 
             <div class="row justify-content-center mt-4">
                 <div class="col-md-4 text-center">

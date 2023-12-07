@@ -8,7 +8,7 @@ require("./includes/components/cabecalho.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
+$msg = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
@@ -58,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $mail->send();
 
-                    echo "Registro bem-sucedido! Um e-mail de verificação foi enviado para o seu endereço.";
+                    $msg = "Cadastrado! Verifique seu e-mail para continuar.";
+
                 } catch (Exception $e) {
                     echo "Erro ao enviar o e-mail";
                 }
@@ -77,6 +78,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div id="conteudoRegistro" class="container justfy-content-center">
             <h2>Registro</h2>
             <form action="registro.php" method="POST">
+                <?php
+                if (!empty($msg)) {
+                    echo '<div class="alert alert-success">' . $msg . '</div>';
+                }
+                ?>
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome de Usuário:</label>
                     <input type="text" class="form-control" id="nome" name="nome" required>
