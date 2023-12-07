@@ -4,33 +4,42 @@ session_start();
 $_SESSION["msg"] = "";
 
 require("./includes/components/funcao.php");
+require("./includes/components/conecta.php");
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $senha = $_POST["password"];
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET['email']) && isset($_GET['codigo'])) {
+        $email = $_GET['email'];
+        $codigo = $_GET['codigo'];
 
-    if(!(empty($email) || empty($senha))) {
+        $verificacaoCorreta = verificaCodigo($email, $codigo, $pdo);
 
-        require('./includes/components/conecta.php');
+        if ($verificacaoCorreta) {
+            $pdo->prepare("UPDATE pessoa SET verificado = 1 WHERE email = :email")->execute(['email' => $email]);
 
+            echo "Seu e-mail foi verificado com sucesso. Agora você pode fazer login!";
+        }
+    } 
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = isset($_POST["email"]) ? $_POST["email"] : "";
+    $senha = isset($_POST["password"]) ? $_POST["password"] : "";
+
+    if (!(empty($email) || empty($senha))) {
         $consulta = $pdo->prepare("SELECT * FROM pessoa WHERE email = :email");
         $consulta->bindParam(':email', $email);
         $consulta->execute();
 
         $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-
-
-        if($usuario) {
+        if ($usuario) {
             $verificado = $usuario['verificado'];
 
-            if($verificado) {
+            if ($verificado) {
                 $senhaBanco = $usuario['senha'];
-                if(password_verify($senha, $senhaBanco)) {
+                if (password_verify($senha, $senhaBanco)) {
                     $_SESSION["logged"] = true;
-
                     $_SESSION["codpessoa"] = $usuario['codpessoa'];
-
                     $_SESSION["adm"] = ($usuario['adm'] == 1);
 
                     envia_email($email);
@@ -49,14 +58,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 require("./includes/components/cabecalho.php");
-
-
-
 ?>
 
 <body>
 
-   
+
     <main>
 
 
@@ -65,7 +71,7 @@ require("./includes/components/cabecalho.php");
 
             <div class="form-container rounded-4">
                 <form action="login.php" method="POST" class="needs-validation">
-                 
+
                     <div class="text-center mb-4">
                         <h2 class="mb-2 fw-regular">Login</h2>
                         <hr class="w-100 mx-auto my-2">
@@ -102,7 +108,7 @@ require("./includes/components/cabecalho.php");
                 </form>
 
                 <?php
-                if(isset($_SESSION['senha_alterada'])) {
+                if (isset($_SESSION['senha_alterada'])) {
                     echo '<p style="color: green;">Senha alterada com sucesso!</p>';
                     unset($_SESSION['senha_alterada']);
                 }
