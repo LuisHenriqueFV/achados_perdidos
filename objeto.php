@@ -17,52 +17,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $imagem_padrao = "img/objeto/imagem_padrao.png";
 
-  if (!empty($_FILES['imagem']['name'])) {
-    $uploadDir = "img/objeto/";
+    if (!empty($_FILES['imagem']['name'])) {
+        $uploadDir = "img/objeto/";
 
-    $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
+        $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
-    // Verificar se a extensão é permitida
-    $extensoesPermitidas = array("png", "jpg", "jpeg");
-    if (!in_array($extensao, $extensoesPermitidas)) {
-        $aviso = "Apenas arquivos PNG, JPG e JPEG são permitidos.";
-    } else {
-        $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
-        $uploadFile = $uploadDir . $nomeArquivo;
-
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        if (move_uploaded_file($_FILES['imagem']['tmp_name'], $uploadFile)) {
-            $imagem = $uploadDir . $nomeArquivo;
-
-            cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
-
-            $msg = "Objeto cadastrado com sucesso!";
+        // Verificar se a extensão é permitida
+        $extensoesPermitidas = array("png", "jpg", "jpeg");
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            $aviso = "Apenas arquivos PNG, JPG e JPEG são permitidos.";
         } else {
-            $msg = "Erro no upload da imagem. Verifique o log de erros para mais informações.";
-            error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
+            $nomeArquivo = uniqid('imagem_') . '.' . $extensao;
+            $uploadFile = $uploadDir . $nomeArquivo;
+
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            if (move_uploaded_file($_FILES['imagem']['tmp_name'], $uploadFile)) {
+                $imagem = $uploadDir . $nomeArquivo;
+
+                cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
+
+                $msg = "Objeto cadastrado com sucesso!";
+            } else {
+                $msg = "Erro no upload da imagem. Verifique o log de erros para mais informações.";
+                error_log("Erro no upload da imagem: " . $_FILES['imagem']['error']);
+            }
         }
+    } else {
+        $imagem = $imagem_padrao;
+
+        cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
+
+        $msg = "Objeto cadastrado com sucesso!";
     }
-} else {
-    $imagem = $imagem_padrao;
-
-    cadastra_objeto($nome, $descricao, $local, $data, $categoria, $tipo, $imagem, $codpessoa, $pdo);
-
-    $msg = "Objeto cadastrado com sucesso!";
-}
 }
 $categorias = obter_categorias($pdo);
 $tipos = array("Encontrado", "Perdido");
 
-require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 require_once("./includes/components/cabecalho.php");
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
+
+
 
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
+
+    </header>
+
     <main>
 
 
@@ -109,8 +125,8 @@ require_once("./includes/components/cabecalho.php");
                             <input type="text" id="descricao" name="descricao" class="form-control"
                                 placeholder="Descrição" autocomplete="off" required>
                             <hr>
-                            <input type="text" id="local" name="local" class="form-control" placeholder="Local encontrado ou perdido"
-                                autocomplete="off" required>
+                            <input type="text" id="local" name="local" class="form-control"
+                                placeholder="Local encontrado ou perdido" autocomplete="off" required>
                             <hr>
                             <input type="date" id="data" name="data" class="form-control" required>
                             <hr>
@@ -148,13 +164,13 @@ require_once("./includes/components/cabecalho.php");
     </main>
 
 
-  
+
     <!-- RODAPE -->
     <footer id="footer">
 
         <div class="container">
             <div class="h1" id="achados_perdidos">
-            <h1>Achei!</h1>
+                <h1>Achei!</h1>
 
             </div>
             <div style="display: flex; align-items: center;">

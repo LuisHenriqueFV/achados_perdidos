@@ -23,11 +23,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["imagem"])) {
     }
 }
 require_once("./includes/components/cabecalho.php");
-require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
+
+
+
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
+
+    </header>
+
     <main>
 
 

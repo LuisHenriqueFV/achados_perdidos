@@ -51,14 +51,26 @@ $categorias = obter_categorias($pdo);
 $tipos = array("Encontrado", "Perdido");
 
 
-require_once("./includes/components/cabecalho.php");
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
+
 
 
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
 
+    </header>
+    
     <main>
 
 
@@ -124,8 +136,10 @@ require_once("./includes/components/js.php");
    
     <?php
     require_once("./includes/components/footer.php");
-    ?>
+    require_once("./includes/components/js.php");
+    require_once("./includes/components/js2.php");
 
+    ?>
 </body>
 
 </html>

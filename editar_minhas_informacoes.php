@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $senhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
         } else {
             $mensagem = "A nova senha deve ter pelo menos 8 caracteres. A senha não foi alterada.";
-            $senhaHash = $usuario["senha"]; 
+            $senhaHash = $usuario["senha"];
         }
     } else {
         $senhaHash = $usuario["senha"];
@@ -36,11 +36,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 require_once("./includes/components/cabecalho.php");
-require_once("./includes/components/header.php");
 require_once("./includes/components/js.php");
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
+
+
 
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
+
+    </header>
     <main>
         <!-- conteudo -->
         <div id="conteudoCadastro" class="container">
@@ -52,10 +67,10 @@ require_once("./includes/components/js.php");
                     echo '<div class="alert alert-success">' . $msg . '</div>';
                 }
                 if (!empty($mensagem)) {
-                    echo '<div class="alert alert-warning">' . $mensagem . '</div>'; 
+                    echo '<div class="alert alert-warning">' . $mensagem . '</div>';
                 }
                 ?>
-                
+
                 <form method="POST">
                     <div class="row justify-content-center">
                         <div class="col-md-12">
@@ -114,12 +129,12 @@ require_once("./includes/components/js.php");
         <!-- fim do conteudo -->
     </main>
 
-
     <?php
     require_once("./includes/components/footer.php");
+    require_once("./includes/components/js.php");
+    require_once("./includes/components/js2.php");
+
     ?>
-
-
 </body>
 
 </html>

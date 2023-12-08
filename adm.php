@@ -51,12 +51,27 @@ if (isset($_GET['excluir']) && $_GET['excluir'] === 'true') {
 
 $categorias = obter_categorias($pdo);
 
-require_once("./includes/components/header.php");
-require_once("./includes/components/cabecalho.php");
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
+
 
 
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
+
+    </header>
+
     <main>
 
 
@@ -155,10 +170,8 @@ require_once("./includes/components/cabecalho.php");
 
     <?php
     require_once("./includes/components/footer.php");
-    ?>
-
-    <?php
     require_once("./includes/components/js.php");
+    require_once("./includes/components/js2.php");
 
     ?>
 </body>

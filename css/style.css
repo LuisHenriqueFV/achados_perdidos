@@ -255,12 +255,17 @@ body.dark-theme #conteudoMinhasInformacoes {
 #conteudoPerfil {
   margin-top: 8%;
   height: auto;
+  width: 100vh;
   background-color: var(--cor-backgraund-conteudo-Perfil);
   border-radius: 20px;
   padding-top: 3%;
   padding-bottom: 3%;
 
 }
+#loginContainer > div {
+  height: auto;
+}
+
 
 #conteudoRegistro {
   background-color: var(--cor-backgraund-container);

@@ -3,7 +3,6 @@ require("./includes/components/conecta.php");
 require "./includes/components/PHPMailer/src/PHPMailer.php";
 require "./includes/components/PHPMailer/src/Exception.php";
 require "./includes/components/PHPMailer/src/SMTP.php";
-require("./includes/components/cabecalho.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -72,6 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 }
+require("./includes/components/cabecalho.php");
+
 ?>
 
 <body>

@@ -23,17 +23,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $objeto = pesquisa_objeto($nome, $categoria, $tipo, $pdo);
     }
 }
-require_once("./includes/components/header.php");
-require_once("./includes/components/js.php");
-require_once("./includes/components/cabecalho.php");
+// require_once("./includes/components/header.php");
+// require_once("./includes/components/cabecalho.php");
 
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php
+    require_once("./includes/components/cabecalho.php");
+    ?>
+</head>
 
 
 
 <body>
+    <header>
+        <?php
+        require_once("./includes/components/header2.php");
+        ?>
 
-
+    </header>
+    
     <main>
 
         <div class="containerTUDO">
@@ -41,7 +54,9 @@ require_once("./includes/components/cabecalho.php");
 
             <div class="container">
                 <div class="row col 12">
-                    <a class="btn btn-custom-color" href="objeto.php"><H5>Publique Aqui!</H5></a>
+                    <a class="btn btn-custom-color" href="objeto.php">
+                        <H5>Publique Aqui!</H5>
+                    </a>
                 </div>
             </div>
 
@@ -109,22 +124,22 @@ require_once("./includes/components/cabecalho.php");
                                     <div class="col mb-4">
                                         <div class="card" style="max-width: 600px; height: auto;   ;">
                                             <div class="row g-0">
-                                            <div class="col-lg-4" style="position: relative;">
+                                                <div class="col-lg-4" style="position: relative;">
                                                     <img src="<?= $obj['imagem']; ?>" class="img-fluid rounded-start"
                                                         alt="Imagem do Card" style="height: 150px ;">
 
-                                                        <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $obj['codpessoa'] == $_SESSION["codpessoa"])): ?>
-                                                            <div class="justfy-content-between" style="position: absolute; bottom: 0; right: 0; margin-right: 10px;">
-                                                                <a href="editar_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img
-                                                                        width="24" height="24"
-                                                                        src="https://img.icons8.com/dusk/64/000000/edit--v1.png"
-                                                                        alt="edit--v1" /></a>
-                                                                <a href="excluir_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img
-                                                                        width="30" height="30"
-                                                                        src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
-                                                                        alt="filled-trash" /></a>
-                                                            </div>
-                                                        <?php endif; ?>
+                                                    <?php if (isset($_SESSION["codpessoa"]) && ($_SESSION["adm"] == 1 || $obj['codpessoa'] == $_SESSION["codpessoa"])): ?>
+                                                        <div class="justfy-content-between"
+                                                            style="position: absolute; bottom: 0; right: 0; margin-right: 10px;">
+                                                            <a href="editar_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img width="24"
+                                                                    height="24" src="https://img.icons8.com/dusk/64/000000/edit--v1.png"
+                                                                    alt="edit--v1" /></a>
+                                                            <a href="excluir_objeto.php?id=<?= $obj['id']; ?>" class="btn"><img width="30"
+                                                                    height="30"
+                                                                    src="https://img.icons8.com/plasticine/30/000000/filled-trash.png"
+                                                                    alt="filled-trash" /></a>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="col-lg-8">
                                                     <div class="card-body">
@@ -153,7 +168,7 @@ require_once("./includes/components/cabecalho.php");
                                                                 <?= date(' d / m / Y ', strtotime($obj['data'])); ?>
                                                             </small></p>
 
-                                                        
+
 
                                                     </div>
                                                 </div>
@@ -175,8 +190,11 @@ require_once("./includes/components/cabecalho.php");
     </main>
 
 
-                <?php
+    <?php
     require_once("./includes/components/footer.php");
+    require_once("./includes/components/js.php");
+    require_once("./includes/components/js2.php");
+
     ?>
 
 
