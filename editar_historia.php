@@ -60,7 +60,7 @@ require_once("./includes/components/cabecalho.php");
         ?>
 
     </header>
-    
+
     <main>
         <?php if (!empty($relato)) { ?>
             <div class="form-container">
@@ -78,9 +78,6 @@ require_once("./includes/components/cabecalho.php");
     </main>
     <?php
     require_once("./includes/components/footer.php");
-    ?>
-
-    <?php
     require_once("./includes/components/js2.php");
     require_once("./includes/components/js.php");
     ?>

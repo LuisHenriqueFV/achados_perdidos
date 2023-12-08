@@ -251,18 +251,23 @@ body.dark-theme #conteudoMinhasInformacoes {
   height: auto;
 }
 
+#conteudoContato>form {
+  width: auto;
+  height: auto;
+  margin-top: 2%;
+}
 
 #conteudoPerfil {
-  margin-top: 8%;
   height: auto;
-  width: 100vh;
+  width: auto;
   background-color: var(--cor-backgraund-conteudo-Perfil);
   border-radius: 20px;
   padding-top: 3%;
   padding-bottom: 3%;
 
 }
-#loginContainer > div {
+
+#loginContainer>div {
   height: auto;
 }
 

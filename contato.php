@@ -73,7 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
 
         <div class="containerTUDO">
-            <div id="conteudo" class="container">
+
+            <div id="conteudoContato" class="container">
 
 
                 <form action="#" method="post" class="form-container">
@@ -116,6 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once("./includes/components/js2.php");
 
     ?>
+
 
 </body>
 
