@@ -267,6 +267,20 @@ body.dark-theme #conteudoMinhasInformacoes {
 
 }
 
+#conteudoUsuario {
+  height: auto;
+  background-color: var(--cor-backgraund-conteudo-Perfil);
+  border-radius: 20px;
+  padding-top: 3%;
+  padding-bottom: 3%;
+
+}
+
+.dark-theme #conteudoUsuario {
+  background-color: var(--dark-background-card);
+}
+
+
 #loginContainer>div {
   height: auto;
 }
@@ -435,41 +449,6 @@ footer p {
 }
 
 
-/* MEDIA */
-.containerTUDO {
-
-  margin-top: 10%;
-
-  @media (max-width: 991px) {
-    margin-top: 45%;
-
-
-  }
-
-
-
-
-  @media (max-width: 720px) {
-    margin-top: 45%;
-  }
-
-  @media (max-width: 550px) {
-    margin-top: 45%;
-  }
-
-  @media (max-width: 430px) {
-    margin-top: 45%;
-  }
-
-  @media (max-width: 400px) {
-    margin-top: 45%;
-  }
-
-  @media (max-width: 350px) {
-    margin-top: 45%;
-  }
-
-}
 
 @media (max-width: 991px) {
   .dropdown.text-end {

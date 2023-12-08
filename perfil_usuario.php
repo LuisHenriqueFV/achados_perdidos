@@ -52,7 +52,7 @@ require_once("./includes/components/js.php");
 
 
 
-        <div id="conteudoPerfil" class="container mt-5% col-6">
+        <div id="conteudoUsuario" class="container mt-5% col-6">
             <?php
             if (!empty($msg)) {
                 echo '<div class="alert alert-success">' . $msg . '</div>';
