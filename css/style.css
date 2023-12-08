@@ -81,6 +81,9 @@ main {
 #achados_perdidos {
   color: var(--cor-btn-custom-backgraund);
 }
+#filtro > div > div {
+  justify-content: center;
+}
 
 
 .btn-custom-color h5 {
@@ -269,6 +272,7 @@ body.dark-theme #conteudoMinhasInformacoes {
 
 #conteudoUsuario {
   height: auto;
+  width: 100%;
   background-color: var(--cor-backgraund-conteudo-Perfil);
   border-radius: 20px;
   padding-top: 3%;

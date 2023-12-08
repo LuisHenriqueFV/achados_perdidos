@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         ?>
 
     </header>
-    
+
     <main>
 
         <div class="containerTUDO">
@@ -64,13 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <div id="filtro" class="container">
 
                     <div class="d-flex mb-2 justify-content-center">
-                        <div class="px-1 col-lg-3">
+                        <div class="row">
+                           <div class="px-1 col-lg-3 col-xs-12">
                             <div class="input-group">
                                 <input type="text" name="pesquisar" class="form-control"
                                     placeholder="Pesquisar por nome" autocomplete="off">
                             </div>
                         </div>
-                        <div class="px-1 col-lg-3">
+                        <div class="px-1 col-lg-3 col-xs-12">
                             <select name="categoria" class="form-select">
                                 <option value="MostrarTodos" <?= $categoria === 'MostrarTodos' ? 'selected' : ''; ?>>
                                     Todas
@@ -84,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             </select>
                         </div>
 
-                        <div class="px-1 col-lg-3">
+                        <div class="px-1 col-lg-3 col-xs-12">
 
                             <select name="tipo" class="form-select">
                                 <option value="" <?= $tipo === '' ? 'selected' : ''; ?>>Encontrados e Perdidos</option>
@@ -100,6 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                                 height="25" src="https://img.icons8.com/color/48/search--v1.png" alt="search--v1" />
 
                         </button>
+                    </div>  
+                        </div>
+                   
 
 
             </form>
