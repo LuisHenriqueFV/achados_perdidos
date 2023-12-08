@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
 
-        // Verificar se a extensão é permitida
         $extensoesPermitidas = array("png", "jpg", "jpeg");
         if (!in_array($extensao, $extensoesPermitidas)) {
             $aviso = "Apenas arquivos PNG, JPG e JPEG são permitidos.";

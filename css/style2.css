@@ -16,6 +16,21 @@
 
 }
 
+/* .block-with-text {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 6em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+  }
+  .block-with-text:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  } */
 
 :root {
     --cor-background: #616FF2, #D6A6F2;
@@ -152,7 +167,23 @@ main {
     width: 100%;
     padding: 20px;
 
+
 }
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .card-text.expandido {
+    white-space: normal; /* Permite que o texto quebre em várias linhas quando expandido */
+    overflow: visible;   /* Permite que o texto expandido seja visível além do contêiner */
+    text-overflow: unset; /* Remove as reticências quando expandido */
+  }
 
 .form-container {
     background-color: var(--cor-backgraund-container);
@@ -363,7 +394,7 @@ a {
 
 @media only screen and (max-width: 991px) {
 
-    body > header > header > div {
+    body>header>header>div {
         margin-top: 22px;
     }
 

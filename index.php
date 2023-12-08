@@ -23,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $objeto = pesquisa_objeto($nome, $categoria, $tipo, $pdo);
     }
 }
-// require_once("./includes/components/header.php");
-// require_once("./includes/components/cabecalho.php");
 
 ?>
 

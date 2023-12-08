@@ -81,7 +81,7 @@
             alertas.forEach(function (alerta) {
                 setTimeout(function () {
                     alerta.style.display = 'none';
-                }, 1000);
+                }, 3000);
             });
         });
     </script>
