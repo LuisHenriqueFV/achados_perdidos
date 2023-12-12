@@ -180,15 +180,14 @@ main {
   }
 
   .card-text.expandido {
-    white-space: normal; /* Permite que o texto quebre em várias linhas quando expandido */
-    overflow: visible;   /* Permite que o texto expandido seja visível além do contêiner */
-    text-overflow: unset; /* Remove as reticências quando expandido */
+    white-space: normal; 
+    overflow: visible;  
+    text-overflow: unset; 
   }
 
 .form-container {
     background-color: var(--cor-backgraund-container);
     margin-top: 10%;
-    /* margin-left: 20%; */
     margin-bottom: 15%;
     width: auto;
     height: 400px;
