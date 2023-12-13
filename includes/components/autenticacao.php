@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 if (headers_sent()) {
-    die("Error: Headers already sent. Please check for any whitespace or output before session_start().");
+    die("Erro: Cabeçalhos já foram enviados. Por favor, verifique se há algum espaço em branco ou saída antes do session_start().");
 }
 
 

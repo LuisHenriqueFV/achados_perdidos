@@ -49,10 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['utilizador']) && isset($
 
 
 
-    <?php
-    require_once("./includes/components/footer.php");
-    ?>
-
 
 
 </body>
